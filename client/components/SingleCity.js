@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { getWeather, getCostOfLiving, getTransportation, getPollution } from '../store/singleCity'
+import { getWeather, getCostOfLiving, getTransportation, getPollution, getHealthcare } from '../store/singleCity'
 
 /**
  * COMPONENT
@@ -12,8 +12,7 @@ class SingleCity extends Component {
     this.props.loadCostOfLiving()
     this.props.loadTransportation()
     this.props.loadPollution()
-    console.log('state', this.state)
-
+    this.props.loadHealthcare()
   }
   render(){
     const weather = this.props.singleCity.weather.month || [];
@@ -52,7 +51,8 @@ const mapDispatch = (dispatch) => {
     loadWeather: () => dispatch(getWeather()),
     loadCostOfLiving: () => dispatch(getCostOfLiving()),
     loadTransportation: () => dispatch(getTransportation()),
-    loadPollution: () => dispatch(getPollution())
+    loadPollution: () => dispatch(getPollution()),
+    loadHealthcare: () => dispatch(getHealthcare())
   }
 }
 
