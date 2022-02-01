@@ -1,20 +1,11 @@
-<<<<<<< HEAD
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
+import SingleCity from "./components/SingleCity";
 import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
-=======
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import { Login, Signup } from './components/AuthForm';
-import Home from './components/Home';
-import SingleCity from './components/SingleCity';
-import {me} from './store'
->>>>>>> 8e605d030f48162eba4215bbfc8b3860cffce38f
 
 /**
  * COMPONENT
@@ -42,7 +33,6 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/preferences" component={UserPrefForm} />
             <Route path="/singleCity" component={SingleCity} />
-
           </Switch>
         )}
       </div>
