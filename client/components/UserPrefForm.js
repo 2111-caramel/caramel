@@ -32,7 +32,7 @@ class UserPrefForm extends React.Component {
           <hr />
           <h3>Additional preferences</h3>
           <label>Healthcare</label>
-
+          <select></select>
           <label>Pollution</label>
           <label>Transportation</label>
           <label>Groceries</label>
