@@ -270,7 +270,6 @@ console.log("NEW YORK TRANSPORT*** ", newYorkTransportation)
       bus: losAngelesTransportation.primary_means_percentage_map['Bus/Trolleybus'],
       motorbike: losAngelesTransportation.primary_means_percentage_map['Motorbike']
     }),
-    
   ]);
   
   console.log(`seeded ${users.length} users`);
