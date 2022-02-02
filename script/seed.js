@@ -1,10 +1,13 @@
 "use strict";
+const axios = require("axios");
+const secretKeys = require("./apikey")
 
 const {
   db,
-  models: { User },
+  models: { User, City, PrimaryStats },
 } = require("../server/db");
-const City = require("../server/db/models/City");
+// const City = require("../server/db/models/City");
+// const PrimaryStats = require("../server/db/models/PrimaryStats");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -20,12 +23,48 @@ async function seed() {
     User.create({ username: "murphy", password: "123" }),
   ]);
 
+  console.log("secret numbeo key***", secretKeys)
+
+  const { data: newYork } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
+  );
+  const { data: newOrleans } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20Orleans,%20LA&country=United%20States`
+  );
+  const { data: losAngeles } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
+  );
+
+console.log("NEW YORK*** ", newYork)
   // creating dummy cities
   const cities = await Promise.all([
-    City.create({ name: "Los Angeles", state: "CA" }),
-    City.create({ name: "New York", state: "NY" }),
-    City.create({ name: "New Orleans", state: "LA" }),
-    City.create({ name: "Austin", state: "TX" }),
+    City.create({ id: 1, name: "New York", state: "NY" }),
+    City.create({ id: 2, name: "New Orleans", state: "LA" }),
+    City.create({ id: 3, name: "Los Angeles", state: "CA" }),
+  ]);
+
+  const primaryStats = await Promise.all([
+    PrimaryStats.create({
+      cityId: 1,
+      rent1br: Math.round(newYork.prices[21].average_price),
+      rent3br: Math.round(newYork.prices[23].average_price),
+      housePrice: Math.round(newYork.prices[36].average_price),
+      salary: Math.round(newYork.prices[40].average_price),
+    }),
+    PrimaryStats.create({
+      cityId: 2,
+      rent1br: Math.round(newOrleans.prices[21].average_price),
+      rent3br: Math.round(newOrleans.prices[23].average_price),
+      housePrice: Math.round(newOrleans.prices[36].average_price),
+      salary: Math.round(newOrleans.prices[40].average_price),
+    }),
+    PrimaryStats.create({
+      cityId: 3,
+      rent1br: Math.round(losAngeles.prices[21].average_price),
+      rent3br: Math.round(losAngeles.prices[23].average_price),
+      housePrice: Math.round(losAngeles.prices[36].average_price),
+      salary: Math.round(losAngeles.prices[40].average_price),
+    }),
   ]);
 
   console.log(`seeded ${users.length} users`);
