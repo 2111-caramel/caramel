@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import SingleCity from "./components/SingleCity";
 import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
+import AllCities from "./components/AllCities";
 
 /**
  * COMPONENT
