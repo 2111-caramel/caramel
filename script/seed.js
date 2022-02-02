@@ -1,13 +1,44 @@
 "use strict";
 const axios = require("axios");
 const secretKeys = require("./apikey")
+const citiesCSV = require('./Cities');
 
 const {
   db,
-  models: { User, City, PrimaryStats },
+  models: { User, City, PrimaryStats, Weather },
 } = require("../server/db");
 // const City = require("../server/db/models/City");
 // const PrimaryStats = require("../server/db/models/PrimaryStats");
+
+//Parsing the CSV into an object
+function csvToArray(str, delimiter = ",") {
+  // slice from start of text to the first \n index
+  // use split to create an array from string by delimiter
+  const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+
+  // slice from \n index + 1 to the end of the text
+  // use split to create an array of each csv value row
+  const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+  // Map the rows
+  // split values from each row into an array
+  // use headers.reduce to create an object
+  // object properties derived from headers:values
+  // the object passed as an element of the array
+  const arr = rows.map(function (row) {
+    const values = row.split(delimiter);
+    const el = headers.reduce(function (object, header, index) {
+      object[header] = values[index];
+      return object;
+    }, {});
+    return el;
+  });
+
+  // return the array
+  return arr;
+}
+
+console.log(csvToArray(citiesCSV, delimiter))
 
 /**
  * seed - this function clears the database, updates tables to
@@ -23,13 +54,6 @@ async function seed() {
     User.create({ username: "murphy", password: "123" }),
   ]);
 
-<<<<<<< HEAD
-  let newYork = await axios.get("http://www.numbeo.com:8008/api/city_prices?api_key=mjp50q4qjekq4w&city=New%20York,%20NY&country=United%20States")
-  console.log("Axios request: ", newYork)
-
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
-=======
   console.log("secret numbeo key***", secretKeys)
 
   const { data: newYork } = await axios.get(
@@ -76,7 +100,6 @@ console.log("NEW YORK*** ", newYork)
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
->>>>>>> d8e2393375f6ca3390685584c742bea799d75f19
   return {
     users: {
       cody: users[0],

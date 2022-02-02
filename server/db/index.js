@@ -3,12 +3,9 @@
 const db = require('./db')
 
 const User = require('./models/User')
-<<<<<<< HEAD
 const Weather = require('./models/Weather')
-=======
 const City = require('./models/City')
 const PrimaryStats = require('./models/PrimaryStats')
->>>>>>> d8e2393375f6ca3390685584c742bea799d75f19
 
 //associations could go here!
 City.hasOne(PrimaryStats)
@@ -18,11 +15,8 @@ module.exports = {
   db,
   models: {
     User,
-<<<<<<< HEAD
-    Weather
-=======
+    Weather,
     City,
     PrimaryStats
->>>>>>> d8e2393375f6ca3390685584c742bea799d75f19
   },
 }
