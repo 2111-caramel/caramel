@@ -3,6 +3,7 @@
 const db = require('./db')
 
 const User = require('./models/User')
+const Weather = require('./models/Weather')
 const City = require('./models/City')
 const PrimaryStats = require('./models/PrimaryStats')
 const LivingCost = require('./models/LivingCost')
@@ -23,6 +24,7 @@ module.exports = {
   db,
   models: {
     User,
+    Weather,
     City,
     PrimaryStats,
     LivingCost,

@@ -4,8 +4,9 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import cities from './cities'
+import singleCityReducer from './singleCity'
 
-const reducer = combineReducers({ auth, cities })
+const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
