@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import SingleCity from './components/SingleCity';
 import {me} from './store'
+import AllCities from './components/AllCities'
 
 /**
  * COMPONENT
