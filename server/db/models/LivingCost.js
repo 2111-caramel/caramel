@@ -7,27 +7,27 @@ const LivingCost = db.define("livingCost", {
     allowNull: false,
   },
   beer: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   cappuccino: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   milk: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   bread: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   eggs: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   gas: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
 });
