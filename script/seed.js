@@ -16,6 +16,9 @@ async function seed() {
     User.create({ username: 'murphy', password: '123' }),
   ])
 
+  let newYork = await axios.get("http://www.numbeo.com:8008/api/city_prices?api_key=mjp50q4qjekq4w&city=New%20York,%20NY&country=United%20States")
+  console.log("Axios request: ", newYork)
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
   return {
