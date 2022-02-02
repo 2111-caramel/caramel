@@ -1,7 +1,14 @@
 "use strict";
 const axios = require("axios");
 const secretKeys = require("./apikey")
-const citiesCSV = require('./Cities');
+const citiesCSV = require('./Cities.csv');
+const fastcsv = require("fast-csv");
+
+
+const pkg = require("../package.json");
+
+const databaseName =
+  pkg.name + (process.env.NODE_ENV === "test" ? "-test" : "");
 
 const {
   db,
@@ -11,34 +18,34 @@ const {
 // const PrimaryStats = require("../server/db/models/PrimaryStats");
 
 //Parsing the CSV into an object
-function csvToArray(str, delimiter = ",") {
-  // slice from start of text to the first \n index
-  // use split to create an array from string by delimiter
-  const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+// function csvToArray(str, delimiter = ",") {
+//   // slice from start of text to the first \n index
+//   // use split to create an array from string by delimiter
+//   const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
 
-  // slice from \n index + 1 to the end of the text
-  // use split to create an array of each csv value row
-  const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+//   // slice from \n index + 1 to the end of the text
+//   // use split to create an array of each csv value row
+//   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
-  // Map the rows
-  // split values from each row into an array
-  // use headers.reduce to create an object
-  // object properties derived from headers:values
-  // the object passed as an element of the array
-  const arr = rows.map(function (row) {
-    const values = row.split(delimiter);
-    const el = headers.reduce(function (object, header, index) {
-      object[header] = values[index];
-      return object;
-    }, {});
-    return el;
-  });
+//   // Map the rows
+//   // split values from each row into an array
+//   // use headers.reduce to create an object
+//   // object properties derived from headers:values
+//   // the object passed as an element of the array
+//   const arr = rows.map(function (row) {
+//     const values = row.split(delimiter);
+//     const el = headers.reduce(function (object, header, index) {
+//       object[header] = values[index];
+//       return object;
+//     }, {});
+//     return el;
+//   });
 
-  // return the array
-  return arr;
-}
+//   // return the array
+//   return arr;
+// }
 
-console.log(csvToArray(citiesCSV, delimiter))
+// console.log(csvToArray(citiesCSV, delimiter))
 
 /**
  * seed - this function clears the database, updates tables to
@@ -47,6 +54,63 @@ console.log(csvToArray(citiesCSV, delimiter))
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
+
+  //Creating cities
+  let stream = fs.createReadStream("./Cities.csv");
+  let csvData = [];
+  let csvStream = fastcsv
+    .parse()
+    .on("data", function (data) {
+      csvData.push(data);
+    })
+    .on("end", function () {
+      // remove the first line: header
+      csvData.shift();
+
+      // create a new connection to the database
+      let pool;
+
+      //if connecting to heroku:
+      if (process.env.NODE_ENV === "production") {
+        pool = new Pool({
+          connectionString: process.env.DATABASE_URL,
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        });
+      } else {
+        pool = new Pool({
+          host: "localhost",
+          //user: process.env.USER,
+          database: "urban_analysis",
+          port: 5432,
+        });
+      }
+
+      //sql query inserts data
+      const query =
+        "INSERT INTO cities (Id, State, City)";
+
+      pool.connect((err, client, done) => {
+        if (err) throw err;
+
+        try {
+          csvData.forEach((row) => {
+            client.query(query, row, (err, res) => {
+              if (err) {
+                console.log(err.stack);
+              } else {
+                console.log("inserted " + res.rowCount + " row:", row);
+              }
+            });
+          });
+        } finally {
+          done();
+        }
+      });
+    });
+
+  stream.pipe(csvStream);
 
   // Creating Users
   const users = await Promise.all([
@@ -66,7 +130,7 @@ async function seed() {
     `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
   );
 
-console.log("NEW YORK*** ", newYork)
+//console.log("NEW YORK*** ", newYork)
   // creating dummy cities
   const cities = await Promise.all([
     City.create({ id: 1, name: "New York", state: "NY" }),

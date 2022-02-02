@@ -4,7 +4,6 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import cities from './cities'
-const reducer = combineReducers({ auth, cities })
 import singleCityReducer from './singleCity'
 
 const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities })
