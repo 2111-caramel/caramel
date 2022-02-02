@@ -23,8 +23,6 @@ async function seed() {
     User.create({ username: "murphy", password: "123" }),
   ]);
 
-  console.log("secret numbeo key***", secretKeys)
-
   const { data: newYork } = await axios.get(
     `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
   );
