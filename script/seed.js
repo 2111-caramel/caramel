@@ -56,61 +56,61 @@ async function seed() {
   console.log("db synced!");
 
   //Creating cities
-  let stream = fs.createReadStream("./Cities.csv");
-  let csvData = [];
-  let csvStream = fastcsv
-    .parse()
-    .on("data", function (data) {
-      csvData.push(data);
-    })
-    .on("end", function () {
-      // remove the first line: header
-      csvData.shift();
+  // let stream = fs.createReadStream("./script/Cities.csv");
+  // let csvData = [];
+  // let csvStream = fastcsv
+  //   .parse()
+  //   .on("data", function (data) {
+  //     csvData.push(data);
+  //   })
+  //   .on("end", function () {
+  //     // remove the first line: header
+  //     csvData.shift();
 
-      // create a new connection to the database
-      let pool;
+  //     // create a new connection to the database
+  //     let pool;
 
-      //if connecting to heroku:
-      if (process.env.NODE_ENV === "production") {
-        pool = new Pool({
-          connectionString: process.env.DATABASE_URL,
-          ssl: {
-            rejectUnauthorized: false,
-          },
-        });
-      } else {
-        pool = new Pool({
-          host: "localhost",
-          //user: process.env.USER,
-          database: "urban_analysis",
-          port: 5432,
-        });
-      }
+  //     //if connecting to heroku:
+  //     if (process.env.NODE_ENV === "production") {
+  //       pool = new Pool({
+  //         connectionString: process.env.DATABASE_URL,
+  //         ssl: {
+  //           rejectUnauthorized: false,
+  //         },
+  //       });
+  //     } else {
+  //       pool = new Pool({
+  //         host: "localhost",
+  //         //user: process.env.USER,
+  //         database: "urban_analysis",
+  //         port: 5432,
+  //       });
+  //     }
 
-      //sql query inserts data
-      const query =
-        "INSERT INTO cities (Id, State, City)";
+  //     //sql query inserts data
+  //     const query =
+  //       "INSERT INTO cities (Id, State, City)";
 
-      pool.connect((err, client, done) => {
-        if (err) throw err;
+  //     pool.connect((err, client, done) => {
+  //       if (err) throw err;
 
-        try {
-          csvData.forEach((row) => {
-            client.query(query, row, (err, res) => {
-              if (err) {
-                console.log(err.stack);
-              } else {
-                console.log("inserted " + res.rowCount + " row:", row);
-              }
-            });
-          });
-        } finally {
-          done();
-        }
-      });
-    });
+  //       try {
+  //         csvData.forEach((row) => {
+  //           client.query(query, row, (err, res) => {
+  //             if (err) {
+  //               console.log(err.stack);
+  //             } else {
+  //               console.log("inserted " + res.rowCount + " row:", row);
+  //             }
+  //           });
+  //         });
+  //       } finally {
+  //         done();
+  //       }
+  //     });
+  //   });
 
-  stream.pipe(csvStream);
+  // stream.pipe(csvStream);
 
   // Creating Users
   const users = await Promise.all([
