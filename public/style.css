@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 a {
@@ -22,4 +22,11 @@ form div {
 
 .navbar {
     height: 50px;
+}
+
+.homepage {
+  background-image: url(https://i.redd.it/tidtadk0m0p41.jpg);
+  background-size: cover;
+  height: 80vh;
+  color: white;
 }
