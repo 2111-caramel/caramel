@@ -1,8 +1,11 @@
 const router = require("express").Router();
-//const {Healthcare, LivingCost, PrimaryStats, Transportation} = require("../db/models");
+//const {Healthcare, LivingCost, PrimaryStats, Transportation, City} = require("../db/models");
 const City = require("../db/models/City");
 const Healthcare = require("../db/models/Healthcare");
 const PrimaryStats = require("../db/models/primaryStats");
+const LivingCost = require("../db/models/LivingCost");
+const Transportation = require("../db/models/Transportation")
+const Weather = require("../db/models/weather")
 
 module.exports = router;
 
@@ -22,9 +25,13 @@ router.get("/", async (req, res, next) => {
 router.get("/citiesAndModels", async(req, res, next) => {
   try{
     const city = await City.findAll({
-      include: {
-        model: PrimaryStats, 
-      }
+      include: [
+        {model: PrimaryStats},
+        {model: Healthcare},
+        {model: LivingCost}, 
+        {model: Transportation},
+       // {model: Weather}
+    ]
     })
     res.send(city);
   } catch (err) {
@@ -39,9 +46,13 @@ router.get("/:cityId", async(req, res, next) => {
       where: {
         id: req.params.cityId,
       },
-      include: {
-        model: PrimaryStats
-      }
+      include: [
+        {model: PrimaryStats},
+        {model: Healthcare},
+        {model: LivingCost}, 
+        {model: Transportation},
+        //{model: Weather}
+    ]
     })
     res.send(city);
   } catch (err) {

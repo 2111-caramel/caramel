@@ -16,7 +16,7 @@ export const getCity = (cityId) => async dispatch => {
     const {data: city} = await axios.get(`/api/cities/${cityId}`)
     return dispatch(_getCity(city))
   } catch(error){
-    console.log('get weather thunk error')
+    console.log('get single city thunk error')
   }
 }
 
