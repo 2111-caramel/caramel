@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
+//import Transportation_Chart from './Charts/Transportation_Chart'
 
-/**
- * COMPONENT
- */
 class SingleCity extends Component {
 
   componentDidMount(){
@@ -16,7 +14,7 @@ class SingleCity extends Component {
     const city = this.props.singleCity[0] || 0;
     const healthcare = city.healthcare|| {}
     const livingCost = city.livingCost ||{}
-    const primaryStats = city.primaryStats || {}
+    const primaryStat = city.primaryStat || {}
     const transportation = city.transportation || {}
 
     return (
@@ -37,10 +35,11 @@ class SingleCity extends Component {
           <p>Beer: {livingCost.beer}</p>
           <p>Bread: {livingCost.bread}</p>
         <h3>Primary Stats</h3>
-          <p>1 BDRM: {primaryStats.rent1bdrm}</p>
-          <p>3 BDRM: {primaryStats.rent3bdrm}</p>
-          <p>Salary: {primaryStats.salary}</p>
+          <p>1 BDRM: {primaryStat.rent1br}</p>
+          <p>3 BDRM: {primaryStat.rent3br}</p>
+          <p>Salary: {primaryStat.salary}</p>
         <h3>Transportation</h3>
+          {/* <Transportation_Chart transportation = {transportation}/> */}
           <p>Bike: {transportation.bike}</p>
           <p>Car: {transportation.car}</p>
           <p>Train: {transportation.train}</p>
@@ -53,9 +52,6 @@ class SingleCity extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     singleCity: state.singleCity
