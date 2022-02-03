@@ -1,12 +1,8 @@
 "use strict";
 const axios = require("axios");
 const secretKeys = require("./apikey")
-<<<<<<< HEAD
-const fastcsv = require("fast-csv");
-=======
 //const fastcsv = require("fast-csv");
->>>>>>> main
-const cityObj = require("./cityObj")
+const cityObj = require("./cityObj");
 const pkg = require("../package.json");
 
 // const databaseName =
@@ -19,7 +15,7 @@ const {
 
 /**
  * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
+ *      match the models, and populates the database .
  */
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
