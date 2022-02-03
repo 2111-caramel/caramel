@@ -1,7 +1,11 @@
 "use strict";
 const axios = require("axios");
 const secretKeys = require("./apikey")
+<<<<<<< HEAD
 const fastcsv = require("fast-csv");
+=======
+//const fastcsv = require("fast-csv");
+>>>>>>> main
 const cityObj = require("./cityObj")
 const pkg = require("../package.json");
 
