@@ -7,6 +7,7 @@ router.get("/", async (req, res, next) => {
     const cities = await City.findAll({
       order: [["name", "ASC"]],
     });
+    console.log("cities", cities)
     res.send(cities);
   } catch (err) {
     next(err);
