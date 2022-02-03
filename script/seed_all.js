@@ -4,7 +4,16 @@ const secretKeys = require("./apiKey");
 const cityNameFormats = require("./cityObjs");
 const {
   db,
-  models: { User, City, PrimaryStats, LivingCost, Healthcare, Transportation },
+  models: {
+    User,
+    City,
+    PrimaryStats,
+    LivingCost,
+    Healthcare,
+    Transportation,
+    Pollution,
+    Weather,
+  },
 } = require("../server/db");
 
 const seed = async () => {
@@ -88,6 +97,14 @@ const seed = async () => {
       counterHealth++;
     }
 
+    //Helper function for replacing city names in url slugs for city traffic
+    const urlsTransit = async (partialCitySlug) => {
+      const { data: cityTransit } = await axios.get(
+        `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+      );
+      return cityTransit;
+    };
+
     //Adding data for traffic for each city
     let counterTransit = 0;
     while (counterTransit < cityNameFormats.cityNameSlugs.cities.length) {
@@ -95,7 +112,6 @@ const seed = async () => {
         cityNameFormats.cityNameSlugs.cities[counterTransit]
       );
 
-      console.log("TRANSIT OBJ--------->>>", eachCityTransitStats);
       await Transportation.create({
         cityId: counterTransit + 1,
         car: eachCityTransitStats.primary_means_percentage_map.Car,
@@ -115,17 +131,38 @@ const seed = async () => {
 
       counterTransit++;
     }
+
+    //Helper function for replacing city names in url slugs for city pollution
+    const urlsPollution = async (partialCitySlug) => {
+      const { data: cityPollution } = await axios.get(
+        `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+      );
+      return cityPollution;
+    };
+
+    //Adding data for pollution for each city
+    let counterPollution = 0;
+    while (counterPollution < cityNameFormats.cityNameSlugs.cities.length) {
+      let eachCityPollutionStats = await urlsPollution(
+        cityNameFormats.cityNameSlugs.cities[counterPollution]
+      );
+
+      console.log("Pollution OBJ--------->>>", eachCityPollutionStats);
+      await Pollution.create({
+        cityId: counterPollution + 1,
+        drinkingWaterQuality:
+          eachCityPollutionStats.drinking_water_quality_accessibility,
+        cleanliness: eachCityPollutionStats.clean_and_tidy,
+        indexPollution: eachCityPollutionStats.index_pollution,
+        airQuality: eachCityPollutionStats.air_quality,
+        greenParksQuality: eachCityPollutionStats.green_and_parks_quality,
+      });
+
+      counterPollution++;
+    }
   } catch (err) {
     console.log(err);
   }
-};
-
-//Helper function for replacing city names in url slugs for city traffic
-const urlsTransit = async (partialCitySlug) => {
-  const { data: cityTransit } = await axios.get(
-    `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
-  );
-  return cityTransit;
 };
 
 /*
