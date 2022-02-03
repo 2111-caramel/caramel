@@ -3,12 +3,13 @@
 const db = require('./db')
 
 const User = require('./models/User')
-const Weather = require('./models/Weather')
+const Weather = require('./models/Habitat')
 const City = require('./models/City')
 const PrimaryStats = require('./models/PrimaryStats')
 const LivingCost = require('./models/LivingCost')
 const Healthcare = require('./models/Healthcare')
 const Transportation = require('./models/Transportation')
+const Habitat = require('./models/Habitat')
 
 //associations could go here!
 City.hasOne(PrimaryStats)
@@ -19,6 +20,8 @@ City.hasOne(Healthcare)
 Healthcare.belongsTo(City)
 City.hasOne(Transportation)
 Transportation.belongsTo(City)
+City.hasOne(Habitat)
+Habitat.belongsTo(City)
 
 module.exports = {
   db,
@@ -29,6 +32,7 @@ module.exports = {
     PrimaryStats,
     LivingCost,
     Healthcare,
-    Transportation
+    Transportation,
+    Habitat
   },
 }

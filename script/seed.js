@@ -1,15 +1,15 @@
 "use strict";
 const axios = require("axios");
 const secretKeys = require("./apiKey")
-const citiesCSV = require('./Cities.csv');
-const fastcsv = require("fast-csv")
+// const citiesCSV = require('./Cities.csv');
+// const fastcsv = require("fast-csv")
 const pkg = require("../package.json");
 const databaseName =
   pkg.name + (process.env.NODE_ENV === "test" ? "-test" : "");
 
 const {
   db,
-  models: { User, City, PrimaryStats, LivingCost, Healthcare, Transportation, Weather },
+  models: { User, City, PrimaryStats, LivingCost, Healthcare, Transportation, Habitat },
 } = require("../server/db");
 // const City = require("../server/db/models/City");
 // const PrimaryStats = require("../server/db/models/PrimaryStats");
@@ -52,62 +52,62 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
-  //Creating cities
-  let stream = fs.createReadStream("./Cities.csv");
-  let csvData = [];
-  let csvStream = fastcsv
-    .parse()
-    .on("data", function (data) {
-      csvData.push(data);
-    })
-    .on("end", function () {
-      // remove the first line: header
-      csvData.shift();
+  // //Creating cities
+  // let stream = fs.createReadStream("./Cities.csv");
+  // let csvData = [];
+  // let csvStream = fastcsv
+  //   .parse()
+  //   .on("data", function (data) {
+  //     csvData.push(data);
+  //   })
+  //   .on("end", function () {
+  //     // remove the first line: header
+  //     csvData.shift();
 
-      // create a new connection to the database
-      let pool;
+  //     // create a new connection to the database
+  //     let pool;
 
-      //if connecting to heroku:
-      if (process.env.NODE_ENV === "production") {
-        pool = new Pool({
-          connectionString: process.env.DATABASE_URL,
-          ssl: {
-            rejectUnauthorized: false,
-          },
-        });
-      } else {
-        pool = new Pool({
-          host: "localhost",
-          //user: process.env.USER,
-          database: "urban_analysis",
-          port: 5432,
-        });
-      }
+  //     //if connecting to heroku:
+  //     if (process.env.NODE_ENV === "production") {
+  //       pool = new Pool({
+  //         connectionString: process.env.DATABASE_URL,
+  //         ssl: {
+  //           rejectUnauthorized: false,
+  //         },
+  //       });
+  //     } else {
+  //       pool = new Pool({
+  //         host: "localhost",
+  //         //user: process.env.USER,
+  //         database: "urban_analysis",
+  //         port: 5432,
+  //       });
+  //     }
 
-      //sql query inserts data
-      const query =
-        "INSERT INTO cities (Id, State, City)";
+  //     //sql query inserts data
+  //     const query =
+  //       "INSERT INTO cities (Id, State, City)";
 
-      pool.connect((err, client, done) => {
-        if (err) throw err;
+  //     pool.connect((err, client, done) => {
+  //       if (err) throw err;
 
-        try {
-          csvData.forEach((row) => {
-            client.query(query, row, (err, res) => {
-              if (err) {
-                console.log(err.stack);
-              } else {
-                console.log("inserted " + res.rowCount + " row:", row);
-              }
-            });
-          });
-        } finally {
-          done();
-        }
-      });
-    });
+  //       try {
+  //         csvData.forEach((row) => {
+  //           client.query(query, row, (err, res) => {
+  //             if (err) {
+  //               console.log(err.stack);
+  //             } else {
+  //               console.log("inserted " + res.rowCount + " row:", row);
+  //             }
+  //           });
+  //         });
+  //       } finally {
+  //         done();
+  //       }
+  //     });
+  //   });
 
-  stream.pipe(csvStream);
+  // stream.pipe(csvStream);
 
   // Creating Users
   const users = await Promise.all([
@@ -115,6 +115,7 @@ async function seed() {
     User.create({ username: "murphy", password: "123" }),
   ]);
 
+  // data for: primary stats and living costs
   const { data: newYork } = await axios.get(
     `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
   );
@@ -125,6 +126,7 @@ async function seed() {
     `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
   );
 
+  // data for: healthcare
   const { data: newYorkHealthcare } = await axios.get(
     `http://www.numbeo.com:8008/api/city_healthcare?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
   );
@@ -135,6 +137,7 @@ async function seed() {
     `http://www.numbeo.com:8008/api/city_healthcare?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
   );
 
+  //data for: methods of transportation
   const { data: newYorkTransportation } = await axios.get(
     `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
   );
@@ -145,9 +148,28 @@ async function seed() {
     `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
   );
 
+  // data for: pollution
+  const { data: newYorkPollution } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=New%20York,%20NY&country=United%20States`
+  );
+  const { data: atlantaPollution } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Atlanta,%20GA&country=United%20States`
+  );
+  const { data: losAngelesPollution } = await axios.get(
+    `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=Los%20Angeles,%20CA&country=United%20States`
+  );
 
+  // data for: weather - currently not using in the seed data. keep just in case?
+  const { data: newYorkWeather } = await axios.get(
+    `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=New+York&fx=no&cc=no&mca=yes&format=json`
+  );
+  const { data: atlantaWeather } = await axios.get(
+    `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=Atlanta&fx=no&cc=no&mca=yes&format=json`
+  );
+  const { data: losAngelesWeather } = await axios.get(
+    `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=Los+Angeles&fx=no&cc=no&mca=yes&format=json`
+  );
 
-console.log("NEW YORK TRANSPORT*** ", newYorkTransportation)
   // creating dummy cities
   const cities = await Promise.all([
     City.create({ id: 1, name: "New York", state: "NY" }),
@@ -269,6 +291,57 @@ console.log("NEW YORK TRANSPORT*** ", newYorkTransportation)
       walking: losAngelesTransportation.primary_means_percentage_map['Walking'],
       bus: losAngelesTransportation.primary_means_percentage_map['Bus/Trolleybus'],
       motorbike: losAngelesTransportation.primary_means_percentage_map['Motorbike']
+    }),
+  ]);
+
+  const habitat = await Promise.all([
+    Habitat.create({
+      cityId: 1,
+      winterHigh: 47,
+      winterLow: 32,
+      springHigh: 63,
+      springLow: 46,
+      summerHigh: 84,
+      summerLow: 69,
+      fallHigh: 68,
+      fallLow: 55,
+      water: Math.round((newYorkPollution.drinking_water_quality_accessibility * 25) + 50),
+      pollution: Math.round(newYorkPollution.index_pollution),
+      cleanliness: Math.round((newYorkPollution.clean_and_tidy * 25) + 50),
+      airQuality: Math.round((newYorkPollution.air_quality * 25) + 50),
+      parks: Math.round((newYorkPollution.green_and_parks_quality * 25) + 50),
+    }),
+    Habitat.create({
+      cityId: 2,
+      winterHigh: 61,
+      winterLow: 39,
+      springHigh: 78,
+      springLow: 54,
+      summerHigh: 93,
+      summerLow: 71,
+      fallHigh: 80,
+      fallLow: 56,
+      water: Math.round((atlantaPollution.drinking_water_quality_accessibility * 25) + 50),
+      pollution: Math.round(atlantaPollution.index_pollution),
+      cleanliness: Math.round((atlantaPollution.clean_and_tidy * 25) + 50),
+      airQuality: Math.round((atlantaPollution.air_quality * 25) + 50),
+      parks: Math.round((atlantaPollution.green_and_parks_quality * 25) + 50),
+    }),
+    Habitat.create({
+      cityId: 3,
+      winterHigh: 77,
+      winterLow: 52,
+      springHigh: 79,
+      springLow: 55,
+      summerHigh: 90,
+      summerLow: 66,
+      fallHigh: 86,
+      fallLow: 64,
+      water: Math.round((losAngelesPollution.drinking_water_quality_accessibility * 25) + 50),
+      pollution: Math.round(losAngelesPollution.index_pollution),
+      cleanliness: Math.round((losAngelesPollution.clean_and_tidy * 25) + 50),
+      airQuality: Math.round((losAngelesPollution.air_quality * 25) + 50),
+      parks: Math.round((losAngelesPollution.green_and_parks_quality * 25) + 50),
     }),
   ]);
   

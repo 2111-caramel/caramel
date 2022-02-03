@@ -2,8 +2,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const axios = require('axios');
 
-const Weather = db.define('weather', {
-    winter: {
+const Habitat = db.define('weather', {
+    winterHigh: {
 //av temp
         type: Sequelize.FLOAT,
         allowNull: false,
@@ -11,7 +11,15 @@ const Weather = db.define('weather', {
             notEmpty:true
         }
     },
-    spring: {
+    winterLow: {
+        //av temp
+                type: Sequelize.FLOAT,
+                allowNull: false,
+                validate: {
+                    notEmpty:true
+                }
+            },
+    springHigh: {
 //av temp
         type: Sequelize.FLOAT,
         allowNull: false,
@@ -19,7 +27,15 @@ const Weather = db.define('weather', {
             notEmpty:true
         }   
     },
-    summer: {
+    springLow: {
+        //av temp
+                type: Sequelize.FLOAT,
+                allowNull: false,
+                validate: {
+                    notEmpty:true
+                }   
+            },
+    summerHigh: {
 //av temp
         type: Sequelize.FLOAT,
         allowNull: false,
@@ -27,7 +43,15 @@ const Weather = db.define('weather', {
             notEmpty:true
         }
     },
-    fall: {
+    summerLow: {
+        //av temp
+                type: Sequelize.FLOAT,
+                allowNull: false,
+                validate: {
+                    notEmpty:true
+                }
+            },
+    fallHigh: {
 //av temp
         type: Sequelize.FLOAT,
         allowNull: false,
@@ -35,6 +59,14 @@ const Weather = db.define('weather', {
             notEmpty:true
         }
     },
+    fallLow: {
+        //av temp
+                type: Sequelize.FLOAT,
+                allowNull: false,
+                validate: {
+                    notEmpty:true
+                }
+            },
     water: {
 //-2 to +2
         type: Sequelize.FLOAT,
@@ -47,44 +79,24 @@ const Weather = db.define('weather', {
 //score out of 100
         type: Sequelize.FLOAT,
         allowNull: false,
-        validate: {
-            notEmpty:true,
-            min: 0.1,
-            max: 100
-        }
     },
     cleanliness: {
 //-2 to +2
         type: Sequelize.FLOAT,
         allowNull: false,
-        validate: {
-            notEmpty:true,
-            min: -2,
-            max: +2
-        }
     },
     airQuality: {
 //-2 to +2
         type: Sequelize.FLOAT,
         allowNull: false,
-        validate: {
-            notEmpty:true,
-            min: -2,
-            max: +2
-        }
     },
     parks: {
 //-2 to +2
         type: Sequelize.FLOAT,
         allowNull: false,
-        validate: {
-            notEmpty:true,
-            min: -2,
-            max: +2
-        }
     }
 })
 
-module.exports = Weather;
+module.exports = Habitat;
 
 
