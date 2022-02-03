@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { getWeather, getCostOfLiving, getTransportation, getPollution } from '../store/singleCity'
+import { getCity } from '../store/singleCity'
 
 /**
  * COMPONENT
@@ -8,31 +8,46 @@ import { getWeather, getCostOfLiving, getTransportation, getPollution } from '..
 class SingleCity extends Component {
 
   componentDidMount(){
-    this.props.loadWeather()
-    this.props.loadCostOfLiving()
-    this.props.loadTransportation()
-    this.props.loadPollution()
+    this.props.loadCity(this.props.match.params.cityId)
     console.log('state', this.state)
 
   }
   render(){
-    const weather = this.props.singleCity.weather.month || [];
-    const beer = this.props.singleCity.beer || 0;
-    const salary = this.props.singleCity.salary || 0;
-    const rent = this.props.singleCity.rent || 0;
-    console.log('props', this.props)
+    const city = this.props.singleCity[0] || 0;
+    const healthcare = city.healthcare|| {}
+    const livingCost = city.livingCost ||{}
+    const primaryStats = city.primaryStats || {}
+    const transportation = city.transportation || {}
+
     return (
       <div>
-        <h3>New York Weather</h3>
-        {weather.map((month, index)=>
-        <div key={index}>
-          <h4>{month.name}</h4>
-          <h6>{month.avgMinTemp_F} - {month.absMaxTemp_F}</h6>
-        </div>
-        )}
-        <h3>Beer {beer}</h3>
-        <h3>Salary {salary}</h3>
-        <h3>Rent {rent}</h3>
+        <h2>{city.name}</h2>
+        <h3>Healthcare</h3>
+        {/* this doesn't work come back to this*/}
+            {/* {Object.keys(healthcare).map(category => {
+              return(
+              <p>{category} : {category}</p>
+              )
+            })} */}
+            <p>Cost {healthcare.cost}</p>
+            <p>Skill {healthcare.skill}</p>
+            <p>Index {healthcare.index}</p>
+        <h3>Living Costs</h3>
+          <p>Daycare: {livingCost.daycare}</p>
+          <p>Beer: {livingCost.beer}</p>
+          <p>Bread: {livingCost.bread}</p>
+        <h3>Primary Stats</h3>
+          <p>1 BDRM: {primaryStats.rent1bdrm}</p>
+          <p>3 BDRM: {primaryStats.rent3bdrm}</p>
+          <p>Salary: {primaryStats.salary}</p>
+        <h3>Transportation</h3>
+          <p>Bike: {transportation.bike}</p>
+          <p>Car: {transportation.car}</p>
+          <p>Train: {transportation.train}</p>
+        {/* <h3>Climate</h3>
+          <p>{}</p>
+          <p>{}</p>
+          <p>{}</p> */}
       </div>
     )
   }
@@ -49,10 +64,7 @@ const mapState = state => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadWeather: () => dispatch(getWeather()),
-    loadCostOfLiving: () => dispatch(getCostOfLiving()),
-    loadTransportation: () => dispatch(getTransportation()),
-    loadPollution: () => dispatch(getPollution())
+    loadCity: (cityId) => dispatch(getCity(cityId)),
   }
 }
 
