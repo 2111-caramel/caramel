@@ -11,15 +11,32 @@ export class AllCities extends React.Component {
   render() {
     return (
       <div>
-        {this.props.cities.map((city) => {
-          return (
-            <div>
-              <Link to={`/cities/${city.id}`}>
-                {city.name}, {city.state}
-              </Link>
-            </div>
-          );
-        })}
+        <div className="dropdown">
+          <a
+            className="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select City
+          </a>
+
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {this.props.cities.map((city) => {
+              return (
+                <div>
+                  <li>
+                    <a className="dropdown-item" href={`${city.id}`}>
+                      {city.name}, {city.state}
+                    </a>
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     );
   }
