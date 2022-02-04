@@ -30,4 +30,14 @@ const Pollution = db.define("pollution", {
   },
 });
 
+// HOOKS
+
+Pollution.addHook('beforeCreate', (city) => {
+    city.drinkingWaterQuality = Math.round((city.drinkingWaterQuality * 25) + 50)
+    city.cleanliness = Math.round((city.cleanliness * 25) + 50)
+    city.indexPollution = Math.round(city.indexPollution)
+    city.airQuality = Math.round((city.airQuality * 25) + 50)
+    city.greenParksQuality = Math.round((city.greenParksQuality * 25) + 50)
+});
+
 module.exports = Pollution;

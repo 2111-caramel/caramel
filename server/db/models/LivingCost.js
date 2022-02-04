@@ -7,29 +7,35 @@ const LivingCost = db.define("livingCost", {
     allowNull: false,
   },
   beer: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
   cappuccino: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
   milk: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
   bread: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
   eggs: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
   gas: {
-    type: Sequelize.FLOAT(2),
+    type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
+});
+
+// HOOKS 
+
+LivingCost.addHook('beforeCreate', (city) => {
+  city.daycare = Math.round(city.daycare)
 });
 
 module.exports = LivingCost;
