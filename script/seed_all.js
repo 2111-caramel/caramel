@@ -15,6 +15,7 @@ const {
     Weather,
   },
 } = require("../server/db");
+const { newCitiesObj } = require("./cityObjs");
 
 const seed = async () => {
   try {
@@ -26,18 +27,12 @@ const seed = async () => {
       })
     );
 
-    //   [
-    //   City.create({ id: 1, name: "New York", state: "NY" }),
-    //   City.create({ id: 2, name: "New Orleans", state: "LA" }),
-    //   City.create({ id: 3, name: "Los Angeles", state: "CA" }),
-    // ]
-
     // Creating Users
     await Promise.all([
       User.create({ username: "cody", password: "123" }),
       User.create({ username: "murphy", password: "123" }),
     ]);
-
+    ///--------------------------------COST OF LIVING------------------------------------///
     //Helper function for replacing city names in url slugs for city prices
     const urlsPrice = async (partialCitySlug) => {
       const { data: cityName } = await axios.get(
@@ -73,7 +68,7 @@ const seed = async () => {
 
       counterPrice++;
     }
-
+    ///--------------------------------HEALTHCARE------------------------------------///
     //Helper function for replacing city names in url slugs for city prices
     const urlsHealth = async (partialCitySlug) => {
       const { data: cityHealth } = await axios.get(
@@ -96,7 +91,7 @@ const seed = async () => {
 
       counterHealth++;
     }
-
+    ///--------------------------------TRAFFIC------------------------------------///
     //Helper function for replacing city names in url slugs for city traffic
     const urlsTransit = async (partialCitySlug) => {
       const { data: cityTransit } = await axios.get(
@@ -131,7 +126,7 @@ const seed = async () => {
 
       counterTransit++;
     }
-
+    ///--------------------------------POLLUTION------------------------------------///
     //Helper function for replacing city names in url slugs for city pollution
     const urlsPollution = async (partialCitySlug) => {
       const { data: cityPollution } = await axios.get(
@@ -147,7 +142,7 @@ const seed = async () => {
         cityNameFormats.cityNameSlugs.cities[counterPollution]
       );
 
-      console.log("Pollution OBJ--------->>>", eachCityPollutionStats);
+      //console.log("Pollution OBJ--------->>>", eachCityPollutionStats);
       await Pollution.create({
         cityId: counterPollution + 1,
         drinkingWaterQuality:
@@ -159,6 +154,55 @@ const seed = async () => {
       });
 
       counterPollution++;
+    }
+    ///--------------------------------WEATHER------------------------------------///
+    //Helper function for replacing city names in url slugs for city weather
+    const urlsWeather = async (partialCitySlug) => {
+      const { data: cityWeather } = await axios.get(
+        `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=${partialCitySlug}&fx=no&cc=no&mca=yes&format=json`
+      );
+      return cityWeather;
+    };
+    // console.log(cityNameFormats.newCitiesObj);
+    let citySlugsWeather = [];
+    cityNameFormats.newCitiesObj.forEach((cityObj) => {
+      let regex = /^(\w+)( \w+)*$/;
+      if (regex.test(cityObj.name)) {
+        let buildPartialSlug = cityObj.name.split(" ").join("+");
+        citySlugsWeather.push(buildPartialSlug);
+      } else {
+        citySlugsWeather.push(cityObj.name);
+      }
+    });
+
+    console.log(citySlugsWeather);
+
+    //Adding data for weather for each city
+    let counterWeather = 0;
+    while (counterWeather <= cityNameFormats.cityNameSlugs.cities.length) {
+      let eachCityWeatherStats = await urlsWeather(
+        citySlugsWeather[counterWeather]
+      );
+
+      console.log("COUNT----->>", counterWeather);
+
+      console.log("Each City--------->>>>", eachCityWeatherStats);
+      if (eachCityWeatherStats.data.error) {
+        break;
+      }
+      eachCityWeatherStats.data.ClimateAverages[0].month.map(
+        async (eachMonth) => {
+          await Weather.create({
+            cityId: counterWeather + 1,
+            month: eachMonth.name,
+            avgMinTemp: eachMonth.avgMinTemp_F,
+            avgMaxTemp: eachMonth.absMaxTemp_F,
+            avgDailyRainfall: eachMonth.avgDailyRainfall,
+          });
+        }
+      );
+
+      counterWeather++;
     }
   } catch (err) {
     console.log(err);

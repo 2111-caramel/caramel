@@ -28,7 +28,7 @@ const cityObjs = {
     { id: 0, name: "New York", state: "NY" },
     { id: 0, name: "Oakland", state: "CA" },
     { id: 0, name: "Oklahoma City", state: "OK" },
-    { id: 0, name: "Philidelphia", state: "PA" },
+    { id: 0, name: "Philadelphia", state: "PA" },
     { id: 0, name: "Phoenix", state: "AZ" },
     { id: 0, name: "Portland", state: "OR" },
     { id: 0, name: "Raleigh", state: "NC" },
