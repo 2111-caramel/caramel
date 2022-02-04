@@ -6,6 +6,7 @@ import Home from './components/Home';
 import SingleCity from './components/SingleCity';
 import {me} from './store'
 import AllCities from './components/AllCities'
+import CompareView from './components/CompareView';
 
 /**
  * COMPONENT
@@ -24,6 +25,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Redirect to="/home" />
+            <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         ) : (
@@ -32,6 +34,7 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/singleCity" component={SingleCity} />
+            <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         )}

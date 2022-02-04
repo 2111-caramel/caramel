@@ -5,8 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import cities from './cities'
 import singleCityReducer from './singleCity'
+import compareCityReducer from './compareCities'
 
-const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities })
+const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities, compareCity: compareCityReducer })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
