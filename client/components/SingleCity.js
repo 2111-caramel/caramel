@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
-//import Transportation_Chart from './Charts/Transportation_Chart'
+import Transportation_Chart from './Charts/Transportation_Chart'
 
 class SingleCity extends Component {
 
@@ -39,10 +39,7 @@ class SingleCity extends Component {
           <p>3 BDRM: {primaryStat.rent3br}</p>
           <p>Salary: {primaryStat.salary}</p>
         <h3>Transportation</h3>
-          {/* <Transportation_Chart transportation = {transportation}/> */}
-          <p>Bike: {transportation.bike}</p>
-          <p>Car: {transportation.car}</p>
-          <p>Train: {transportation.train}</p>
+          <Transportation_Chart transportation = {transportation}/>
         {/* <h3>Climate</h3>
           <p>{}</p>
           <p>{}</p>
