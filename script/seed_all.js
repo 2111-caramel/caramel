@@ -49,21 +49,21 @@ const seed = async () => {
       );
       await PrimaryStats.create({
         cityId: counterPrice + 1,
-        rent1br: Math.round(eachCityStats.prices[21].average_price),
-        rent3br: Math.round(eachCityStats.prices[23].average_price),
-        housePrice: Math.round(eachCityStats.prices[36].average_price),
-        salary: Math.round(eachCityStats.prices[40].average_price),
+        rent1br: eachCityStats.prices[21].average_price,
+        rent3br: eachCityStats.prices[23].average_price,
+        housePrice: eachCityStats.prices[36].average_price,
+        salary: eachCityStats.prices[40].average_price,
       });
 
       await LivingCost.create({
         cityId: counterPrice + 1,
-        daycare: Math.round(eachCityStats.prices[37].average_price),
-        beer: Math.round(eachCityStats.prices[3].average_price),
-        cappuccino: Math.round(eachCityStats.prices[49].average_price),
-        milk: Math.round(eachCityStats.prices[7].average_price),
-        bread: Math.round(eachCityStats.prices[8].average_price),
-        eggs: Math.round(eachCityStats.prices[9].average_price),
-        gas: Math.round(eachCityStats.prices[19].average_price),
+        daycare: eachCityStats.prices[37].average_price,
+        beer: eachCityStats.prices[3].average_price,
+        cappuccino: eachCityStats.prices[49].average_price,
+        milk: eachCityStats.prices[7].average_price,
+        bread: eachCityStats.prices[8].average_price,
+        eggs: eachCityStats.prices[9].average_price,
+        gas: eachCityStats.prices[19].average_price,
       });
 
       counterPrice++;
@@ -208,6 +208,7 @@ const seed = async () => {
     console.log(err);
   }
 };
+
 
 /*
  We've separated the `seed` function from the `runSeed` function.
