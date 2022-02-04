@@ -4,42 +4,36 @@ import { connect } from "react-redux";
 class UserPrefForm extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount() {}
+  componentDidUpdate() {}
   render() {
     return (
       <div>
-        <h1>What are your main preferences in a city?</h1>
+        <h1>What is most important to you in a city?</h1>
         <form>
           <h3>Primary Choices</h3>
-          <label>Rent</label>
-          <select>
-            <option>Keep it low as possible</option>
-            <option>Pay the average</option>
-            <option>Pay above average</option>
+
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option>- Select -</option>
+            <option value="healthcare">Quality Healthcare</option>
+            <option value="pollution">Low Pollution</option>
+            <option value="transportation">
+              High Public Transportation (Train & Bus)
+            </option>
+            <option value="daycare">Lowest daycare cost</option>
+            <option value="warm">Warm Weather year round</option>
+            <option value="snowy">Snowy Winter Weather</option>
           </select>
-          <label>Income</label>
-          <select value={this.state.value}>
-            <option>Lowest</option>
-            <option>Average</option>
-            <option>Highest</option>
-          </select>
-          <label>Climate</label>
-          <select value={this.state.value}>
-            <option>Tropical (50 and up)</option>
-            <option>I like to experience winter weather</option>
-          </select>
-          <hr />
-          <h3>Additional preferences</h3>
-          <label>Healthcare</label>
-          <select></select>
-          <label>Pollution</label>
-          <label>Transportation</label>
-          <label>Groceries</label>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
   }
 }
 
-export default connect(null)(UserPrefForm);
+export default connect(UserPrefForm)(UserPrefForm);
