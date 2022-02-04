@@ -80,8 +80,8 @@ const seed = async () => {
       );
       await Healthcare.create({
         cityId: counterHealth + 1,
-        cost: (eachCityHealthStats.cost+2)*25,
-        skill: (eachCityHealthStats.skill_and_competency+2)*25,
+        cost: (eachCityHealthStats.cost),
+        skill: (eachCityHealthStats.skill_and_competency),
         index: eachCityHealthStats.index_healthcare,
       });
 
