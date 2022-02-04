@@ -10,6 +10,14 @@ const City = db.define("city", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  imageUrlMobile: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://cdn1.vectorstock.com/i/1000x1000/68/70/modern-urban-cartoon-city-street-with-young-people-vector-22936870.jpg'
+  },
+  imageUrlWeb: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://cdn1.vectorstock.com/i/1000x1000/68/70/modern-urban-cartoon-city-street-with-young-people-vector-22936870.jpg'
+  }
 });
 
 module.exports = City;
