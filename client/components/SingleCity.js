@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
 import Transportation_Chart from './Charts/Transportation_Chart'
+import Healthcare_Chart from './Charts/Healthcare_Chart'
+
 
 class SingleCity extends Component {
 
@@ -44,6 +46,8 @@ class SingleCity extends Component {
           <p>{}</p>
           <p>{}</p>
           <p>{}</p> */}
+          <h3>Healthcare</h3>
+          <Healthcare_Chart healthcare = {healthcare}/>
       </div>
     )
   }

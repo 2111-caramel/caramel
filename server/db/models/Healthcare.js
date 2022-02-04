@@ -6,15 +6,15 @@ const db = require("../db");
 
 const Healthcare = db.define("healthcare", {
   cost: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   skill: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
   index: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.FLOAT(2),
     allowNull: false,
   },
 });
