@@ -8,12 +8,12 @@ const cityObjs = {
     { id: 0, name: "Charlotte", state: "NC", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/charlotte-acc065366a.jpg", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/charlotte_web-062d6f0cd8.jpg"},
     { id: 0, name: "Chicago", state: "IL" , imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/chicago-1e610b84c3.jpg", imageUrlWeb:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/chicago_web-b20b0b8249.jpg"},
     { id: 0, name: "Colorado Springs", state: "CO", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/colorado-springs-ccf32e73d2.jpg" , imageUrlWeb:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/colorado-springs_web-a8228d2190.jpg"},
-    { id: 0, name: "Columbus", state: "OH", imageUrlMobile:"https://api.teleport.org/api/urban_areas/slug:columbus/", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/columbus_web-748d46d705.jpg"},
-    { id: 0, name: "Dallas", state: "TX", imageUrlMobile:"https://api.teleport.org/api/urban_areas/slug:dallas/" , imageUrlWeb:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas_web-1b0ab83512.jpg"},
-    { id: 0, name: "Denver", state: "CO", imageUrlMobile:"https://api.teleport.org/api/urban_areas/slug:denver/" , imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver_web-9726d88300.jpg"},
-    { id: 0, name: "Detroit", state: "MI", imageUrlMobile:"https://api.teleport.org/api/urban_areas/slug:detroit/", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/detroit_web-fa9062b00a.jpg"},
-    { id: 0, name: "Honolulu", state: "HI", imageUrlMobile:"https://api.teleport.org/api/urban_areas/slug:honolulu/", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/honolulu_web-1b1279edc3.jpg"},
-    { id: 0, name: "Houston", state: "TX", imageUrlMobile: "https://api.teleport.org/api/urban_areas/slug:houston/", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/houston_web-7a1ff7109f.jpg"},
+    { id: 0, name: "Columbus", state: "OH", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/columbus-f65f5476cf.jpg", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/columbus_web-748d46d705.jpg"},
+    { id: 0, name: "Dallas", state: "TX", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" , imageUrlWeb:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas_web-1b0ab83512.jpg"},
+    { id: 0, name: "Denver", state: "CO", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver-655725fd8b.jpg" , imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/denver_web-9726d88300.jpg"},
+    { id: 0, name: "Detroit", state: "MI", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/detroit-e0a9dfeff2.jpg", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/detroit_web-fa9062b00a.jpg"},
+    { id: 0, name: "Honolulu", state: "HI", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/honolulu-624c07453d.jpg", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/honolulu_web-1b1279edc3.jpg"},
+    { id: 0, name: "Houston", state: "TX", imageUrlMobile: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/houston-0e46f4fbb7.jpg", imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/houston_web-7a1ff7109f.jpg"},
     { id: 0, name: "Indianapolis", state: "IN", imageUrlMobile: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/indianapolis-0f293b1150.jpg",
     imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/indianapolis_web-de0ee7a5bd.jpg"},
     { id: 0, name: "Jacksonville", state: "FL", imageUrlMobile: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/jacksonville-62a5b94ba8.jpg",
@@ -63,7 +63,7 @@ const cityObjs = {
 };
 
 const newCitiesObj = cityObjs.cities.map((city, idx) => {
-  return { id: idx + 1, name: city.name, state: city.state };
+  return { id: idx + 1, name: city.name, state: city.state, imageUrlMobile: city.imageUrlMobile, imageUrlWeb: city.imageUrlWeb };
 });
 
 const cityNameSlugs = {
