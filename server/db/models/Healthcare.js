@@ -19,4 +19,12 @@ const Healthcare = db.define("healthcare", {
   },
 });
 
+// HOOKS
+
+Healthcare.addHook('beforeCreate', (city) => {
+  city.cost = Math.round((city.cost * 25) + 50)
+  city.skill = Math.round((city.skill * 25) + 50)
+  city.index = Math.round(city.index)
+});
+
 module.exports = Healthcare;
