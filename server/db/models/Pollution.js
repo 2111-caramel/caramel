@@ -2,27 +2,32 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 const axios = require("axios");
 
-const Weather = db.define("weather", {
-  month: {
-    //av temp
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  avgMinTemp: {
+const Pollution = db.define("pollution", {
+  drinkingWaterQuality: {
     //av temp
     type: Sequelize.FLOAT,
     allowNull: false,
   },
-  avgMaxTemp: {
+  cleanliness: {
     //av temp
     type: Sequelize.FLOAT,
     allowNull: false,
   },
-  avgDailyRainfall: {
+  indexPollution: {
     //av temp
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  },
+  airQuality: {
+    //av temp
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  },
+  greenParksQuality: {
+    //-2 to +2
     type: Sequelize.FLOAT,
     allowNull: false,
   },
 });
 
-module.exports = Weather;
+module.exports = Pollution;
