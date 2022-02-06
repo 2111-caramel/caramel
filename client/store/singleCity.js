@@ -8,26 +8,32 @@ const GET_CITY = 'GET_CITY'
  */
 const _getCity = city => ({type: GET_CITY, city})
 
+
 /**
  * THUNK CREATORS
  */
 export const getCity = (cityId) => async dispatch => {
   try{
     const {data: city} = await axios.get(`/api/cities/${cityId}`)
+    console.log(city)
     return dispatch(_getCity(city))
   } catch(error){
     console.log('get single city thunk error')
   }
 }
 
-// let initialState = {
-//   weather:{},
-//   rent: 0,
-//   beer: 0,
-//   salary: 0,
-//   transportation: {},
-//   pollution: {}
-// }
+export const getCityByName = (cityName) => async dispatch => {
+  try{
+    console.log('CITYNAME IN THUNK', cityName)
+    const {data: city} = await axios.get(`/api/cities/city/${cityName}`)
+    //console.log(city)
+    return dispatch(_getCity(city))
+  } catch(error){
+    console.log('get single city by Name thunk error')
+  }
+}
+
+
 
 /**
  * REDUCER
