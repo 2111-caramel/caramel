@@ -64,6 +64,10 @@ const seed = async () => {
         bread: eachCityStats.prices[8].average_price,
         eggs: eachCityStats.prices[9].average_price,
         gas: eachCityStats.prices[19].average_price,
+        trainPass: eachCityStats.prices[18].average_price,
+        trainTicket: eachCityStats.prices[16].average_price,
+        meal: eachCityStats.prices[1].average_price,
+        movie: eachCityStats.prices[30].average_price,
       });
 
       counterPrice++;
