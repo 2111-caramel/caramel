@@ -44,3 +44,7 @@ form div {
   border-top-right-radius: 10px;
   min-width:fit-content;
 }
+
+.city-image {
+  width: 100vw
+}
