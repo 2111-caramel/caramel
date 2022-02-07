@@ -215,52 +215,63 @@
 // 		}
 // 	});
 // })();
-import React from 'react'
-import GaugeChart from 'react-gauge-chart'
-import 'chart.js/auto';
+import React from "react";
+import GaugeChart from "react-gauge-chart";
+import "chart.js/auto";
 
 const Healthcare_Chart = (props) => {
-    const {skill, cost, index} = props.healthcare
-    // console.log("HEALTHCARE", props.healthcare, props)
-    const skillPercent = skill/100
-    const costPercent = cost/100
-    const indexPercent = index/100
+  const { skill, cost, index } = props.healthcare;
+  // console.log("HEALTHCARE", props.healthcare, props)
+  const skillPercent = skill / 100;
+  const costPercent = cost / 100;
+  const indexPercent = index / 100;
 
-    return (
-      <div key = "pie-chart">
-        <h3>Skill Percent</h3>
-        <GaugeChart
-            percent={skillPercent} 
+  return (
+    <div key="pie-chart" className="container">
+      <div className="row align-items-center">
+      
+        <div className="col-3">
+          <GaugeChart
+            percent={skillPercent}
             id="index"
             nrOfLevels={420}
             arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
+            colors={["red", "yellow", "green"]}
             arcPadding={0.02}
-            textColor= "#333"
-        />
-        <h3>Cost Percent</h3>
-        <GaugeChart
-            id = "skill"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
-            percent={costPercent}
-            arcPadding={0.02}
-            textColor= "#333"
-        />
-        <h3>User Ratings</h3>
-        <GaugeChart 
+            textColor="#333"
+          />
+          <h4>Skill Rating</h4>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-4">
+          <GaugeChart
             id="index"
             nrOfLevels={420}
             arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
+            colors={["red", "yellow", "green"]}
             percent={indexPercent}
             arcPadding={0.02}
-            textColor= "#333"
-        />
-
-      </div> 
-    )
-}
+            textColor="#333"
+          />
+          <h4>Overall Healthcare Rating</h4>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-3">
+          <GaugeChart
+            id="skill"
+            nrOfLevels={420}
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={costPercent}
+            arcPadding={0.02}
+            textColor="#333"
+          />
+          <h4>Cost Rating</h4>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
 
 export default Healthcare_Chart;

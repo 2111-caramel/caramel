@@ -10,7 +10,7 @@ class SingleCity extends Component {
     this.props.loadCity(this.props.match.params.cityId);
   }
   render() {
-    const city = this.props.singleCity[0] || 0;
+    const city = this.props.singleCity || 0;
     const healthcare = city.healthcare || {};
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
@@ -42,7 +42,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col-6">
+              <div className="col-6">
                 <div className="row align-items-center mt-3 mb-4">
                   <div className="col-1"></div>
                   <div className="col-4">
@@ -266,11 +266,7 @@ class SingleCity extends Component {
             })} */}
                 <div className="row mt-3 mb-3">  
                 <Healthcare_Chart healthcare = {healthcare} />
-                  <div className="col-1"></div>
-                  <div className="col-3">INDEX METER HERE</div>
-                  <div className="col-4">COST METER HERE</div>
-                  <div className="col-3">SKILL METER HERE</div>
-                  <div className="col-1"></div>
+                  
                 </div>
               </div>
             </div>
