@@ -1,3 +1,62 @@
+import React from "react";
+import GaugeChart from "react-gauge-chart";
+import "chart.js/auto";
+
+const Healthcare_Chart = (props) => {
+  const { skill, cost, index } = props.healthcare;
+  const skillPercent = skill / 100;
+  const costPercent = cost / 100;
+  const indexPercent = index / 100;
+  console.log("SKILLPERCENT", skillPercent);
+
+  return (
+    <div key="pie-chart" className="container">
+      <div className="row align-items-center">
+        <div className="col-3">
+          <GaugeChart
+            percent={skillPercent}
+            id="healthSkill"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            arcPadding={0.02}
+            textColor="#333"
+            animate={true}
+            animDelay={500}
+            animateDuration={5000}
+          /> 
+          <h5>Skill Rating</h5>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-4">
+          <GaugeChart
+            id="healthIndex"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={indexPercent}
+            arcPadding={0.02}
+            textColor="#333"
+          />
+          <h5>Overall Healthcare Rating</h5>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-3">
+          <GaugeChart
+            id="healthCost"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={costPercent}
+            arcPadding={0.02}
+            textColor="#333"
+          />
+          <h5>Cost Rating</h5>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Healthcare_Chart;
+
 // (const gauge = () => {
 // 	if (!window.Chart) {
 // 		return;
@@ -215,63 +274,3 @@
 // 		}
 // 	});
 // })();
-import React from "react";
-import GaugeChart from "react-gauge-chart";
-import "chart.js/auto";
-
-const Healthcare_Chart = (props) => {
-  const { skill, cost, index } = props.healthcare;
-  // console.log("HEALTHCARE", props.healthcare, props)
-  const skillPercent = skill / 100;
-  const costPercent = cost / 100;
-  const indexPercent = index / 100;
-
-  return (
-    <div key="pie-chart" className="container">
-      <div className="row align-items-center">
-      
-        <div className="col-3">
-          <GaugeChart
-            percent={skillPercent}
-            id="index"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={["red", "yellow", "green"]}
-            arcPadding={0.02}
-            textColor="#333"
-          />
-          <h4>Skill Rating</h4>
-        </div>
-        <div className="col-1"></div>
-        <div className="col-4">
-          <GaugeChart
-            id="index"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={["red", "yellow", "green"]}
-            percent={indexPercent}
-            arcPadding={0.02}
-            textColor="#333"
-          />
-          <h4>Overall Healthcare Rating</h4>
-        </div>
-        <div className="col-1"></div>
-        <div className="col-3">
-          <GaugeChart
-            id="skill"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={["red", "yellow", "green"]}
-            percent={costPercent}
-            arcPadding={0.02}
-            textColor="#333"
-          />
-          <h4>Cost Rating</h4>
-        </div>
-        
-      </div>
-    </div>
-  );
-};
-
-export default Healthcare_Chart;
