@@ -13,6 +13,7 @@ module.exports = router;
 
 router.get("/", async (req, res, next) => {
   try {
+    console.log("GET ALL")
     const cities = await City.findAll({
       order: [["name", "ASC"]],
     });
@@ -23,34 +24,46 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//come back and add the rest of the assosiated models
-router.get("/citiesAndModels", async (req, res, next) => {
-  try {
-    const city = await City.findAll({
-      include: [
-        { model: PrimaryStats },
-        { model: Healthcare },
-        { model: LivingCost },
-        { model: Transportation },
-        // {model: Weather}
-      ],
-    });
-    res.send(city);
-  } catch (err) {
-    next(err);
-  }
-});
+// //come back and add the rest of the assosiated models
+// router.get("/citiesAndModels", async (req, res, next) => {
+//   try {
+//     const city = await City.findAll({
+//       include: [
+//         { model: PrimaryStats },
+//         { model: Healthcare },
+//         { model: LivingCost },
+//         { model: Transportation },
+//         // {model: Weather}
+//       ],
+//     });
+//     res.send(city);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 ///THREE CITIES
 router.get("/preferences/:model", async (req, res, next) => {
   try {
-    console.log("IN ROUTER BODY-------->>>>>>");
-    const city = await req.params.model.findAll(
-    //   order: ['index', 'ASC'],
-    //   attributes: ['index', 'cityId'],
-    //   limit: 3
-    //     //index: req.params.model,
-    //   ,
-    // include: [{model: City}]
+    // let modelNames = {
+    //   "Healthcare": ['index', 'cityId'],
+    //   "Pollution": ['indexPollution', 'cityId']
+    // }
+    let modelName = req.params.model === "Healthcare" ? Healthcare : req.params.model === "Pollution" ? Pollution : req.params.model === "Transportation" ? Transportation : req.params.model === "LivingCost" ? LivingCost : "NO MODEL ERROR"
+   // let modelName = Healthcare
+   let modelAttr = req.params.model === "Healthcare" ? ['index', 'cityId'] : req.params.model === "Pollution" ? ['indexPollution', 'cityId'] : req.params.model === "Transportation" ? ['train', 'bus'] : req.params.model === "LivingCost" ? ['daycare'] : "NO ATTR ERROR"
+
+   let modelOrder = req.params.model === "Healthcare" ? [['index', 'DESC']] : req.params.model === "Pollution" ? [['indexPollution', 'DESC']] : req.params.model === "Transportation" ? [['train', 'DESC'],['bus', 'DESC']] : req.params.model === "LivingCost" ? [['daycare', 'ASC']]: "NO ORDER ERROR"
+    console.log("IN ROUTER BODY MODEL NAME-------->>>>>>", modelName);
+    console.log("IN ROUTER BODY MODEL ATTR----->>>>>>", modelAttr)
+
+    const threeCities= await modelName.findAll({
+     
+      attributes: modelAttr, 
+      order: modelOrder,
+      limit: 3
+        //index: req.params.model,
+      ,
+    include: [{model: City}]
     //   include: [
     //     { model: PrimaryStats },
     //     { model: Healthcare },
@@ -59,8 +72,8 @@ router.get("/preferences/:model", async (req, res, next) => {
     //     { model: Weather },
     //     { model: Pollution },
     //   ],
-     );
-     res.send("HELLO");
+     } );
+     res.send(threeCities);
   } catch (err) {
     next(err);
   }
@@ -69,6 +82,7 @@ router.get("/preferences/:model", async (req, res, next) => {
 //come back and add the assosiated models
 router.get("/:cityId", async (req, res, next) => {
   try {
+    console.log("SINGLE CITY")
     const city = await City.findAll({
       where: {
         id: req.params.cityId,

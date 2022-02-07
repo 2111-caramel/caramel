@@ -26,7 +26,7 @@ class UserPrefForm extends React.Component {
     this.props.history.push(`/preferences/${this.state.value}`); 
       console.log("PARAMS HERE---->", this.props.match.params)
     //console.log("IN COMP UpDATE for history--->>", this.props.history.location.state.detail)
-      fetchThreeCities(this.state.value);
+      this.props.gettingThreeCities(this.state.value);
       // console.log("Params ID---->>>", this.props.match.params);
     }
   }
@@ -37,7 +37,7 @@ class UserPrefForm extends React.Component {
     this.setState({
       value: e.target.value,
     });
-    fetchThreeCities(this.state.value);
+    //this.props.gettingThreeCities(this.state.value);
   }
   render() {
     return (
