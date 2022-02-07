@@ -57,7 +57,7 @@ const seed = async () => {
 
       await LivingCost.create({
         cityId: counterPrice + 1,
-        daycare: eachCityStats.prices[37].average_price,
+        daycare: eachCityStats.prices[36].average_price,
         beer: eachCityStats.prices[3].average_price,
         cappuccino: eachCityStats.prices[49].average_price,
         milk: eachCityStats.prices[7].average_price,

@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getCity } from "../store/singleCity";
-import Transportation_Chart from "./Charts/Transportation_Chart";
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import { getCity } from '../store/singleCity'
+import Transportation_Chart from './Charts/Transportation_Chart'
+import Healthcare_Chart from './Charts/Healthcare_Chart'
+import SingleMap from './Map.js'
 
 class SingleCity extends Component {
   componentDidMount() {
@@ -15,6 +17,8 @@ class SingleCity extends Component {
     const transportation = city.transportation || {};
     const weather = city.weather || {};
     const pollution = city.pollution || {}
+
+    console.log("HEALTH", healthcare)
 
     return (
       <div className="container-fluid text-center">
@@ -249,6 +253,7 @@ class SingleCity extends Component {
 
             <div className="row section-title">
               <h3>Healthcare</h3>
+            
             </div>
 
             <div className="row category-section mb-4">
@@ -259,7 +264,8 @@ class SingleCity extends Component {
               <p>{category} : {category}</p>
               )
             })} */}
-                <div className="row mt-3 mb-3">
+                <div className="row mt-3 mb-3">  
+                <Healthcare_Chart healthcare = {healthcare} />
                   <div className="col-1"></div>
                   <div className="col-3">INDEX METER HERE</div>
                   <div className="col-4">COST METER HERE</div>

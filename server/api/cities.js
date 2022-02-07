@@ -15,6 +15,7 @@ const {
 
 module.exports = router;
 
+//mounted on /api/cities
 router.get("/", async (req, res, next) => {
   try {
     const cities = await City.findAll({
