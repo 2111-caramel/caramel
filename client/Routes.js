@@ -7,7 +7,7 @@ import SingleCity from './components/SingleCity';
 import {me} from './store'
 import AllCities from './components/AllCities'
 import CompareView from './components/CompareView';
-import SingleMap from "./components/Map"
+import Map from "./components/Map"
 
 /**
  * COMPONENT
@@ -32,7 +32,7 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route path='/' exact component={ Home } />
-            <Route path = '/SampleMap' component = {SingleMap} />
+            <Route path = '/SampleMap' component = {Map} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/singleCity" component={SingleCity} />
