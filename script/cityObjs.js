@@ -38,7 +38,7 @@ const cityObjs = {
     imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/nashville_web-928afede11.jpg", lat: "36.1627", lng: "86.7816"},
     { id: 0, name: "New York", state: "NY", imageUrlMobile: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/new-york-9cb6cc2ae5.jpg",
     imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/new-york_web-99d9bb0809.jpg", lat: "40.7128", lng: "74.0060"},
-    { id: 0, name: "Oakland", state: "CA"},
+    { id: 0, name: "Oakland", state: "CA", lat: "37.8044", lng: "122.2712"},
     { id: 0, name: "Oklahoma City", state: "OK", imageUrlMobile: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/oklahoma-city-429f6bf45d.jpg",
     imageUrlWeb: "https://d13k13wj6adfdf.cloudfront.net/urban_areas/oklahoma-city_web-2d2437c3f2.jpg", lat: "35.4676", lng: "97.5164"},
     { id: 0, name: "Philadelphia", state: "PA", imageUrlMobile:"https://d13k13wj6adfdf.cloudfront.net/urban_areas/philadelphia-41bf6ab8ef.jpg",
@@ -63,7 +63,7 @@ const cityObjs = {
 };
 
 const newCitiesObj = cityObjs.cities.map((city, idx) => {
-  return { id: idx + 1, name: city.name, state: city.state, imageUrlMobile: city.imageUrlMobile, imageUrlWeb: city.imageUrlWeb };
+  return { id: idx + 1, name: city.name, state: city.state, imageUrlMobile: city.imageUrlMobile, imageUrlWeb: city.imageUrlWeb, lat: city.lat, lng: city.lng };
 });
 
 const cityNameSlugs = {
