@@ -6,7 +6,6 @@ import Transportation_Chart from "./Charts/Transportation_Chart";
 class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
-    console.log("state", this.state);
   }
   render() {
     const city = this.props.singleCity[0] || 0;
@@ -14,6 +13,9 @@ class SingleCity extends Component {
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
+    const weather = city.weather || {};
+    const pollution = city.pollution || {};
+    console.log("*** CITY FROM COMPONENT", city);
 
     return (
       <div className="container-fluid text-center">
@@ -145,7 +147,7 @@ class SingleCity extends Component {
                       height={60}
                     ></img>
                     <p>
-                      <b>Movie Ticket:</b> ${livingCost.cinema}
+                      <b>Movie Ticket:</b> ${livingCost.movie}
                     </p>
                   </div>
                 </div>
@@ -176,6 +178,70 @@ class SingleCity extends Component {
                     ></img>
                     <p>
                       <b>Bread:</b> ${livingCost.bread}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row section-title">
+              <h3>Weather</h3>
+            </div>
+
+            <div className="row category-section mb-4 align-items-center">
+              <div class="col">
+                <div className="row mt-3 mb-3">
+                  <div className="col-6">
+                    <b>Average rainfall by month:</b>
+                    <br />
+                    RAINFALL BAR CHART HERE
+                  </div>
+                  <div className="col-6">
+                    <b>Average temperature by month:</b>
+                    <br />
+                    TEMPERATURE BAR CHART HERE
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row section-title">
+              <h3>Environment</h3>
+            </div>
+
+            <div className="row category-section mb-4 align-items-center">
+              <div class="col">
+                <div className="row mt-3 mb-3 align-items-center">
+                  <p><b>Overall Pollution Level:</b></p>
+                  <p>POLLUTION METER HERE</p>
+                </div>
+
+                <div className="row mt-3 align-items-center">
+                  <div className="col-6">
+                    <p>
+                      <b>Drinking Water Quality:</b>
+                      <br />{pollution.drinkingWaterQuality}
+                    </p>
+                  </div>
+                  <div className="col-6">
+                    <p>
+                      <b>Cleanliness:</b>
+                      <br />{pollution.cleanliness}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="row mt-3 align-items-center">
+                  <div className="col-6">
+                    <p>
+                      <b>Air Quality:</b>
+                      <br />{pollution.airQuality}
+                    </p>
+                  </div>
+                  <div className="col-6">
+                    <p>
+                      <b>Green Spaces:</b>
+                      <br />{pollution.greenParksQuality}
                     </p>
                   </div>
                 </div>

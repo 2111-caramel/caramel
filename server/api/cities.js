@@ -1,11 +1,17 @@
 const router = require("express").Router();
-//const {Healthcare, LivingCost, PrimaryStats, Transportation, City} = require("../db/models");
-const City = require("../db/models/City");
-const Healthcare = require("../db/models/Healthcare");
-const PrimaryStats = require("../db/models/primaryStats");
-const LivingCost = require("../db/models/LivingCost");
-const Transportation = require("../db/models/Transportation")
-const Weather = require("../db/models/weather")
+// const {Healthcare, LivingCost, PrimaryStats, Transportation, City} = require("../db/models");
+// const City = require("../db/models/City");
+// const Healthcare = require("../db/models/Healthcare");
+// const PrimaryStats = require("../db/models/primaryStats");
+// const LivingCost = require("../db/models/LivingCost");
+// const Transportation = require("../db/models/Transportation")
+// const Weather = require("../db/models/Weather")
+// const Pollution = require("../db/models/Pollution")
+
+const {
+  models: { City, Healthcare, PrimaryStats, LivingCost, Transportation, Weather, Pollution },
+} = require("../db");
+
 
 module.exports = router;
 
@@ -71,7 +77,8 @@ router.get("/:cityId", async(req, res, next) => {
         {model: Healthcare},
         {model: LivingCost},
         {model: Transportation},
-        //{model: Weather}
+        {model: Weather},
+        {model: Pollution},
     ]
     })
     res.send(city);
