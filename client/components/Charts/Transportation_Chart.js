@@ -11,10 +11,10 @@ const Transportation_Chart = (props) => {
         <Pie
           data = {{
             datasets: [{
-              data: [car, motorbike, workFromHome, train, bike, walking, bus],
+              data: [car, train, bike, walking, bus, workFromHome, motorbike ],
           backgroundColor: ["blue", "green", "pink", "yellow", "orange", "red", "purple"]
             }],
-            labels: ["Cars", "Bikes", "Motorbikes", "Working from home", "Train", "Bike", "Walking", "Bus"],
+            labels: ["Car", "Train", "Bike", "Walking", "Bus", "Work From Home", "Motorbike"],
           }}
           options={{
             title:{
