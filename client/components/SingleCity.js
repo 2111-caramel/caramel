@@ -29,6 +29,7 @@ class SingleCity extends Component {
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
           <div className="col-4">MAP HERE</div>
+          <SingleMap />
           <div className="col-4">CITY DESCRIPTION HERE</div>
           <div className="col-2"></div>
         </div>
