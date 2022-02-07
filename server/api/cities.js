@@ -68,7 +68,7 @@ router.get("/city/:cityName", async(req, res, next) => {
 //come back and add the assosiated models
 router.get("/:cityId", async(req, res, next) => {
   try{
-    const city = await City.findAll({
+    const city = await City.findOne({
       where: {
         id: req.params.cityId,
       },

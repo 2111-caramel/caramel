@@ -14,8 +14,7 @@ class SingleCity extends Component {
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
     const weather = city.weather || {};
-    const pollution = city.pollution || {};
-    console.log("*** CITY FROM COMPONENT", city);
+    const pollution = city.pollution || {}
 
     return (
       <div className="container-fluid text-center">
