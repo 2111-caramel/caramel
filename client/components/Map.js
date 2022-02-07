@@ -1,14 +1,30 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import { Wrapper } from "@googlemaps/react-wrapper";
+// import React from 'react'
+// import {connect} from 'react-redux'
+// import { Map, GoogleApiWrapper, Wrapper } from "@googlemaps/react-wrapper";
+// import secretKeys from "../../script/apikey";
 
-export default class Map extends React.Component{
+// const map_key = secretKeys.SECRET_MAPS_KEY;
 
-    render(){
-        return(
-            <div>
-                <h1>Map</h1>
-            </div>
-        )
-    }
-}
+// class SingleMap extends React.Component {
+
+
+//     render(){
+//         return(
+//             <div>
+//                 <Map 
+//                     google = {this.props.google}
+//                     style = {{width: "100%", height: "100%"}}
+//                     zoom = {10}
+//                     initialCenter = {{
+//                         lat: 28.7,
+//                         lng: 77.1
+//                     }
+//                 }
+//                 />
+//             </div>
+//         )
+// }
+// }
+// export default GoogleApiWrapper({
+//     apiKey: map_key
+//     })(SingleMap);

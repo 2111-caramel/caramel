@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
 import Transportation_Chart from './Charts/Transportation_Chart'
 import Healthcare_Chart from './Charts/Healthcare_Chart'
+import SingleMap from './Map.js'
 
 
 class SingleCity extends Component {
@@ -22,6 +23,7 @@ class SingleCity extends Component {
     return (
       <div>
         <h2>{city.name}</h2>
+        {/* <SingleMap /> */}
         <h3>Healthcare</h3>
         {/* this doesn't work come back to this*/}
             {/* {Object.keys(healthcare).map(category => {
