@@ -24,9 +24,9 @@ export class AllCities extends React.Component {
           </a>
 
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            {this.props.cities.map((city) => {
+            {this.props.cities.map((city, index) => {
               return (
-                <div>
+                <div key={index}>
                   <li>
                     <a className="dropdown-item" href={`${city.id}`}>
                       {city.name}, {city.state}

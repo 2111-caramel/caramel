@@ -22,6 +22,14 @@ const City = db.define("city", {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  lat: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  },
+  lng: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  }
 });
 
 module.exports = City;

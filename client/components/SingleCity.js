@@ -7,6 +7,13 @@ import Healthcare_Chart from "./Charts/Healthcare_Chart";
 import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
+import Map from './Map.js'
+
+// const location = {
+//   address: '1600 Amphitheatre Parkway, Mountain View, california.',
+//   lat: 37.42216,
+//   lng: -122.08427,
+// }
 
 class SingleCity extends Component {
   componentDidMount() {
@@ -22,7 +29,11 @@ class SingleCity extends Component {
     const pollution = city.pollution || {};
     const weather = this.props.cityWeather || {}
 
-    console.log("WEATHER IN COMPONENT", weather);
+    console.log("HEALTHCARE PROPS IN SINGLE CITY", healthcare);
+    // const {lat, lng, name } = city;
+    const location = {lat: city.lat, lng: city.lng, name: city.name}
+    //console.log(this.props, 'PROPS')
+
 
     return (
       <div className="container-fluid text-center">
@@ -35,6 +46,8 @@ class SingleCity extends Component {
           <div className="col-2"></div>
           <div className="col-4">MAP HERE</div>
           <div className="col-4">{city.info}</div>
+          <Map location={location} zoomLevel={12} />
+          <div className="col-4">CITY DESCRIPTION HERE</div>
           <div className="col-2"></div>
         </div>
 
@@ -263,10 +276,11 @@ class SingleCity extends Component {
 
             <div className="row section-title">
               <h3>Healthcare</h3>
+
             </div>
 
             <div className="row category-section mb-4">
-              <div class="col">
+              <div className="col">
                 {/* this doesn't work come back to this*/}
                 {/* {Object.keys(healthcare).map(category => {
               return(
@@ -284,7 +298,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4">
-              <div class="col-6">
+              <div className="col-6">
                 <div className="row align-items-center mt-3 mb-4">
                   <div className="col-2"></div>
                   <div className="col-3">
@@ -332,7 +346,7 @@ class SingleCity extends Component {
                 <b>Primary Means of Transportation:</b>
                 <Transportation_Chart transportation={transportation} />
               </div>
-              <div class="col-1"></div>
+              <div className="col-1"></div>
             </div>
           </div>
           <div className="col-2"></div>
