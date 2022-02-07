@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
 import Transportation_Chart from './Charts/Transportation_Chart'
 import Healthcare_Chart from './Charts/Healthcare_Chart'
-// import Map from './Map.js'
+import Map from './Map.js'
 
 // const location = {
 //   address: '1600 Amphitheatre Parkway, Mountain View, california.',
@@ -14,7 +14,6 @@ import Healthcare_Chart from './Charts/Healthcare_Chart'
 class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
-    console.log("state", this.state);
   }
   render() {
     const city = this.props.singleCity[0] || 0;
@@ -22,9 +21,10 @@ class SingleCity extends Component {
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
-    //const {lat, lng } = city;
+    // const {lat, lng, name } = city;
+    const location = {lat: city.lat, lng: city.lng, name: city.name}
+    //console.log(this.props, 'PROPS')
 
-    console.log("HEALTH", healthcare)
 
     return (
       <div className="container-fluid text-center">
@@ -36,7 +36,7 @@ class SingleCity extends Component {
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
           <div className="col-4">MAP HERE</div>
-          {/* <Map location={location} zoomLevel={17} /> */}
+          <Map location={location} zoomLevel={12} />
           <div className="col-4">CITY DESCRIPTION HERE</div>
           <div className="col-2"></div>
         </div>
@@ -196,7 +196,7 @@ class SingleCity extends Component {
 
             <div className="row section-title">
               <h3>Healthcare</h3>
-            
+
             </div>
 
             <div className="row category-section mb-4">
@@ -207,7 +207,7 @@ class SingleCity extends Component {
               <p>{category} : {category}</p>
               )
             })} */}
-                <div className="row mt-3 mb-3">  
+                <div className="row mt-3 mb-3">
                 <Healthcare_Chart healthcare = {healthcare} />
                   <div className="col-1"></div>
                   <div className="col-3">INDEX METER HERE</div>
@@ -223,7 +223,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4">
-              <div class="col-6">
+              <div className="col-6">
                 <div className="row align-items-center mt-3 mb-4">
                   <div className="col-2"></div>
                   <div className="col-3">
