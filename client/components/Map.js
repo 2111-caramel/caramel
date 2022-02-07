@@ -1,30 +1,42 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import { Map, GoogleApiWrapper, Wrapper } from "@googlemaps/react-wrapper";
-import secretKeys from "../../script/apikey";
+// import React from 'react'
+// import GoogleMapReact from 'google-map-react'
+// import { Icon } from '@iconify/react'
+// import locationIcon from '@iconify/icons-mdi/map-marker'
+// //import '../../public/map.css'
 
-const map_key = secretKeys.SECRET_MAPS_KEY;
+// // const location = {
+// //     address: '1600 Amphitheatre Parkway, Mountain View, california.',
+// //     lat: 37.42216,
+// //     lng: -122.08427,
+// //   }
 
-class SingleMap extends React.Component {
+// const LocationPin = ({ text }) => (
+//     <div className="pin">
+//       <Icon icon={locationIcon} className="pin-icon" />
+//       <p className="pin-text">{text}</p>
+//     </div>
+//   )
 
-    render(){
-        console.log("key", map_key)
-        return(
-            <div>
-                <Map 
-                    google = {this.props.google}
-                    style = {{width: "100%", height: "100%"}}
-                    zoom = {10}
-                    initialCenter = {{
-                        lat: 28.7,
-                        lng: 77.1
-                    }
-                }
-                />
-            </div>
-        )
-}
-}
-export default GoogleApiWrapper({
-    apiKey: map_key
-    })(SingleMap);
+//  function Map ({ location, zoomLevel }) {
+//      console.log("location", location)
+//      console.log("zoomLevel", zoomLevel)
+//     return (
+//      <div className="map">
+//         <h2 className="map-h2">Map</h2>
+//         <div className="google-map">
+//             <GoogleMapReact
+//             bootstrapURLKeys={{ key: 'AIzaSyBnn94Kp2Y1yNF4bW1Jg49UPzykmCtm09k' }}
+//             defaultCenter={location}
+//             defaultZoom={zoomLevel}
+//             >
+//             <LocationPin
+//                 lat={location.lat}
+//                 lng={location.lng}
+//                 text={location.address}
+//             />
+//             </GoogleMapReact>
+//         </div>
+//         </div>
+//         )
+//  }
+//   export default Map
