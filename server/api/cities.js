@@ -11,6 +11,7 @@ const Weather = require("../db/models/weather");
 
 module.exports = router;
 
+//mounted on /api/cities
 router.get("/", async (req, res, next) => {
   try {
     console.log("GET ALL")
@@ -41,13 +42,10 @@ router.get("/", async (req, res, next) => {
 //     next(err);
 //   }
 // });
+
 ///THREE CITIES
 router.get("/preferences/:model", async (req, res, next) => {
   try {
-    // let modelNames = {
-    //   "Healthcare": ['index', 'cityId'],
-    //   "Pollution": ['indexPollution', 'cityId']
-    // }
     let modelName = req.params.model === "Healthcare" ? Healthcare : req.params.model === "Pollution" ? Pollution : req.params.model === "Transportation" ? Transportation : req.params.model === "LivingCost" ? LivingCost : "NO MODEL ERROR"
    // let modelName = Healthcare
    let modelAttr = req.params.model === "Healthcare" ? ['index', 'cityId'] : req.params.model === "Pollution" ? ['indexPollution', 'cityId'] : req.params.model === "Transportation" ? ['train', 'bus'] : req.params.model === "LivingCost" ? ['daycare'] : "NO ATTR ERROR"
@@ -60,9 +58,7 @@ router.get("/preferences/:model", async (req, res, next) => {
      
       attributes: modelAttr, 
       order: modelOrder,
-      limit: 3
-        //index: req.params.model,
-      ,
+      limit: 3,
     include: [{model: City}]
     //   include: [
     //     { model: PrimaryStats },
@@ -73,31 +69,51 @@ router.get("/preferences/:model", async (req, res, next) => {
     //     { model: Pollution },
     //   ],
      } );
-     res.send(threeCities);
+     res.send(threeCities)
+    } catch (err) {
+      next(err);
+    }
+  })
+
+
+router.get("/city/:cityName", async(req, res, next) => {
+  try{
+    const city = await City.findOne({
+      where: {
+        name: req.params.cityName,
+      },
+      include: [
+        {model: PrimaryStats},
+        {model: Healthcare},
+        {model: LivingCost},
+        {model: Transportation},
+        //{model: Weather}
+    ]
+    })
+    res.send(city);
   } catch (err) {
     next(err);
   }
-});
+})
 
 //come back and add the assosiated models
 router.get("/:cityId", async (req, res, next) => {
   try {
-    console.log("SINGLE CITY")
     const city = await City.findAll({
       where: {
         id: req.params.cityId,
       },
       include: [
-        { model: PrimaryStats },
-        { model: Healthcare },
-        { model: LivingCost },
-        { model: Transportation },
-        { model: Weather },
-        { model: Pollution },
-      ],
-    });
+        {model: PrimaryStats},
+        {model: Healthcare},
+        {model: LivingCost},
+        {model: Transportation},
+        //{model: Weather}
+      ]
+    })
     res.send(city);
   } catch (err) {
     next(err);
   }
-});
+})
+

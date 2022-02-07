@@ -1,12 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
-import SingleCity from "./components/SingleCity";
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
+import { Login, Signup } from './components/AuthForm';
+import Home from './components/Home';
+import SingleCity from './components/SingleCity';
 import UserPrefForm from "./components/UserPrefForm";
-import { me } from "./store";
-import AllCities from "./components/AllCities";
+import {me} from './store'
+import AllCities from './components/AllCities'
+import CompareView from './components/CompareView';
 
 /**
  * COMPONENT
@@ -25,6 +26,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Redirect to="/home" />
+            <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         ) : (
@@ -35,6 +37,7 @@ class Routes extends Component {
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route path="/singleCity" component={SingleCity} />
+            <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         )}
