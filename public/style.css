@@ -30,3 +30,40 @@ form div {
   height: 80vh;
   color: white;
 }
+
+.section-title {
+  background: #E3DDE3;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  min-width:fit-content;
+}
+
+.category-section {
+  background:#F6F4F6;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-width:fit-content;
+}
+
+/* .city-image {
+  padding-left:0px;
+  padding-right: 0px
+} */
+
+.compare-city-name {
+  background: #E3DDE3;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-width:fit-content;
+}
+
+.compare-city-content {
+  background:#F6F4F6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-width:fit-content;
+}

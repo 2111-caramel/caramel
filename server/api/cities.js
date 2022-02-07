@@ -28,9 +28,29 @@ router.get("/citiesAndModels", async(req, res, next) => {
       include: [
         {model: PrimaryStats},
         {model: Healthcare},
-        {model: LivingCost}, 
-        {model: Transportation},
+        {model: LivingCost}
+       // {model: Transportation},
        // {model: Weather}
+    ]
+    })
+    res.send(city);
+  } catch (err) {
+    next(err);
+  }
+})
+
+router.get("/city/:cityName", async(req, res, next) => {
+  try{
+    const city = await City.findOne({
+      where: {
+        name: req.params.cityName,
+      },
+      include: [
+        {model: PrimaryStats},
+        {model: Healthcare},
+        {model: LivingCost},
+        {model: Transportation},
+        //{model: Weather}
     ]
     })
     res.send(city);
@@ -49,7 +69,7 @@ router.get("/:cityId", async(req, res, next) => {
       include: [
         {model: PrimaryStats},
         {model: Healthcare},
-        {model: LivingCost}, 
+        {model: LivingCost},
         {model: Transportation},
         //{model: Weather}
     ]
@@ -59,3 +79,5 @@ router.get("/:cityId", async(req, res, next) => {
     next(err);
   }
 })
+
+

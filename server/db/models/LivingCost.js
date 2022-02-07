@@ -30,6 +30,14 @@ const LivingCost = db.define("livingCost", {
     type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
+  trainPass: {
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: false,
+  },
+  trainTicket: {
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: false,
+  },
 });
 
 // HOOKS 
