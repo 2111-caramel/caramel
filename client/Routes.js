@@ -32,7 +32,8 @@ class Routes extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/preferences" component={UserPrefForm} />
+            <Route exact path="/preferences" component={UserPrefForm} />
+            <Route exact path="/preferences/:model" component={UserPrefForm} />
             <Route path="/singleCity" component={SingleCity} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
