@@ -34,7 +34,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <a className="nav-link" href="#">Take Survey</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Compare Cities</a>
+          <a className="nav-link" href="/compare">Compare Cities</a>
         </li>
         <li className="nav-item">
           <AllCities />
@@ -49,7 +49,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 
