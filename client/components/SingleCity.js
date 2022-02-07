@@ -3,7 +3,13 @@ import {connect} from 'react-redux'
 import { getCity } from '../store/singleCity'
 import Transportation_Chart from './Charts/Transportation_Chart'
 import Healthcare_Chart from './Charts/Healthcare_Chart'
-import SingleMap from './Map.js'
+// import Map from './Map.js'
+
+// const location = {
+//   address: '1600 Amphitheatre Parkway, Mountain View, california.',
+//   lat: 37.42216,
+//   lng: -122.08427,
+// }
 
 class SingleCity extends Component {
   componentDidMount() {
@@ -16,6 +22,7 @@ class SingleCity extends Component {
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
+    //const {lat, lng } = city;
 
     console.log("HEALTH", healthcare)
 
@@ -29,6 +36,7 @@ class SingleCity extends Component {
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
           <div className="col-4">MAP HERE</div>
+          {/* <Map location={location} zoomLevel={17} /> */}
           <div className="col-4">CITY DESCRIPTION HERE</div>
           <div className="col-2"></div>
         </div>
@@ -41,7 +49,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col-6">
+              <div className="col-6">
                 <div className="row align-items-center mt-3 mb-4">
                   <div className="col-1"></div>
                   <div className="col-4">
@@ -192,7 +200,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4">
-              <div class="col">
+              <div className="col">
                 {/* this doesn't work come back to this*/}
                 {/* {Object.keys(healthcare).map(category => {
               return(
@@ -258,11 +266,11 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
               </div>
-              <div class="col-1"></div>
-              <div class="col-5">
+              <div className="col-1"></div>
+              <div className="col-5">
                 <Transportation_Chart transportation={transportation} />
               </div>
-              <div class="col-1"></div>
+              <div className="col-1"></div>
             </div>
           </div>
           <div className="col-2"></div>
