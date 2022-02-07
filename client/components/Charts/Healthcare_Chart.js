@@ -221,6 +221,7 @@ import 'chart.js/auto';
 
 const Healthcare_Chart = (props) => {
     const {skill, cost, index} = props.healthcare
+    // console.log("HEALTHCARE", props.healthcare, props)
     const skillPercent = skill/100
     const costPercent = cost/100
     const indexPercent = index/100

@@ -17,6 +17,8 @@ class SingleCity extends Component {
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
 
+    console.log("HEALTH", healthcare)
+
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center mb-3">
@@ -186,7 +188,7 @@ class SingleCity extends Component {
 
             <div className="row section-title">
               <h3>Healthcare</h3>
-              <Healthcare_Chart healthcare = {healthcare} />
+            
             </div>
 
             <div className="row category-section mb-4">
@@ -197,7 +199,8 @@ class SingleCity extends Component {
               <p>{category} : {category}</p>
               )
             })} */}
-                <div className="row mt-3 mb-3">
+                <div className="row mt-3 mb-3">  
+                <Healthcare_Chart healthcare = {healthcare} />
                   <div className="col-1"></div>
                   <div className="col-3">INDEX METER HERE</div>
                   <div className="col-4">COST METER HERE</div>
