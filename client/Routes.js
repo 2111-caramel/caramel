@@ -27,7 +27,7 @@ class Routes extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
-            <Route exact path="/singleCity" component={SingleCity} />
+            <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         ) : (

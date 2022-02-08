@@ -8,7 +8,7 @@ import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
 import Map from './Map.js'
-import { fetchSingleUser, updateUser } from '../store/user'
+import { favoriteCity, fetchSingleUser, updateUser } from '../store/user'
 
 
 class SingleCity extends Component {
@@ -30,8 +30,8 @@ class SingleCity extends Component {
   }
 
   onClick(value){
-    console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
-    this.props.updateUser(this.props.singleCity[0].name, this.props.id)
+    console.log('IN ONCLICK', this.props.singleCity.id, this.props.id)
+    this.props.favorite(this.props.singleCity.id, this.props.id)
   }
 
   render() {
@@ -225,7 +225,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3">
 
                     <Weather_Chart weather={weather}/>
@@ -239,7 +239,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3 align-items-center">
                   <Pollution_Chart pollution={pollution} />
                 </div>
@@ -313,8 +313,8 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
               </div>
-              <div class="col-1"></div>
-              <div class="col-5">
+              <div className="col-1"></div>
+              <div className="col-5">
                 <b>Primary Means of Transportation:</b>
                 <Transportation_Chart transportation={transportation} />
               </div>
@@ -343,6 +343,7 @@ const mapDispatch = (dispatch) => {
     loadCity: (cityId) => dispatch(getCity(cityId)),
     loadUser: (id) => dispatch(fetchSingleUser(id)),
     updateUser: (cityName, id) => dispatch(updateUser(cityName, id)),
+    favorite: (cityId, userId) => dispatch(favoriteCity(cityId, userId)),
     getCityWeather: (cityId) => dispatch(getCityWeather(cityId)),
   };
 };

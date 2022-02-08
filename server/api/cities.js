@@ -1,17 +1,11 @@
 const router = require("express").Router();
-// const {Healthcare, LivingCost, PrimaryStats, Transportation, City} = require("../db/models");
-// const City = require("../db/models/City");
-// const Healthcare = require("../db/models/Healthcare");
-// const PrimaryStats = require("../db/models/primaryStats");
-// const LivingCost = require("../db/models/LivingCost");
-// const Transportation = require("../db/models/Transportation")
-// const Weather = require("../db/models/Weather")
-// const Pollution = require("../db/models/Pollution")
-
-const {
-  models: { City, Healthcare, PrimaryStats, LivingCost, Transportation, Weather, Pollution },
-} = require("../db");
-
+//const {Healthcare, LivingCost, PrimaryStats, Transportation, City} = require("../db/models");
+const City = require("../db/models/City");
+const Healthcare = require("../db/models/Healthcare");
+const PrimaryStats = require("../db/models/primaryStats");
+const LivingCost = require("../db/models/LivingCost");
+const Transportation = require("../db/models/Transportation")
+const Weather = require("../db/models/weather")
 
 module.exports = router;
 
@@ -57,7 +51,6 @@ router.get("/city/:cityName", async(req, res, next) => {
         {model: Healthcare},
         {model: LivingCost},
         {model: Transportation},
-        {model: Pollution},
         //{model: Weather}
     ]
     })
@@ -67,25 +60,10 @@ router.get("/city/:cityName", async(req, res, next) => {
   }
 })
 
-router.get("/:cityId/weather", async(req, res, next) => {
-  try{
-    console.log("SENDING WEATHER FROM API: ")
-    const city = await Weather.findAll({
-      where: {
-        cityId: req.params.cityId,
-      },
-    })
-    console.log("SENDING WEATHER FROM API: ", city)
-    res.send(city);
-  } catch (err) {
-    next(err);
-  }
-})
-
 //come back and add the assosiated models
 router.get("/:cityId", async(req, res, next) => {
   try{
-    const city = await City.findOne({
+    const city = await City.findAll({
       where: {
         id: req.params.cityId,
       },
@@ -94,8 +72,7 @@ router.get("/:cityId", async(req, res, next) => {
         {model: Healthcare},
         {model: LivingCost},
         {model: Transportation},
-        {model: Weather},
-        {model: Pollution},
+        //{model: Weather}
     ]
     })
     res.send(city);

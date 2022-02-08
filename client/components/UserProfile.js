@@ -12,9 +12,17 @@ class UserProfile extends Component {
     this.props.loadUser(this.props.id);
   }
   render() {
+    const user = this.props.user;
+    const cities = user.cities || [];
     return (
       <div className="user">
-        <p>User Profile Page</p>
+        <p>Username: {user.username}</p>
+        <p>Favorite Cities:</p>
+        {cities.map((city, index)=> {
+          return(
+          <div key={index}>{city.name}</div>
+          )
+        })}
       </div>
     );
   }
@@ -27,6 +35,7 @@ const mapState = (state) => {
   return {
     username: state.auth.username,
     id: state.auth.id,
+    user: state.user
   };
 };
 

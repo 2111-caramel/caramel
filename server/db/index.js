@@ -23,6 +23,8 @@ City.hasOne(Pollution);
 Pollution.belongsTo(City);
 City.hasOne(Weather);
 Weather.belongsTo(City);
+User.belongsToMany(City, { through: "Favourites" });
+City.belongsToMany(User, { through: "Favourites" });
 
 module.exports = {
   db,
