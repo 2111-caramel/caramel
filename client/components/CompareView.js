@@ -72,7 +72,7 @@ export class CompareView extends React.Component {
     const city3 = compareCities.city3 || {};
 
     return (
-      <div className="container justify-content-center">
+      <div className="container-fluid justify-content-center">
         {/* <CitySelect filter1={this.state.filter1}/>
         <CitySelect filter2={this.state.filter2}/>
         <CitySelect filter3={this.state.filter3}/> */}
@@ -126,13 +126,13 @@ export class CompareView extends React.Component {
         </div>
 
         <div className="row justify-content-center mb-3">
-          <div className="col">
+          <div className="col-4">
             {city1.name ? <CompareCity city={city1} /> : null}
           </div>
-          <div className="col">
+          <div className="col-4">
             {city2.name ? <CompareCity city={city2} /> : null}
           </div>
-          <div className="col">
+          <div className="col-4">
             {city3.name ? <CompareCity city={city3} /> : null}
           </div>
         </div>

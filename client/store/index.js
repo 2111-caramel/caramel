@@ -6,8 +6,9 @@ import auth from './auth'
 import cities from './cities'
 import singleCityReducer from './singleCity'
 import compareCityReducer from './compareCities'
+import weather from './weather'
 
-const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities, compareCity: compareCityReducer })
+const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities, compareCity: compareCityReducer, weather })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

@@ -51,7 +51,7 @@ const seed = async () => {
         cityId: counterPrice + 1,
         rent1br: eachCityStats.prices[21].average_price,
         rent3br: eachCityStats.prices[23].average_price,
-        housePrice: eachCityStats.prices[36].average_price,
+        housePrice: eachCityStats.prices[35].average_price,
         salary: eachCityStats.prices[40].average_price,
       });
 

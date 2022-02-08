@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import { getCity } from '../store/singleCity'
-import Transportation_Chart from './Charts/Transportation_Chart'
-import Healthcare_Chart from './Charts/Healthcare_Chart'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getCity } from "../store/singleCity";
+import { getCityWeather } from "../store/weather";
+import Transportation_Chart from "./Charts/Transportation_Chart";
+import Healthcare_Chart from "./Charts/Healthcare_Chart";
+import Pollution_Chart from "./Charts/Pollution_Chart";
+import Weather_Chart from "./Charts/Weather_Chart";
+import SingleMap from "./Map.js";
 import Map from './Map.js'
 
 // const location = {
@@ -14,13 +18,18 @@ import Map from './Map.js'
 class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
+    this.props.getCityWeather(this.props.match.params.cityId)
   }
   render() {
-    const city = this.props.singleCity[0] || 0;
+    const city = this.props.singleCity || 0;
     const healthcare = city.healthcare || {};
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
+    const pollution = city.pollution || {};
+    const weather = this.props.cityWeather || {}
+
+    console.log("HEALTHCARE PROPS IN SINGLE CITY", healthcare);
     // const {lat, lng, name } = city;
     const location = {lat: city.lat, lng: city.lng, name: city.name}
     //console.log(this.props, 'PROPS')
@@ -35,9 +44,9 @@ class SingleCity extends Component {
 
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
-          <div className="col-4">MAP HERE</div>
-          <Map location={location} zoomLevel={12} />
-          <div className="col-4">CITY DESCRIPTION HERE</div>
+          <div className="col-4"><Map location={location} zoomLevel={12} /></div>
+          <div className="col-4">{city.info}</div>
+          
           <div className="col-2"></div>
         </div>
 
@@ -59,7 +68,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly costs</b>
+                    <b>Avg. monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -78,14 +87,18 @@ class SingleCity extends Component {
                   </div>
                   <div className="col-6">
                     <b>
-                      Avg. property cost / m<sup>2</sup>:
+                      Property cost/m<sup>2</sup>:
                     </b>{" "}
                     ${primaryStat.housePrice}
                   </div>
                   <div className="col-1"></div>
                 </div>
 
-                <div className="row align-items-center mb-3">
+                
+              </div>
+
+              <div className="col-6">
+              <div className="row align-items-center mb-3">
                   <div className="col-1"></div>
                   <div className="col-4">
                     <img
@@ -94,7 +107,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly salary:</b> ${primaryStat.salary}
+                    <b>Monthly salary:</b> ${primaryStat.salary}
                   </div>
                   <div className="col-1"></div>
                 </div>
@@ -108,13 +121,11 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. preschool cost / month:</b> ${livingCost.daycare}
+                    <b>Preschool cost/month:</b> ${livingCost.daycare}
                   </div>
                   <div className="col-1"></div>
                 </div>
               </div>
-
-              <div className="col-6">CHART/DATA VIS HERE?</div>
             </div>
 
             <div className="row section-title">
@@ -157,7 +168,7 @@ class SingleCity extends Component {
                       height={60}
                     ></img>
                     <p>
-                      <b>Movie Ticket:</b> ${livingCost.cinema}
+                      <b>Movie Ticket:</b> ${livingCost.movie}
                     </p>
                   </div>
                 </div>
@@ -195,6 +206,32 @@ class SingleCity extends Component {
             </div>
 
             <div className="row section-title">
+              <h3>Weather</h3>
+            </div>
+
+            <div className="row category-section mb-4 align-items-center">
+              <div class="col">
+                <div className="row mt-3 mb-3">
+                  
+                    <Weather_Chart weather={weather}/>
+             
+                </div>
+              </div>
+            </div>
+
+            <div className="row section-title">
+              <h3>Environment</h3>
+            </div>
+
+            <div className="row category-section mb-4 align-items-center">
+              <div class="col">
+                <div className="row mt-3 mb-3 align-items-center">
+                  <Pollution_Chart pollution={pollution} />
+                </div>
+              </div>
+            </div>
+
+            <div className="row section-title">
               <h3>Healthcare</h3>
 
             </div>
@@ -208,12 +245,7 @@ class SingleCity extends Component {
               )
             })} */}
                 <div className="row mt-3 mb-3">
-                <Healthcare_Chart healthcare = {healthcare} />
-                  <div className="col-1"></div>
-                  <div className="col-3">INDEX METER HERE</div>
-                  <div className="col-4">COST METER HERE</div>
-                  <div className="col-3">SKILL METER HERE</div>
-                  <div className="col-1"></div>
+                  <Healthcare_Chart healthcare={healthcare} />
                 </div>
               </div>
             </div>
@@ -266,8 +298,9 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
               </div>
-              <div className="col-1"></div>
-              <div className="col-5">
+              <div class="col-1"></div>
+              <div class="col-5">
+                <b>Primary Means of Transportation:</b>
                 <Transportation_Chart transportation={transportation} />
               </div>
               <div className="col-1"></div>
@@ -283,12 +316,14 @@ class SingleCity extends Component {
 const mapState = (state) => {
   return {
     singleCity: state.singleCity,
+    cityWeather: state.weather
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     loadCity: (cityId) => dispatch(getCity(cityId)),
+    getCityWeather: (cityId) => dispatch(getCityWeather(cityId)),
   };
 };
 
