@@ -14,7 +14,9 @@ export const fetchThreeCities = (selection) => {
   console.log("THUNK BEFORE---->>>", selection);
   return async (dispatch) => {
     try {
-      const { data: threeCities } = await axios.get(`/api/cities/preferences/${selection}`);
+      const { data: threeCities } = await axios.get(
+        `/api/cities/preferences/${selection}`
+      );
       console.log("THUNK AFTER--->>>", threeCities);
       dispatch(getThreeCities(threeCities));
     } catch (err) {

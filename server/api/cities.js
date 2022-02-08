@@ -82,7 +82,7 @@ router.get("/preferences/:model", async (req, res, next) => {
       req.params.model === "Healthcare"
         ? [["index", "DESC"]]
         : req.params.model === "Pollution"
-        ? [["indexPollution", "DESC"]]
+        ? [["indexPollution", "ASC"]]
         : req.params.model === "Transportation"
         ? [["trainAndBus", "DESC"]]
         : req.params.model === "LivingCost"

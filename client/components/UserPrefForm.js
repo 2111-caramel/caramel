@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchThreeCities } from "../store/threeCitties";
+import GaugeChart from "react-gauge-chart";
 
 class UserPrefForm extends React.Component {
   constructor() {
@@ -8,25 +9,13 @@ class UserPrefForm extends React.Component {
     this.state = { value: "" };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    //this.props.gettingThreeCities(this.state.value);
-    //this.props.laodCities;
-    // console.log("IN COMPONTEN DID MOUNT DETAIL", this.props.location.state.detail)
-  }
+  componentDidMount() {}
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-      //  this.props.history.location.search = this.state.value
-      // this.props.history.push({
-      //   pathname: '/preferences',
-      //   search: '?query=abc',
-      //   state: { detail: this.state.value }
-      // })
       this.props.match.params.model = this.state.value;
       this.props.history.push(`/preferences/${this.state.value}`);
       console.log("PARAMS HERE---->", this.props.match.params);
-      //console.log("IN COMP UpDATE for history--->>", this.props.history.location.state.detail)
       this.props.gettingThreeCities(this.state.value);
       this.props.loadCities;
       // console.log("Params ID---->>>", this.props.match.params);
@@ -34,19 +23,17 @@ class UserPrefForm extends React.Component {
   }
 
   handleChange(e) {
-    //this.props.match.params = e.target.value;
-    //this.props.history.push();
     this.setState({
       value: e.target.value,
     });
-    //this.props.gettingThreeCities(this.state.value);
   }
+
   render() {
     console.log("IN RENDER COMP--->>", this.props.loadCities);
     return (
-      <div>
+      <div className="container-fluid justify-content-center">
         <h1>What is most important to you in a city?</h1>
-        <form>
+        <form className="row justify-content-center mb-3">
           <h3>Primary Choices</h3>
 
           <select value={this.state.value} onChange={this.handleChange}>
@@ -60,17 +47,38 @@ class UserPrefForm extends React.Component {
             {/* <option value="Weather-warm">Warm Weather year round</option>
             <option value="Weather-snow">Snowy Winter Weather</option> */}
           </select>
-          <input type="submit" value="Submit" />
         </form>
 
         <div>
-          {console.log(
-            "IN CONSOLE RENDER BODY----->>>>>>>>>>",
-            this.props.loadCities
-          )}
           {this.props.loadCities.map((city, idx) => {
             return (
-              <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
+              <div className="row">
+                <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
+                <div className="col">
+                  <GaugeChart
+                    id="healthIndex"
+                    arcsLength={[0.33, 0.33, 0.33]}
+                    colors={["red", "yellow", "green"]}
+                    percent={
+                      this.state.value === "Healthcare"
+                        ? city.index / 100
+                        : this.state.value === "Pollution"
+                        ? city.indexPollution / 100
+                        : this.state.value === "Transportation"
+                        ? city.trainAndBus / 100
+                        : this.state.value === "LivingCost"
+                        ? city.daycare / 100
+                        : ""
+                    }
+                    arcPadding={0.02}
+                    textColor="#000000"
+                    needleColor={"#BFB0BF"}
+                    needleBaseColor={"#BFB0BF"}
+                    style={{ width: "200px" }}
+                  />
+                  <h6>Overall {this.state.value} Rating</h6>
+                </div>
+              </div>
             );
           })}
         </div>
