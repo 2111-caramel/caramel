@@ -18,13 +18,23 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link-active" href="/home">
+                    <a className="nav-link-active" aria-current="page" href="/">
                       Home
                     </a>
                   </li>
                   <li className="nav-item">
+                    <a className="nav-link" aria-current="page" href="#">
+                      Take Survey
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link-active" aria-current="page" href="/compare">
+                      Compare Cities
+                    </a>
+                  </li>
+                  <li className="nav-item">
                     <a
-                      className="nav-link-active"
+                      className="nav-link-active" aria-current="page"
                       href="#"
                       onClick={handleClick}
                     >
@@ -32,7 +42,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link-active" href="/myInfo">
+                    <a className="nav-link-active" aria-current="page" href="/myInfo">
                       My Info
                     </a>
                   </li>
@@ -70,12 +80,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link" aria-current="page" href="#">
                       Take Survey
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link-active" aria-current="page" href="/compare">
                       Compare Cities
                     </a>
                   </li>
