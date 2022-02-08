@@ -57,6 +57,7 @@ router.get("/city/:cityName", async(req, res, next) => {
         {model: Healthcare},
         {model: LivingCost},
         {model: Transportation},
+        {model: Pollution},
         //{model: Weather}
     ]
     })
