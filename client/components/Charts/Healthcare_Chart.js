@@ -1,3 +1,68 @@
+import React from "react";
+import GaugeChart from "react-gauge-chart";
+import "chart.js/auto";
+
+const Healthcare_Chart = (props) => {
+  const { skill, cost, index } = props.healthcare;
+  const skillPercent = skill / 100;
+  const costPercent = cost / 100;
+  const indexPercent = index / 100;
+  console.log("SKILLPERCENT", skillPercent);
+
+  return (
+    <div key="pie-chart" className="container">
+      <div className="row align-items-center">
+        <div className="col-3">
+          <GaugeChart
+            percent={skillPercent}
+            id="healthSkill"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            arcPadding={0.02}
+            textColor="#000000"
+            animate={true}
+            animDelay={500}
+            animateDuration={5000}
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
+          /> 
+          <h5>Skill Rating</h5>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-4">
+          <GaugeChart
+            id="healthIndex"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={indexPercent}
+            arcPadding={0.02}
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
+          />
+          <h5>Overall Healthcare Rating</h5>
+        </div>
+        <div className="col-1"></div>
+        <div className="col-3">
+          <GaugeChart
+            id="healthCost"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={costPercent}
+            arcPadding={0.02}
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
+          />
+          <h5>Cost Rating</h5>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Healthcare_Chart;
+
 // (const gauge = () => {
 // 	if (!window.Chart) {
 // 		return;
@@ -215,52 +280,3 @@
 // 		}
 // 	});
 // })();
-import React from 'react'
-import GaugeChart from 'react-gauge-chart'
-import 'chart.js/auto';
-
-const Healthcare_Chart = (props) => {
-    const {skill, cost, index} = props.healthcare
-    // console.log("HEALTHCARE", props.healthcare, props)
-    const skillPercent = skill/100
-    const costPercent = cost/100
-    const indexPercent = index/100
-
-    return (
-      <div key = "pie-chart">
-        <h3>Skill Percent</h3>
-        <GaugeChart
-            percent={skillPercent} 
-            id="index"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
-            arcPadding={0.02}
-            textColor= "#333"
-        />
-        <h3>Cost Percent</h3>
-        <GaugeChart
-            id = "skill"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
-            percent={costPercent}
-            arcPadding={0.02}
-            textColor= "#333"
-        />
-        <h3>User Ratings</h3>
-        <GaugeChart 
-            id="index"
-            nrOfLevels={420}
-            arcsLength={[0.33, 0.33, 0.33]}
-            colors={['pink', 'magenta', 'purple']}
-            percent={indexPercent}
-            arcPadding={0.02}
-            textColor= "#333"
-        />
-
-      </div> 
-    )
-}
-
-export default Healthcare_Chart;
