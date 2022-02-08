@@ -7,7 +7,7 @@ import SingleCity from './components/SingleCity';
 import {me} from './store'
 import AllCities from './components/AllCities'
 import CompareView from './components/CompareView';
-import Map from "./components/Map"
+import UserProfile from './components/UserProfile';
 
 /**
  * COMPONENT
@@ -24,18 +24,18 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/compare" component={CompareView} />
+            <Route exact path="/myInfo" component={UserProfile} />
+            <Route exact path="/singleCity" component={SingleCity} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         ) : (
           <Switch>
-            <Route path='/' exact component={ Home } />
-            <Route path = '/SampleMap' component = {Map} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/singleCity" component={SingleCity} />
+            <Route exact path='/' component={ Home } />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/singleCity" component={SingleCity} />
             <Route exact path="/compare" component={CompareView} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>

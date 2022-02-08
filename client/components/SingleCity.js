@@ -8,18 +8,32 @@ import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
 import Map from './Map.js'
+import { fetchSingleUser, updateUser } from '../store/user'
 
-// const location = {
-//   address: '1600 Amphitheatre Parkway, Mountain View, california.',
-//   lat: 37.42216,
-//   lng: -122.08427,
-// }
 
 class SingleCity extends Component {
+  constructor(props){
+    super();
+    this.onClick = this.onClick.bind(this)
+  }
+
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId)
   }
+
+  componentDidUpdate(prevprops){
+    if(prevprops.id != this.props.id){
+      console.log('UPDATE', this.props.id)
+      this.props.loadUser(this.props.id)
+    }
+  }
+
+  onClick(value){
+    console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
+    this.props.updateUser(this.props.singleCity[0].name, this.props.id)
+  }
+
   render() {
     const city = this.props.singleCity || 0;
     const healthcare = city.healthcare || {};
@@ -32,11 +46,12 @@ class SingleCity extends Component {
     console.log("HEALTHCARE PROPS IN SINGLE CITY", healthcare);
     // const {lat, lng, name } = city;
     const location = {lat: city.lat, lng: city.lng, name: city.name}
-    //console.log(this.props, 'PROPS')
-
+    const id = this.props.id;
+    const {isLoggedIn} = this.props;
 
     return (
       <div className="container-fluid text-center">
+        {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
@@ -46,7 +61,7 @@ class SingleCity extends Component {
           <div className="col-2"></div>
           <div className="col-4"><Map location={location} zoomLevel={12} /></div>
           <div className="col-4">{city.info}</div>
-          
+
           <div className="col-2"></div>
         </div>
 
@@ -94,7 +109,7 @@ class SingleCity extends Component {
                   <div className="col-1"></div>
                 </div>
 
-                
+
               </div>
 
               <div className="col-6">
@@ -212,9 +227,9 @@ class SingleCity extends Component {
             <div className="row category-section mb-4 align-items-center">
               <div class="col">
                 <div className="row mt-3 mb-3">
-                  
+
                     <Weather_Chart weather={weather}/>
-             
+
                 </div>
               </div>
             </div>
@@ -316,6 +331,9 @@ class SingleCity extends Component {
 const mapState = (state) => {
   return {
     singleCity: state.singleCity,
+    isLoggedIn: !!state.auth.id,
+    id: state.auth.id,
+    user: state.user,
     cityWeather: state.weather
   };
 };
@@ -323,6 +341,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadCity: (cityId) => dispatch(getCity(cityId)),
+    loadUser: (id) => dispatch(fetchSingleUser(id)),
+    updateUser: (cityName, id) => dispatch(updateUser(cityName, id)),
     getCityWeather: (cityId) => dispatch(getCityWeather(cityId)),
   };
 };

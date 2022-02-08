@@ -19,8 +19,6 @@ const LocationPin = ({ text }) => (
   )
 
  function Map ({ location, zoomLevel }) {
-     console.log("location", location)
-     console.log("zoomLevel", zoomLevel)
     return (
      <div className="container map google-map" style={{height: '30vh', width: '100%'}}>
         
