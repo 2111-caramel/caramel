@@ -1,13 +1,14 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import { Login, Signup } from './components/AuthForm';
-import Home from './components/Home';
-import SingleCity from './components/SingleCity';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Login, Signup } from "./components/AuthForm";
+import Home from "./components/Home";
+import AllCities from "./components/AllCities";
+import SingleCity from "./components/SingleCity";
 import UserPrefForm from "./components/UserPrefForm";
-import {me} from './store'
-import AllCities from './components/AllCities'
-import CompareView from './components/CompareView';
+import { me } from "./store";
+import CompareView from "./components/CompareView";
+import UserProfile from "./components/UserProfile";
 
 /**
  * COMPONENT
@@ -24,9 +25,10 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/compare" component={CompareView} />
+            <Route exact path="/myInfo" component={UserProfile} />
+            <Route exact path="/singleCity" component={SingleCity} />
             <Route path="/:cityId" component={SingleCity} />
           </Switch>
         ) : (

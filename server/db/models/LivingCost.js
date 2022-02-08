@@ -38,6 +38,14 @@ const LivingCost = db.define("livingCost", {
     type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
+  meal: {
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: false,
+  },
+  movie: {
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: false,
+  },
 });
 
 // HOOKS 

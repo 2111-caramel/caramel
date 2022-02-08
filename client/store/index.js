@@ -1,14 +1,24 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {createLogger} from 'redux-logger'
-import thunkMiddleware from 'redux-thunk'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import auth from './auth'
-import cities from './cities'
-import singleCityReducer from './singleCity'
-import compareCityReducer from './compareCities'
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createLogger } from "redux-logger";
+import thunkMiddleware from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import auth from "./auth";
+import cities from "./cities";
+import singleCityReducer from "./singleCity";
+import compareCityReducer from "./compareCities";
 import threeCitiesReducer from "./threeCitties";
+import userReducer from "./user";
+import weather from "./weather";
 
-const reducer = combineReducers({ auth, singleCity: singleCityReducer, cities, compareCity: compareCityReducer, threeCities: threeCitiesReducer, })
+const reducer = combineReducers({
+  auth,
+  singleCity: singleCityReducer,
+  threeCities: threeCitiesReducer,
+  cities,
+  compareCity: compareCityReducer,
+  user: userReducer,
+  weather,
+});
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
