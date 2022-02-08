@@ -22,21 +22,19 @@ const LocationPin = ({ text }) => (
      console.log("location", location)
      console.log("zoomLevel", zoomLevel)
     return (
-     <div className="map">
-        <h2 className="map-h2">Map</h2>
-        <div className="google-map">
+     <div className="container map google-map" style={{height: '30vh', width: '100%'}}>
+        
             <GoogleMapReact
             bootstrapURLKeys={{ key: SECRET_GOOGLEMAPS_KEY }}
             center={location}
             defaultZoom={zoomLevel}
             >
-            <LocationPin
+            {/* <LocationPin
                 lat={location.lat}
                 lng={location.lng}
                 text={location.name}
-            />
+            /> */}
             </GoogleMapReact>
-        </div>
         </div>
         )
  }

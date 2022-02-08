@@ -19,10 +19,12 @@ const Healthcare_Chart = (props) => {
             arcsLength={[0.33, 0.33, 0.33]}
             colors={["red", "yellow", "green"]}
             arcPadding={0.02}
-            textColor="#333"
+            textColor="#000000"
             animate={true}
             animDelay={500}
             animateDuration={5000}
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
           /> 
           <h5>Skill Rating</h5>
         </div>
@@ -34,7 +36,9 @@ const Healthcare_Chart = (props) => {
             colors={["red", "yellow", "green"]}
             percent={indexPercent}
             arcPadding={0.02}
-            textColor="#333"
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
           />
           <h5>Overall Healthcare Rating</h5>
         </div>
@@ -46,7 +50,9 @@ const Healthcare_Chart = (props) => {
             colors={["red", "yellow", "green"]}
             percent={costPercent}
             arcPadding={0.02}
-            textColor="#333"
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
           />
           <h5>Cost Rating</h5>
         </div>

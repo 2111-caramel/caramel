@@ -44,10 +44,9 @@ class SingleCity extends Component {
 
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
-          <div className="col-4">MAP HERE</div>
+          <div className="col-4"><Map location={location} zoomLevel={12} /></div>
           <div className="col-4">{city.info}</div>
-          <Map location={location} zoomLevel={12} />
-          <div className="col-4">CITY DESCRIPTION HERE</div>
+          
           <div className="col-2"></div>
         </div>
 
@@ -69,7 +68,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly costs</b>
+                    <b>Avg. monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -88,14 +87,18 @@ class SingleCity extends Component {
                   </div>
                   <div className="col-6">
                     <b>
-                      Avg. property cost / m<sup>2</sup>:
+                      Property cost/m<sup>2</sup>:
                     </b>{" "}
                     ${primaryStat.housePrice}
                   </div>
                   <div className="col-1"></div>
                 </div>
 
-                <div className="row align-items-center mb-3">
+                
+              </div>
+
+              <div className="col-6">
+              <div className="row align-items-center mb-3">
                   <div className="col-1"></div>
                   <div className="col-4">
                     <img
@@ -104,7 +107,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly salary:</b> ${primaryStat.salary}
+                    <b>Monthly salary:</b> ${primaryStat.salary}
                   </div>
                   <div className="col-1"></div>
                 </div>
@@ -118,13 +121,11 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. preschool cost / month:</b> ${livingCost.daycare}
+                    <b>Preschool cost/month:</b> ${livingCost.daycare}
                   </div>
                   <div className="col-1"></div>
                 </div>
               </div>
-
-              <div className="col-6">CHART/DATA VIS HERE?</div>
             </div>
 
             <div className="row section-title">
@@ -211,16 +212,9 @@ class SingleCity extends Component {
             <div className="row category-section mb-4 align-items-center">
               <div class="col">
                 <div className="row mt-3 mb-3">
-                  <div className="col-6">
-                    <b>Average rainfall by month:</b>
-                    <br />
-                    RAINFALL BAR CHART HERE
-                  </div>
-                  <div className="col-6">
-                    <b>Average temperature by month:</b>
-                    <br />
+                  
                     <Weather_Chart weather={weather}/>
-                  </div>
+             
                 </div>
               </div>
             </div>
@@ -232,44 +226,7 @@ class SingleCity extends Component {
             <div className="row category-section mb-4 align-items-center">
               <div class="col">
                 <div className="row mt-3 mb-3 align-items-center">
-                  <b>Overall Pollution Level:</b>
-                </div>
-                <div className="row mt-3 mb-3 align-items-center">
                   <Pollution_Chart pollution={pollution} />
-                </div>
-
-                <div className="row mt-3 align-items-center">
-                  <div className="col-6">
-                    <p>
-                      <b>Drinking Water Quality:</b>
-                      <br />
-                      {pollution.drinkingWaterQuality}
-                    </p>
-                  </div>
-                  <div className="col-6">
-                    <p>
-                      <b>Cleanliness:</b>
-                      <br />
-                      {pollution.cleanliness}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="row mt-3 align-items-center">
-                  <div className="col-6">
-                    <p>
-                      <b>Air Quality:</b>
-                      <br />
-                      {pollution.airQuality}
-                    </p>
-                  </div>
-                  <div className="col-6">
-                    <p>
-                      <b>Green Spaces:</b>
-                      <br />
-                      {pollution.greenParksQuality}
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
