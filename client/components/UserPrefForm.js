@@ -11,22 +11,24 @@ class UserPrefForm extends React.Component {
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    
-   // console.log("IN COMPONTEN DID MOUNT DETAIL", this.props.location.state.detail)
+    //this.props.gettingThreeCities(this.state.value);
+    //this.props.laodCities;
+    // console.log("IN COMPONTEN DID MOUNT DETAIL", this.props.location.state.detail)
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-    //  this.props.history.location.search = this.state.value
-    // this.props.history.push({
-    //   pathname: '/preferences',
-    //   search: '?query=abc',
-    //   state: { detail: this.state.value }
-    // })
-    this.props.match.params.model = this.state.value
-    this.props.history.push(`/preferences/${this.state.value}`); 
-      console.log("PARAMS HERE---->", this.props.match.params)
-    //console.log("IN COMP UpDATE for history--->>", this.props.history.location.state.detail)
+      //  this.props.history.location.search = this.state.value
+      // this.props.history.push({
+      //   pathname: '/preferences',
+      //   search: '?query=abc',
+      //   state: { detail: this.state.value }
+      // })
+      this.props.match.params.model = this.state.value;
+      this.props.history.push(`/preferences/${this.state.value}`);
+      console.log("PARAMS HERE---->", this.props.match.params);
+      //console.log("IN COMP UpDATE for history--->>", this.props.history.location.state.detail)
       this.props.gettingThreeCities(this.state.value);
+      this.props.loadCities;
       // console.log("Params ID---->>>", this.props.match.params);
     }
   }
@@ -40,6 +42,7 @@ class UserPrefForm extends React.Component {
     //this.props.gettingThreeCities(this.state.value);
   }
   render() {
+    console.log("IN RENDER COMP--->>", this.props.loadCities);
     return (
       <div>
         <h1>What is most important to you in a city?</h1>
@@ -54,11 +57,23 @@ class UserPrefForm extends React.Component {
               High Public Transportation (Train & Bus)
             </option>
             <option value="LivingCost">Lowest daycare cost</option>
-            <option value="Weather-warm">Warm Weather year round</option>
-            <option value="Weather-snow">Snowy Winter Weather</option>
+            {/* <option value="Weather-warm">Warm Weather year round</option>
+            <option value="Weather-snow">Snowy Winter Weather</option> */}
           </select>
           <input type="submit" value="Submit" />
         </form>
+
+        <div>
+          {console.log(
+            "IN CONSOLE RENDER BODY----->>>>>>>>>>",
+            this.props.loadCities
+          )}
+          {this.props.loadCities.map((city, idx) => {
+            return (
+              <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -67,7 +82,7 @@ class UserPrefForm extends React.Component {
 const mapState = (state) => {
   console.log("IN MY MAP STATE____>", state);
   return {
-    laodCities: state.threeCities,
+    loadCities: state.threeCities,
   };
 };
 

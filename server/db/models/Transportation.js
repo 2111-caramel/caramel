@@ -30,6 +30,10 @@ const Transportation = db.define("transportation", {
     type: Sequelize.DECIMAL(10,1),
     allowNull: false,
   },
+  trainAndBus: {
+    type: Sequelize.DECIMAL(10, 1),
+    allowNull: false,
+  }
 });
 
 module.exports = Transportation;
