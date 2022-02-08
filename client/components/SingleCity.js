@@ -4,30 +4,44 @@ import { getCity } from '../store/singleCity'
 import Transportation_Chart from './Charts/Transportation_Chart'
 import Healthcare_Chart from './Charts/Healthcare_Chart'
 import Map from './Map.js'
+import { fetchSingleUser, updateUser } from '../store/user'
 
-// const location = {
-//   address: '1600 Amphitheatre Parkway, Mountain View, california.',
-//   lat: 37.42216,
-//   lng: -122.08427,
-// }
 
 class SingleCity extends Component {
+  constructor(props){
+    super();
+    this.onClick = this.onClick.bind(this)
+  }
+
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
   }
+
+  componentDidUpdate(prevprops){
+    if(prevprops.id != this.props.id){
+      console.log('UPDATE', this.props.id)
+      this.props.loadUser(this.props.id)
+    }
+  }
+
+  onClick(value){
+    console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
+    this.props.updateUser(this.props.singleCity[0].name, this.props.id)
+  }
+
   render() {
     const city = this.props.singleCity[0] || 0;
     const healthcare = city.healthcare || {};
     const livingCost = city.livingCost || {};
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
-    // const {lat, lng, name } = city;
     const location = {lat: city.lat, lng: city.lng, name: city.name}
-    //console.log(this.props, 'PROPS')
-
+    const id = this.props.id;
+    const {isLoggedIn} = this.props;
 
     return (
       <div className="container-fluid text-center">
+        {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
@@ -283,12 +297,17 @@ class SingleCity extends Component {
 const mapState = (state) => {
   return {
     singleCity: state.singleCity,
+    isLoggedIn: !!state.auth.id,
+    id: state.auth.id,
+    user: state.user
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     loadCity: (cityId) => dispatch(getCity(cityId)),
+    loadUser: (id) => dispatch(fetchSingleUser(id)),
+    updateUser: (cityName, id) => dispatch(updateUser(cityName, id))
   };
 };
 

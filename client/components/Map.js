@@ -19,8 +19,6 @@ const LocationPin = ({ text }) => (
   )
 
  function Map ({ location, zoomLevel }) {
-     console.log("location", location)
-     console.log("zoomLevel", zoomLevel)
     return (
      <div className="map">
         <h2 className="map-h2">Map</h2>
