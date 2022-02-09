@@ -9,7 +9,7 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
-import Main from './components/Chat/ChatPage'
+// import Main from './components/Chat/ChatPage'
 
 /**
  * COMPONENT

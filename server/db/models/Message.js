@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
-const Author = require('./author');
+const User = require('./User');
 
 module.exports = db.define('message', {
   content: {
@@ -10,7 +10,7 @@ module.exports = db.define('message', {
 }, {
   defaultScope: {
     include: [
-      { model: Author }
+      { model: User }
     ]
   }
 });

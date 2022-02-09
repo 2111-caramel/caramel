@@ -13,7 +13,7 @@ const Pollution = require("./models/Pollution");
 const Channel = require('./models/Channel')
 const Message = require("./models/Message")
 const { useReducer } = require("react");
-const { default: Message } = require("../../client/components/Chat/Message");
+//const { default: Message } = require("../../client/components/Chat/Message");
 
 //associations could go here!
 City.hasOne(PrimaryStats);
@@ -32,7 +32,7 @@ Weather.belongsTo(City);
 //Weather.belongsToMany(City, { through: City_Weather });
 User.hasMany(Message)
 Message.belongsTo(Channel)
-Message.belongsTo(Author)
+Message.belongsTo(User)
 Channel.hasMany(Message, {
   onDelete: 'cascade',
   hooks:true
