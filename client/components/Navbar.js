@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store";
 import AllCities from "./AllCities";
@@ -18,33 +19,58 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link-active" aria-current="page" href="/">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/"
+                    >
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/preferences"
+                    >
                       Take Survey
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link-active" aria-current="page" href="/compare">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/myInfo"
+                    >
                       Compare Cities
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link-active" aria-current="page"
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/"
+                      onClick={handleClick}
+                    >
+                      Logout
+                    </Link>
+                    {/* <a
+                      className="nav-link-active"
+                      aria-current="page"
                       href="#"
                       onClick={handleClick}
                     >
                       Logout
-                    </a>
+                    </a> */}
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link-active" aria-current="page" href="/myInfo">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/myInfo"
+                    >
                       My Info
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -75,37 +101,49 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#">
-                      Take Survey
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link-active" aria-current="page" href="/compare">
-                      Compare Cities
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link active"
+                    <Link
+                      className="nav-link-active"
                       aria-current="page"
-                      href="/login"
+                      to="/"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/preferences"
+                    >
+                      Take Survey
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/compare"
+                    >
+                      Compare Cities
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link-active"
+                      aria-current="page"
+                      to="/login"
                     >
                       Login
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link active"
+                    <Link
+                      className="nav-link-active"
                       aria-current="page"
-                      href="/signup"
+                      to="/signup"
                     >
-                      Signup
-                    </a>
+                      Sign Up
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <AllCities />
