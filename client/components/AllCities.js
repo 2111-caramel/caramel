@@ -11,7 +11,7 @@ export class AllCities extends React.Component {
   render() {
     return (
       <div>
-        <div className="dropdown">
+        <div className="dropdown select-city-form">
           <a
             className="btn btn-secondary dropdown-toggle"
             href="#"

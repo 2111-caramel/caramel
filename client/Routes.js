@@ -9,6 +9,7 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
+import FindUsers from "./components/FindUsers"
 
 /**
  * COMPONENT
@@ -36,6 +37,7 @@ class Routes extends Component {
             <Route exact path='/' component={ Home } />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/compare" component={CompareView} />

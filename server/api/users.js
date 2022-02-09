@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { models: { User, City }} = require('../db')
 module.exports = router
 
+// all routes mounted on /api/users
 
 //GET: all users api/users/
 router.get('/', async (req, res, next) => {
@@ -12,6 +13,21 @@ router.get('/', async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: ['id', 'username']
     })
+    res.json(users)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// find users by city name
+router.get('/:cityName', async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      where: {
+        currentCity: req.params.cityName
+      }
+    })
+    console.log("USERS FROM API:", users)
     res.json(users)
   } catch (err) {
     next(err)
