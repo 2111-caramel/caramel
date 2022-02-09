@@ -4,6 +4,7 @@ const db = require("./db");
 const User = require("./models/User");
 const Weather = require("./models/Weather");
 const City = require("./models/City");
+//const City_Weather = require("./models/City_Weather");
 const PrimaryStats = require("./models/PrimaryStats");
 const LivingCost = require("./models/LivingCost");
 const Healthcare = require("./models/Healthcare");
@@ -23,6 +24,8 @@ City.hasOne(Pollution);
 Pollution.belongsTo(City);
 City.hasOne(Weather);
 Weather.belongsTo(City);
+//City.belongsToMany(Weather, { through: City_Weather });
+//Weather.belongsToMany(City, { through: City_Weather });
 
 User.belongsToMany(City, { through: "Favourites" });
 City.belongsToMany(User, { through: "Favourites" });
@@ -38,5 +41,6 @@ module.exports = {
     Healthcare,
     Transportation,
     Pollution,
+    // City_Weather,
   },
 };
