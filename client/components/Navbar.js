@@ -6,7 +6,7 @@ import AllCities from "./AllCities";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>Urban Analysis</h1>
+    <center><h1>Toto</h1></center>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -54,14 +54,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     >
                       Logout
                     </Link>
-                    {/* <a
-                      className="nav-link-active"
-                      aria-current="page"
-                      href="#"
-                      onClick={handleClick}
-                    >
-                      Logout
-                    </a> */}
+        
                   </li>
                   <li className="nav-item">
                     <Link
@@ -71,6 +64,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     >
                       My Info
                     </Link>
+                  </li>
+                  <li className="nav-item">
+                    <AllCities />
                   </li>
                 </ul>
               </div>
