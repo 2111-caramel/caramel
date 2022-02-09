@@ -80,10 +80,12 @@ export class CompareView extends React.Component {
           <div className="col">
             <label htmlFor="select">Select City #1:</label>
             <select
+              className="form-select"
               name="select"
               value={value1}
               onChange={(e) => this.handleChange1(e)}
             >
+              <option>- SELECT CITY 1 -</option>
               {cities.map((city, index) => (
                 <option key={index} value={city.name}>
                   {city.name}
@@ -92,30 +94,37 @@ export class CompareView extends React.Component {
             </select>
           </div>
           <div className="col">
-            <label htmlFor="select">Select City #2:</label>
-            <select
-              name="select"
-              value={value2}
-              onChange={(e) => {
-                this.handleChange2(e);
-              }}
-            >
-              {cities.map((city, index) => (
-                <option key={index} value={city.name}>
-                  {city.name}
-                </option>
-              ))}
-            </select>
+            <form>
+              <label htmlFor="select">Select City #2:</label>
+              <select
+                className="form-select"
+                name="select"
+                value={value2}
+                onChange={(e) => {
+                  this.handleChange2(e);
+                }}
+              >
+                <option>- SELECT CITY 2 -</option>
+                {cities.map((city, index) => (
+                  <option key={index} value={city.name}>
+                    {city.name}
+                  </option>
+                ))}
+              </select>
+            </form>
           </div>
           <div className="col">
             <label htmlFor="select">Select City #3:</label>
+
             <select
+              className="form-select"
               name="select"
               value={value3}
               onChange={(e) => {
                 this.handleChange3(e);
               }}
             >
+              <option>- SELECT CITY 3 -</option>
               {cities.map((city, index) => (
                 <option key={index} value={city.name}>
                   {city.name}
