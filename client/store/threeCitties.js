@@ -14,11 +14,17 @@ export const fetchThreeCities = (selection) => {
   console.log("THUNK BEFORE---->>>", selection);
   return async (dispatch) => {
     try {
-      const { data: threeCities } = await axios.get(
-        `/api/cities/preferences/${selection}`
-      );
-      console.log("THUNK AFTER--->>>", threeCities);
-      dispatch(getThreeCities(threeCities));
+      //for loop here over the state values
+      const cityArray = [];
+
+      for(let i = 0; i < selection.length; i++){
+        const { data } = await axios.get(`/api/cities/preferences/${selection[i]}`)
+        cityArray.push(data)
+      }
+      console.log('CITYARRAY', cityArray)
+
+
+      //dispatch(getThreeCities(threeCities));
     } catch (err) {
       console.log(err);
     }

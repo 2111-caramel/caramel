@@ -100,7 +100,7 @@ router.get("/preferences/:model", async (req, res, next) => {
       where: modelWhere,
       attributes: modelAttr,
       order: modelOrder,
-      limit: 3,
+      limit: 10,
       include: [{ model: City }],
       //   include: [
       //     { model: PrimaryStats },

@@ -6,37 +6,70 @@ import GaugeChart from "react-gauge-chart";
 class UserPrefForm extends React.Component {
   constructor() {
     super();
-    this.state = { value: "" };
+    this.state = { values: [] };
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.value !== this.state.value) {
-      this.props.match.params.model = this.state.value;
-      this.props.history.push(`/preferences/${this.state.value}`);
-      console.log("PARAMS HERE---->", this.props.match.params);
-      this.props.gettingThreeCities(this.state.value);
-      this.props.loadCities;
-      // console.log("Params ID---->>>", this.props.match.params);
-    }
-  }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-  handleChange(e) {
+  }
+  // componentDidMount() {}
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.value !== this.state.value) {
+  //     this.props.match.params.model = this.state.value;
+  //     this.props.history.push(`/preferences/${this.state.value}`);
+  //     console.log("PARAMS HERE---->", this.props.match.params);
+  //     this.props.gettingThreeCities(this.state.value);
+  //     this.props.loadCities;
+  //     // console.log("Params ID---->>>", this.props.match.params);
+  //   }
+  // }
+
+  handleClick(e) {
     this.setState({
-      value: e.target.value,
+      values: [...this.state.values, e.target.value],
     });
   }
 
+  handleSubmit(event) {
+    //how to call as many times as buttons selected?
+    //send over all values array
+    console.log('hi')
+    event.preventDefault()
+    this.props.gettingThreeCities(this.state.values);
+
+
+  }
+
+
   render() {
-    console.log("IN RENDER COMP--->>", this.props.loadCities);
+    console.log("this.state", this.state.values);
     return (
       <div className="container-fluid justify-content-center">
         <h1>What is most important to you in a city?</h1>
         <form className="row justify-content-center mb-3">
           <h3>Primary Choices</h3>
+          <div>
+            <button type="button" value="rent"onClick={this.handleClick}>Low Rent</button>
+          </div>
+          <div>
+            <button type="button" value="Healthcare"onClick={this.handleClick}>Quality Healthcare</button>
+          </div>
+          <div>
+            <button type="button" value="Pollution"onClick={this.handleClick}>Low Pollution</button>
+          </div>
+          <div>
+            <button type="button" value="Transportation"onClick={this.handleClick}>Good Public Transportation</button>
+          </div>
+          <div>
+            <button type="button" value="LivingCost" onClick={this.handleClick}>Low Daycare Cost</button>
+          </div>
+          <div>
+            <button type="button" onClick={this.handleSubmit}>Submit</button>
+          </div>
+          </form>
 
-          <select value={this.state.value} onChange={this.handleChange}>
+
+          {/* <select value={this.state.value} onChange={this.handleChange}>
             <option>- Select -</option>
             <option value="Healthcare">Quality Healthcare</option>
             <option value="Pollution">Low Pollution</option>
@@ -46,7 +79,7 @@ class UserPrefForm extends React.Component {
             <option value="LivingCost">Lowest daycare cost</option>
             {/* <option value="Weather-warm">Warm Weather year round</option>
             <option value="Weather-snow">Snowy Winter Weather</option> */}
-          </select>
+          {/* </select>
         </form>
 
         <div>
@@ -80,17 +113,15 @@ class UserPrefForm extends React.Component {
                 </div>
               </div>
             );
-          })}
-        </div>
+          })} */}
       </div>
     );
   }
 }
 
 const mapState = (state) => {
-  console.log("IN MY MAP STATE____>", state);
   return {
-    loadCities: state.threeCities,
+    //loadCities: state.threeCities,
   };
 };
 
