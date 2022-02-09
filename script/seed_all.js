@@ -13,6 +13,7 @@ const {
     Transportation,
     Pollution,
     Weather,
+    // City_Weather,
   },
 } = require("../server/db");
 const { newCitiesObj } = require("./cityObjs");
@@ -124,6 +125,9 @@ const seed = async () => {
         bus: eachCityTransitStats.primary_means_percentage_map[
           "Bus/Trolleybus"
         ],
+        trainAndBus:
+          eachCityTransitStats.primary_means_percentage_map["Train/Metro"] +
+          eachCityTransitStats.primary_means_percentage_map["Bus/Trolleybus"],
         motorbike:
           eachCityTransitStats.primary_means_percentage_map["Motorbike"],
       });
@@ -190,10 +194,11 @@ const seed = async () => {
 
       console.log("COUNT----->>", counterWeather);
 
-      console.log("Each City--------->>>>", eachCityWeatherStats);
+      // console.log("Each City--------->>>>", eachCityWeatherStats);
       if (eachCityWeatherStats.data.error) {
         break;
       }
+
       eachCityWeatherStats.data.ClimateAverages[0].month.map(
         async (eachMonth) => {
           await Weather.create({
@@ -203,16 +208,38 @@ const seed = async () => {
             avgMaxTemp: eachMonth.absMaxTemp_F,
             avgDailyRainfall: eachMonth.avgDailyRainfall,
           });
+
+          // City_Weather.create({
+          //   cityId: counterWeather + 1,
+          //   weatherId: idx + 1,
+          // });
         }
       );
 
       counterWeather++;
     }
+    ///---------------CITY WEATHER--------------TO POSSIBLY ADD LATER----------///
+    // const urlsWeather = async (partialCitySlug) => {
+    //   const { data: cityWeather } = await axios.get(
+    //     `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=${partialCitySlug}&fx=no&cc=no&mca=yes&format=json`
+    //   );
+    //   return cityWeather;
+    // };
+
+    // let citySlugsWeather = [];
+    // cityNameFormats.newCitiesObj.forEach((cityObj) => {
+    //   let regex = /^(\w+)( \w+)*$/;
+    //   if (regex.test(cityObj.name)) {
+    //     let buildPartialSlug = cityObj.name.split(" ").join("+");
+    //     citySlugsWeather.push(buildPartialSlug);
+    //   } else {
+    //     citySlugsWeather.push(cityObj.name);
+    //   }
+    // });
   } catch (err) {
     console.log(err);
   }
 };
-
 
 /*
  We've separated the `seed` function from the `runSeed` function.

@@ -42,35 +42,35 @@ class CompareCity extends Component {
         </div>
 
         <div className="row justify-content-center compare-city-content mb-2">
-            <h3>Healthcare</h3>
-            <GaugeChart
-              id="healthIndex"
-              arcsLength={[0.33, 0.33, 0.33]}
-              colors={["red", "yellow", "green"]}
-              percent={city.healthcare.index / 100}
-              arcPadding={0.02}
-              textColor="#000000"
-              needleColor={"#BFB0BF"}
-              needleBaseColor={"#BFB0BF"}
-              style={{ width: "200px" }}
-            />
-            <h6>Overall Healthcare Rating</h6>
+          <h3>Healthcare</h3>
+          <GaugeChart
+            id="healthIndex"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
+            percent={city.healthcare.index / 100}
+            arcPadding={0.02}
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
+            style={{ width: "200px" }}
+          />
+          <h6>Overall Healthcare Rating</h6>
         </div>
 
         <div className="row justify-content-center compare-city-content mb-2">
-            <h3>Environment</h3>
-            <GaugeChart
-              id="healthIndex"
-              arcsLength={[0.33, 0.33, 0.33]}
-              colors={["green", "yellow", "red"]}
-              percent={city.pollution.indexPollution / 100}
-              arcPadding={0.02}
-              textColor="#000000"
-              needleColor={"#BFB0BF"}
-              needleBaseColor={"#BFB0BF"}
-              style={{ width: "200px" }}
-            />
-            <h6>Overall Pollution Level</h6>
+          <h3>Environment</h3>
+          <GaugeChart
+            id="healthIndex"
+            arcsLength={[0.33, 0.33, 0.33]}
+            colors={["green", "yellow", "red"]}
+            percent={city.pollution.indexPollution / 100}
+            arcPadding={0.02}
+            textColor="#000000"
+            needleColor={"#BFB0BF"}
+            needleBaseColor={"#BFB0BF"}
+            style={{ width: "200px" }}
+          />
+          <h6>Overall Pollution Level</h6>
         </div>
 
         <div className="row justify-content-center compare-city-content mb-2">

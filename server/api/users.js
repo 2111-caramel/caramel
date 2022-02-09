@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User }} = require('../db')
+const { models: { User, City }} = require('../db')
 module.exports = router
 
 
@@ -18,10 +18,17 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//GET: single user  api/users/:userId
+//GET: single user && favorite city if any  api/users/:userId
 router.get('/:userId', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId)
+    const user = await User.findOne({
+      where: {
+        id: req.params.userId
+      },
+      include: {
+        model: City
+      }
+      })
     if (!user){
       res.status(404).send("Sorry this user does not exist!")
     } else {
@@ -43,3 +50,17 @@ router.put('/:userId', async (req, res, next) => {
     next(error);
   }
 });
+
+//Add a new favorite city to a user to api/users/
+router.post('/:userId', async(req, res, next) => {
+  try {
+    console.log(req.body)
+    const { cityId } = req.body;
+    const user = await User.findByPk(req.params.userId)
+    const city = await City.findByPk(cityId)
+    user.addCity(city)
+    res.status(201).send(user)
+  } catch (error){
+    next(error)
+  }
+})

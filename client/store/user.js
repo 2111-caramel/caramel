@@ -46,6 +46,18 @@ export const updateUser = (city, userId) => {
   }
 }
 
+export const favoriteCity = (cityId, userId) => {
+  return async (dispatch) => {
+    try{
+      const {data: updatedUser} = await axios.post(`/api/users/${userId}`, {cityId})
+      dispatch(_updateUser(updatedUser))
+    }
+    catch (err) {
+      console.log('updateUser thunk error!', err)
+    }
+  }
+}
+
 //reducers
 const initialState = {}
 
