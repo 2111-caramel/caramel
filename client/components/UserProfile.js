@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import AllCities from "./AllCities";
 import { Link } from "react-router-dom";
@@ -16,13 +16,15 @@ class UserProfile extends Component {
     const cities = user.cities || [];
     return (
       <div className="user">
-        <p>User Profile Page</p>
+        <p>User Information</p>
         <p>Username: {user.username}</p>
         <p>Favorite Cities:</p>
-        {cities.map((city, index)=> {
-          return(
-          <div key={index}>{city.name}</div>
-          )
+        {cities.map((city, index) => {
+          return (
+            <div key={index}>
+              <a href={`/cities/${city.id}`}>{city.name}</a>
+            </div>
+          );
         })}
       </div>
     );
@@ -36,15 +38,14 @@ const mapState = (state) => {
   return {
     username: state.auth.username,
     id: state.auth.id,
-    user: state.user
-
+    user: state.user,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    loadUser: (userId) => dispatch(fetchSingleUser(userId))
-    };
+    loadUser: (userId) => dispatch(fetchSingleUser(userId)),
+  };
 };
 
 export default connect(mapState, mapDispatch)(UserProfile);

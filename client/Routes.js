@@ -28,6 +28,8 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
+            <Route exact path="/preferences" component={UserPrefForm} />
+            <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/cities/:cityId" component={SingleCity} />
           </Switch>
         ) : (

@@ -51,7 +51,6 @@ class SingleCity extends Component {
 
     return (
       <div className="container-fluid text-center">
-        {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
@@ -61,8 +60,8 @@ class SingleCity extends Component {
           <div className="col-2"></div>
           <div className="col-4"><Map location={location} zoomLevel={12} /></div>
           <div className="col-4">{city.info}</div>
-
           <div className="col-2"></div>
+          {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
         <div className="row">
