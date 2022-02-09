@@ -9,6 +9,7 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
+import Main from './components/Chat/ChatPage'
 
 /**
  * COMPONENT
@@ -29,6 +30,7 @@ class Routes extends Component {
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
             <Route exact path="/cities/:cityId" component={SingleCity} />
+            {/* <Route exact path = "/channels" component = {Main} /> */}
           </Switch>
         ) : (
           <Switch>
@@ -60,6 +62,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    loadMessages: () => dispatch(fetchMessages()),
     loadInitialData() {
       dispatch(me());
     },

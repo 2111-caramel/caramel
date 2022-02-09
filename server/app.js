@@ -2,7 +2,17 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+const io = require('socket.io')(server);
+
 module.exports = app
+
+//handle sockets
+// handle sockets
+require('./socket')(io);
+
+// require shh
+if (process.env.NODE_ENV !== "production") require("../.shh");
+const JWT = process.env.JWT;
 
 // logging middleware
 app.use(morgan('dev'))
