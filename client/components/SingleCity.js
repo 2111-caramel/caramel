@@ -51,10 +51,10 @@ class SingleCity extends Component {
 
     return (
       <div className="container-fluid text-center">
-        {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
+          {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
         <div className="row justify-content-center mb-4">
