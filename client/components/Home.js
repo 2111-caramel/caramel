@@ -30,7 +30,6 @@ export const Home = (props) => {
               Take A Survey
             </button>
           </Link>
-          {/* <a className="btn btn-primary" href="/preferences" role="button">Take A Survey</a> */}
         </div>
       </div>
     </div>

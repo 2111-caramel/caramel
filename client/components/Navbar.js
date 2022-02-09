@@ -81,9 +81,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <a className="navbar-brand" href="#">
-                Navbar
-              </a>
               <button
                 className="navbar-toggler"
                 type="button"
