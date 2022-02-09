@@ -1,6 +1,6 @@
 "use strict";
 const axios = require("axios");
-const secretKeys = require("./apiKey");
+const secretKeys = require("../config/secrets");
 const cityNameFormats = require("./cityObjs");
 const {
   db,
@@ -36,7 +36,7 @@ const seed = async () => {
     //Helper function for replacing city names in url slugs for city prices
     const urlsPrice = async (partialCitySlug) => {
       const { data: cityName } = await axios.get(
-        `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+        `http://www.numbeo.com:8008/api/city_prices?api_key=${secretKeys.numbeoSecret}&city=${partialCitySlug}&country=United%20States`
       );
       return cityName;
     };
@@ -76,7 +76,7 @@ const seed = async () => {
     //Helper function for replacing city names in url slugs for city prices
     const urlsHealth = async (partialCitySlug) => {
       const { data: cityHealth } = await axios.get(
-        `http://www.numbeo.com:8008/api/city_healthcare?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+        `http://www.numbeo.com:8008/api/city_healthcare?api_key=${secretKeys.numbeoSecret}&city=${partialCitySlug}&country=United%20States`
       );
       return cityHealth;
     };
@@ -99,7 +99,7 @@ const seed = async () => {
     //Helper function for replacing city names in url slugs for city traffic
     const urlsTransit = async (partialCitySlug) => {
       const { data: cityTransit } = await axios.get(
-        `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+        `http://www.numbeo.com:8008/api/city_traffic?api_key=${secretKeys.numbeoSecret}&city=${partialCitySlug}&country=United%20States`
       );
       return cityTransit;
     };
@@ -134,7 +134,7 @@ const seed = async () => {
     //Helper function for replacing city names in url slugs for city pollution
     const urlsPollution = async (partialCitySlug) => {
       const { data: cityPollution } = await axios.get(
-        `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.SECRET_NUMBEO_KEY}&city=${partialCitySlug}&country=United%20States`
+        `http://www.numbeo.com:8008/api/city_pollution?api_key=${secretKeys.numbeoSecret}&city=${partialCitySlug}&country=United%20States`
       );
       return cityPollution;
     };
@@ -163,7 +163,7 @@ const seed = async () => {
     //Helper function for replacing city names in url slugs for city weather
     const urlsWeather = async (partialCitySlug) => {
       const { data: cityWeather } = await axios.get(
-        `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.SECRET_WEATHER_KEY}&q=${partialCitySlug}&fx=no&cc=no&mca=yes&format=json`
+        `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${secretKeys.weatherSecret}&q=${partialCitySlug}&fx=no&cc=no&mca=yes&format=json`
       );
       return cityWeather;
     };

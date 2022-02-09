@@ -2,7 +2,8 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import { Icon } from '@iconify/react'
 import locationIcon from '@iconify/icons-mdi/map-marker'
-import { SECRET_GOOGLEMAPS_KEY } from '../../script/apiKey'
+// import {googleSecret} from '../../config/secrets'
+
 //import '../../public/map.css'
 
 // const location = {
@@ -23,7 +24,7 @@ const LocationPin = ({ text }) => (
      <div className="container map google-map" style={{height: '30vh', width: '100%'}}>
         
             <GoogleMapReact
-            bootstrapURLKeys={{ key: SECRET_GOOGLEMAPS_KEY }}
+            bootstrapURLKeys={{ key: process.env.SECRET_GOOGLEMAPS_KEY }}
             center={location}
             defaultZoom={zoomLevel}
             >
