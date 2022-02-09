@@ -25,22 +25,21 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
-            <Route exact path="/singleCity" component={SingleCity} />
-            <Route path="/:cityId" component={SingleCity} />
+            <Route exact path="/cities/:cityId" component={SingleCity} />
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+
+            <Route exact path='/' component={ Home } />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
-            <Route path="/singleCity" component={SingleCity} />
             <Route exact path="/compare" component={CompareView} />
-            <Route path="/:cityId" component={SingleCity} />
+            <Route exact path="/cities/:cityId" component={SingleCity} />
           </Switch>
         )}
       </div>

@@ -8,7 +8,7 @@ import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
 import Map from './Map.js'
-import { fetchSingleUser, updateUser } from '../store/user'
+import { favoriteCity, fetchSingleUser, updateUser } from '../store/user'
 
 
 class SingleCity extends Component {
@@ -29,9 +29,9 @@ class SingleCity extends Component {
     }
   }
 
-  onClick(value){
-    console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
-    this.props.updateUser(this.props.singleCity[0].name, this.props.id)
+  onClick(){
+    //console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
+    this.props.favorite(this.props.singleCity.id, this.props.id)
   }
 
   render() {
@@ -344,6 +344,7 @@ const mapDispatch = (dispatch) => {
     loadUser: (id) => dispatch(fetchSingleUser(id)),
     updateUser: (cityName, id) => dispatch(updateUser(cityName, id)),
     getCityWeather: (cityId) => dispatch(getCityWeather(cityId)),
+    favorite: (cityId, userId) => dispatch(favoriteCity(cityId, userId)),
   };
 };
 

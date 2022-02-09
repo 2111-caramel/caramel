@@ -27,6 +27,9 @@ Weather.belongsTo(City);
 //City.belongsToMany(Weather, { through: City_Weather });
 //Weather.belongsToMany(City, { through: City_Weather });
 
+User.belongsToMany(City, { through: "Favourites" });
+City.belongsToMany(User, { through: "Favourites" });
+
 module.exports = {
   db,
   models: {
