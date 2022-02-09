@@ -225,7 +225,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3">
 
                     <Weather_Chart weather={weather}/>
@@ -239,7 +239,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3 align-items-center">
                   <Pollution_Chart pollution={pollution} />
                 </div>
@@ -313,8 +313,8 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
               </div>
-              <div class="col-1"></div>
-              <div class="col-5">
+              <div className="col-1"></div>
+              <div className="col-5">
                 <b>Primary Means of Transportation:</b>
                 <Transportation_Chart transportation={transportation} />
               </div>
