@@ -47,9 +47,8 @@ class UserPrefForm extends React.Component {
       <div className="container-fluid justify-content-center">
         <h1>What is most important to you in a city?</h1>
         <form className="row justify-content-center mb-3">
-          <h3>Primary Choices</h3>
           <div>
-            <button type="button" value="rent"onClick={this.handleClick}>Low Rent</button>
+            <button type="button" value="primaryStats"onClick={this.handleClick}>Low Rent</button>
           </div>
           <div>
             <button type="button" value="Healthcare"onClick={this.handleClick}>Quality Healthcare</button>
@@ -69,26 +68,13 @@ class UserPrefForm extends React.Component {
           </form>
 
 
-          {/* <select value={this.state.value} onChange={this.handleChange}>
-            <option>- Select -</option>
-            <option value="Healthcare">Quality Healthcare</option>
-            <option value="Pollution">Low Pollution</option>
-            <option value="Transportation">
-              High Public Transportation (Train & Bus)
-            </option>
-            <option value="LivingCost">Lowest daycare cost</option>
-            {/* <option value="Weather-warm">Warm Weather year round</option>
-            <option value="Weather-snow">Snowy Winter Weather</option> */}
-          {/* </select>
-        </form>
-
         <div>
           {this.props.loadCities.map((city, idx) => {
             return (
-              <div className="row">
+              <div className="row" key={idx}>
                 <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
                 <div className="col">
-                  <GaugeChart
+                  {/* <GaugeChart
                     id="healthIndex"
                     arcsLength={[0.33, 0.33, 0.33]}
                     colors={["red", "yellow", "green"]}
@@ -109,11 +95,12 @@ class UserPrefForm extends React.Component {
                     needleBaseColor={"#BFB0BF"}
                     style={{ width: "200px" }}
                   />
-                  <h6>Overall {this.state.value} Rating</h6>
+                  <h6>Overall {this.state.value} Rating</h6> */}
                 </div>
               </div>
             );
-          })} */}
+          })}
+      </div>
       </div>
     );
   }
@@ -121,12 +108,12 @@ class UserPrefForm extends React.Component {
 
 const mapState = (state) => {
   return {
-    //loadCities: state.threeCities,
+    loadCities: state.threeCities,
   };
 };
 
 const mapDispatch = (dispatch) => {
-  //console.log("in map dispatch------>", dispatch(fetchThreeCities()));
+
   return {
     gettingThreeCities: (selection) => dispatch(fetchThreeCities(selection)),
   };
