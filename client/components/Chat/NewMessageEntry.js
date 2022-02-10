@@ -1,5 +1,5 @@
 // import React, { Component } from 'react';
-// import { postMessage as postMessage } from '../store'
+// import { postMessage as postMessage } from '../../store/chat'
 // import { connect } from 'react-redux'
 
 // export class NewMessageEntry extends Component {
@@ -49,8 +49,8 @@
 //   }
 // }
 
-const mapDispatch = dispatch => ({
-  post: message => dispatch(postMessage(message))
-})
+// const mapDispatch = dispatch => ({
+//   post: message => dispatch(postMessage(message))
+// })
 
-export default connect(null, mapDispatch)(NewMessageEntry)
+// export default connect(null, mapDispatch)(NewMessageEntry)

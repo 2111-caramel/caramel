@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Channel, Message } = require('../db/models');
+const Message = require('../db/models/Message');
+const Channel= require('../db/models/Channel');
 
 module.exports = router;
 

@@ -2,13 +2,15 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-const io = require('socket.io')(server);
+//const init = require('./index')
 
-module.exports = app
+//const io = require('socket.io')(serverInit);
 
 //handle sockets
 // handle sockets
-require('./socket')(io);
+//require('./socket')(io);
+
+module.exports = app
 
 // require shh
 if (process.env.NODE_ENV !== "production") require("../.shh");

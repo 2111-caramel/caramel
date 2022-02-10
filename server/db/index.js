@@ -15,7 +15,7 @@ const Message = require("./models/Message")
 const { useReducer } = require("react");
 //const { default: Message } = require("../../client/components/Chat/Message");
 
-//associations could go here!
+//City data associations
 City.hasOne(PrimaryStats);
 PrimaryStats.belongsTo(City);
 City.hasOne(LivingCost);
@@ -30,15 +30,17 @@ City.hasOne(Weather);
 Weather.belongsTo(City);
 //City.belongsToMany(Weather, { through: City_Weather });
 //Weather.belongsToMany(City, { through: City_Weather });
-User.hasMany(Message)
-Message.belongsTo(Channel)
-Message.belongsTo(User)
+
+//chat associations
 Channel.hasMany(Message, {
   onDelete: 'cascade',
   hooks:true
 })
+User.hasMany(Message)
+Message.belongsTo(Channel)
+Message.belongsTo(User)
 
-
+//Favorite associations 
 User.belongsToMany(City, { through: "Favourites" });
 City.belongsToMany(User, { through: "Favourites" });
 

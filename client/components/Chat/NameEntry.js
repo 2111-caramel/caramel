@@ -1,6 +1,6 @@
 // import React from 'react'
 // import { connect } from 'react-redux'
-// import { userSet } from '../store'
+// import { userSet } from '../../store/chat'
 
 // export class NameEntry extends React.Component {
 //     constructor() {

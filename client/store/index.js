@@ -19,7 +19,7 @@ const reducer = combineReducers({
   compareCity: compareCityReducer,
   user: userReducer,
   weather,
-  chat: chatReducer,
+  messages: chatReducer,
 });
 
 const middleware = composeWithDevTools(

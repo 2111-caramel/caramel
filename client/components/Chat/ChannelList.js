@@ -11,6 +11,7 @@
 
 // export class ChannelList extends Component {
 //     render() {
+//         console.log("ChannelList props", this.props)
 //         const filterMessageChannel = id =>
 //             this.props.messages.filter(m => m.channelId === id)
 //         const randomMessages = filterMessageChannel(1)
