@@ -13,7 +13,7 @@ export class AllCities extends React.Component {
       <div>
         <div className="dropdown select-city-form">
           <a
-            className="btn btn-secondary dropdown-toggle"
+            className="btn btn-primary btn-sm dropdown-toggle"
             href="#"
             role="button"
             id="dropdownMenuLink"
