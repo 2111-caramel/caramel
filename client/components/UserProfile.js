@@ -12,11 +12,11 @@ class UserProfile extends Component {
     this.props.loadUser(this.props.id);
   }
   render() {
-    console.log("*** THIS.PROPS IN PROFILE: ", this.props)
     const user = this.props.user;
     const cities = user.cities || [];
     return (
-      <div className="user">
+      <div className="container user">
+        <div className="row mt-3">
         <p>{user.username}'s Profile Page</p>
         <p>Username: {user.username}</p>
         <p>Current City: {user.currentCity}</p>
@@ -27,6 +27,7 @@ class UserProfile extends Component {
           <div key={index}>{city.name}</div>
           )
         })}
+        </div>
       </div>
     );
   }

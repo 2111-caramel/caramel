@@ -45,7 +45,8 @@ export const authenticateNewUser = (username, password, currentCity, interests, 
     const res = await axios.post(`/auth/${method}`, {username, password, currentCity, interests })
     window.localStorage.setItem(TOKEN, res.data.token)
     dispatch(me())
-    history.push('/')
+    console.log("HISTORY", history)
+    history.push('/myInfo')
   } catch (authError) {
     return dispatch(setAuth({error: authError}))
   }
