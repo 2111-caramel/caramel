@@ -1,71 +1,113 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import React from "react";
+import { connect } from "react-redux";
+import { authenticateNewUser } from "../store";
+import { fetchCities } from "../store/cities";
 
 /**
  * COMPONENT
  */
-const SignUpForm = props => {
-  const {name, displayName, handleSubmit, error} = props
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="username">
-            <small>Username</small>
-          </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-    </div>
-  )
-}
+let currentCityValue = ""
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
-const mapLogin = state => {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.auth.error
+export class SignUpForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentCity: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(evt) {
+    currentCityValue=evt.target.value
+    // this.setState({currentCity: evt.target.value})
+    // console.log('THIS.STATE: ', this.state)
+  }
+  
+  componentDidMount() {
+    this.props.getCities();
+  }
+
+  render() {
+    const { name, displayName, handleSubmit, error } = this.props;
+    return (
+      <div className="container">
+        <form onSubmit={handleSubmit} name={name}>
+          <div className="row mt-3" style={{ width: "200px" }}>
+            <label htmlFor="username" className="form-label">
+              <small>Username</small>
+            </label>
+            <input className="form-control" name="username" type="text" />
+          </div>
+          <div className="row" style={{ width: "200px" }}>
+            <label htmlFor="password" className="form-label">
+              <small>Password</small>
+            </label>
+            <input className="form-control" name="password" type="password" />
+          </div>
+
+          <div className="row" style={{ width: "200px" }}>
+            <label htmlFor="currentCity" className="form-label">
+              <small>Current City</small>
+            </label>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              style={{ width: "200px", margin: "10px" }}
+              onChange={this.handleChange}
+            >
+              <option selected>Select City</option>
+              {this.props.cities.map((city) => {
+                return (
+                  <option key={city.id} value={city.name}>
+                    {city.name}, {city.state}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="row" style={{ width: "500px" }}>
+            <label htmlFor="interests" className="form-label">
+              <small>Interests</small>
+            </label>
+            <input className="form-control" name="interests" type="text" />
+          </div>
+          <div>
+            <button className="btn btn-primary btn-sm" type="submit">{displayName}</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
+    );
   }
 }
 
-const mapSignup = state => {
+const mapSignup = (state) => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.auth.error
-  }
-}
+    name: "signup",
+    displayName: "Sign Up",
+    error: state.auth.error,
+    cities: state.cities,
+  };
+};
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
+    getCities: () => dispatch(fetchCities()),
     handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const username = evt.target.username.value
-      const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
-    }
-  }
-}
+      console.log("***EVT.TARGET", evt.target)
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const username = evt.target.username.value;
+      const password = evt.target.password.value;
+      const currentCity = currentCityValue
+      const interests = evt.target.interests.value;
+      dispatch(
+        authenticateNewUser(username, password, currentCity, interests, formName)
+      );
+    },
+  };
+};
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export default connect(mapSignup, mapDispatch)(SignUpForm);

@@ -21,23 +21,8 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// get public profile of selected user in find users component
-router.get("/public/:userId", async (req, res, next) => {
-  try {
-    const user = await User.findOne({
-      where: {
-        id: req.params.userId,
-      },
-      attributes: ["username", "interests", "currentCity"],
-    });
-    res.json(user);
-  } catch (err) {
-    next(err);
-  }
-});
-
 // find users by city name
-router.get("/:cityName", async (req, res, next) => {
+router.get("/cityusers/:cityName", async (req, res, next) => {
   try {
     const users = await User.findAll({
       where: {
@@ -54,6 +39,7 @@ router.get("/:cityName", async (req, res, next) => {
 //GET: single user && favorite city if any  api/users/:userId
 router.get("/:userId", async (req, res, next) => {
   try {
+    console.log("HITTING GET SINGLE USER API ROUTE")
     const user = await User.findOne({
       where: {
         id: req.params.userId,
@@ -73,6 +59,23 @@ router.get("/:userId", async (req, res, next) => {
     next(err);
   }
 });
+
+// get public profile of selected user in find users component
+router.get("/public/:userId", async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.params.userId,
+      },
+      attributes: ["username", "interests", "currentCity"],
+    });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 //Update a user to api/users/:userId
 router.put("/:userId", async (req, res, next) => {

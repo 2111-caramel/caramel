@@ -6,7 +6,7 @@ import AllCities from "./AllCities";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>Urban Analysis</h1>
+    <h1 style={{fontFamily: "Leckerli One"}}>Toto</h1>
     <nav>
       {isLoggedIn ? (
         <div>

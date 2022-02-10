@@ -13,10 +13,8 @@ export const getUsersByCity = (users) => ({
 export const fetchUsersByCity = (cityName) => {
   return async (dispatch) => {
     try {
-        console.log("HITTING FETCH USERS BY CITY THUNK")
-      const { data: users } = await axios.get(`/api/users/${cityName}`)
+      const { data: users } = await axios.get(`/api/users/cityusers/${cityName}`)
       dispatch(getUsersByCity(users))
-      console.log("DATA FROM USERS BY CITY THUNK: ", users)
     } catch (error) {
       console.log('GET USERS BY CITY THUNK ERROR')
     }
