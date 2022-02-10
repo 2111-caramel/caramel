@@ -2,15 +2,6 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import { Icon } from '@iconify/react'
 import locationIcon from '@iconify/icons-mdi/map-marker'
-// import {googleSecret} from '../../config/secrets'
-
-//import '../../public/map.css'
-
-// const location = {
-//     address: '1600 Amphitheatre Parkway, Mountain View, california.',
-//     lat: 37.42216,
-//     lng: -122.08427,
-//   }
 
 const LocationPin = ({ text }) => (
     <div className="pin">
@@ -22,7 +13,7 @@ const LocationPin = ({ text }) => (
  function Map ({ location, zoomLevel }) {
     return (
      <div className="container map google-map" style={{height: '30vh', width: '100%'}}>
-        
+
             <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.SECRET_GOOGLEMAPS_KEY }}
             center={location}

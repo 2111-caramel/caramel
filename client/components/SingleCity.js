@@ -12,7 +12,7 @@ import { favoriteCity, fetchSingleUser, updateUser } from '../store/user'
 
 
 class SingleCity extends Component {
-  constructor(props){
+  constructor(){
     super();
     this.onClick = this.onClick.bind(this)
   }
@@ -24,13 +24,11 @@ class SingleCity extends Component {
 
   componentDidUpdate(prevprops){
     if(prevprops.id != this.props.id){
-      console.log('UPDATE', this.props.id)
       this.props.loadUser(this.props.id)
     }
   }
 
   onClick(){
-    //console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
     this.props.favorite(this.props.singleCity.id, this.props.id)
   }
 
@@ -43,8 +41,6 @@ class SingleCity extends Component {
     const pollution = city.pollution || {};
     const weather = this.props.cityWeather || {}
 
-    console.log("HEALTHCARE PROPS IN SINGLE CITY", healthcare);
-    // const {lat, lng, name } = city;
     const location = {lat: city.lat, lng: city.lng, name: city.name}
     const id = this.props.id;
     const {isLoggedIn} = this.props;

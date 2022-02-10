@@ -24,9 +24,11 @@ class UserPrefForm extends React.Component {
   // }
 
   handleClick(e) {
-    this.setState({
-      values: [...this.state.values, e.target.value],
-    });
+    if(!this.state.values.includes(e.target.value)){
+      this.setState({
+        values: [...this.state.values, e.target.value],
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -35,27 +37,26 @@ class UserPrefForm extends React.Component {
   }
 
   render() {
-    console.log("this.state", this.state.values);
     return (
       <div className="container-fluid justify-content-center">
         <h1>What is most important to you in a city?</h1>
         <form className="row justify-content-center mb-3">
           <div>
-            <button
+            <button className="btn btn-outline-secondary"
               type="button"
               value="primaryStats"
-              onClick={this.handleClick}
+              onClick={this.handleClick} data-toggle="button" aria-pressed="true" autoComplete="off"
             >
               Low Rent
             </button>
           </div>
           <div>
-            <button type="button" value="Healthcare" onClick={this.handleClick}>
+            <button type="button" value="Healthcare" onClick={this.handleClick} className="btn btn-outline-secondary">
               Quality Healthcare
             </button>
           </div>
           <div>
-            <button type="button" value="Pollution" onClick={this.handleClick}>
+            <button type="button" value="Pollution" onClick={this.handleClick} className="btn btn-outline-secondary">
               Low Pollution
             </button>
           </div>
@@ -63,13 +64,13 @@ class UserPrefForm extends React.Component {
             <button
               type="button"
               value="Transportation"
-              onClick={this.handleClick}
+              onClick={this.handleClick} className="btn btn-outline-secondary"
             >
               Good Public Transportation
             </button>
           </div>
           <div>
-            <button type="button" value="LivingCost" onClick={this.handleClick}>
+            <button type="button" value="LivingCost" onClick={this.handleClick} className="btn btn-outline-secondary">
               Low Daycare Cost
             </button>
           </div>
