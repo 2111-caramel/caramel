@@ -26,7 +26,6 @@ handleSubmit(evt){
 }
 
   componentDidMount() {
-    console.log('hello')
     this.props.loadMessages();
   }
 

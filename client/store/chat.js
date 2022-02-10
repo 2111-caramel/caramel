@@ -30,7 +30,6 @@ export const fetchMessages = () => async dispatch => {
 }
 
 export const postMessage = message => async (dispatch, getState) => {
-
     message.name = getState().user
     const { data: newMessage } = await axios.post('/api/messages', message)    
     console.log("thunk message", newMessage)
