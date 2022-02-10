@@ -6,7 +6,7 @@ import auth from "./auth";
 import cities from "./cities";
 import singleCityReducer from "./singleCity";
 import compareCityReducer from "./compareCities";
-import threeCitiesReducer from "./threeCitties";
+import threeCitiesReducer from "./threeCities";
 import userReducer from "./user";
 import weather from "./weather";
 

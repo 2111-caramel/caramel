@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchThreeCities } from "../store/threeCitties";
+import { fetchThreeCities } from "../store/threeCities";
 import GaugeChart from "react-gauge-chart";
 
 class UserPrefForm extends React.Component {
@@ -10,7 +10,6 @@ class UserPrefForm extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
   // componentDidMount() {}
   // componentDidUpdate(prevProps, prevState) {
@@ -31,15 +30,9 @@ class UserPrefForm extends React.Component {
   }
 
   handleSubmit(event) {
-    //how to call as many times as buttons selected?
-    //send over all values array
-    console.log('hi')
-    event.preventDefault()
+    event.preventDefault();
     this.props.gettingThreeCities(this.state.values);
-
-
   }
-
 
   render() {
     console.log("this.state", this.state.values);
@@ -48,33 +41,62 @@ class UserPrefForm extends React.Component {
         <h1>What is most important to you in a city?</h1>
         <form className="row justify-content-center mb-3">
           <div>
-            <button type="button" value="primaryStats"onClick={this.handleClick}>Low Rent</button>
+            <button
+              type="button"
+              value="primaryStats"
+              onClick={this.handleClick}
+            >
+              Low Rent
+            </button>
           </div>
           <div>
-            <button type="button" value="Healthcare"onClick={this.handleClick}>Quality Healthcare</button>
+            <button type="button" value="Healthcare" onClick={this.handleClick}>
+              Quality Healthcare
+            </button>
           </div>
           <div>
-            <button type="button" value="Pollution"onClick={this.handleClick}>Low Pollution</button>
+            <button type="button" value="Pollution" onClick={this.handleClick}>
+              Low Pollution
+            </button>
           </div>
           <div>
-            <button type="button" value="Transportation"onClick={this.handleClick}>Good Public Transportation</button>
+            <button
+              type="button"
+              value="Transportation"
+              onClick={this.handleClick}
+            >
+              Good Public Transportation
+            </button>
           </div>
           <div>
-            <button type="button" value="LivingCost" onClick={this.handleClick}>Low Daycare Cost</button>
+            <button type="button" value="LivingCost" onClick={this.handleClick}>
+              Low Daycare Cost
+            </button>
           </div>
           <div>
-            <button type="button" onClick={this.handleSubmit}>Submit</button>
+            <button type="button" onClick={this.handleSubmit}>
+              Submit
+            </button>
           </div>
-          </form>
+        </form>
 
-
-        <div>
-          {this.props.loadCities.map((city, idx) => {
-            return (
-              <div className="row" key={idx}>
-                <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
-                <div className="col">
-                  {/* <GaugeChart
+        <div className="row justify-content-center mb-3">
+            {this.props.loadCities.map((city, idx) => {
+              return (
+                <div className="col-4"key={idx}>
+                  <div className="container text-center">
+                    <div className="row justify-content-center compare-city-name mb-2">
+                      <a href={`/cities/${city.city.id}`}><h2>{city.city.name}</h2></a>
+                      <img
+                        className="city-image"
+                        src={city.city.imageUrlMobile}
+                      ></img>
+                      <p>{city.city.info}</p>
+                    </div>
+                    {/* <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
+                <img></img>
+                <div className="col"> */}
+                    {/* <GaugeChart
                     id="healthIndex"
                     arcsLength={[0.33, 0.33, 0.33]}
                     colors={["red", "yellow", "green"]}
@@ -96,12 +118,12 @@ class UserPrefForm extends React.Component {
                     style={{ width: "200px" }}
                   />
                   <h6>Overall {this.state.value} Rating</h6> */}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-      </div>
-      </div>
+              );
+            })}
+          </div>
+        </div>
     );
   }
 }
@@ -113,7 +135,6 @@ const mapState = (state) => {
 };
 
 const mapDispatch = (dispatch) => {
-
   return {
     gettingThreeCities: (selection) => dispatch(fetchThreeCities(selection)),
   };

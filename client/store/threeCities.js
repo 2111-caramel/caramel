@@ -37,12 +37,17 @@ export const fetchThreeCities = (selection) => {
             data[i].index = data[i].index * 1.3;
           }
         }
+        if(selection[i] === "Transportation"){
+          for(let i = 0; i < data.length; i++){
+            data[i].index = -Math.abs(data[i].index) * 35
+          }
+        }
         cityArray.push(data)
       }
       console.log('CITYARRAY', cityArray)
       console.log('BEST CITIES', getBest3(cityArray));
       console.log('CITYARRAY AFTER FUNC', cityArray)
-      let bestCities = getBest3(cityArray).slice(0,3);
+      let bestCities = getBest3(cityArray).slice(0, 3);
       console.log('RESULT',bestCities)
       let result = [];
       for(let i = 0; i < cityArray[0].length; i++){
