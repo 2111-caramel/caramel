@@ -122,7 +122,7 @@ router.get("/preferences/:model", async (req, res, next) => {
   }
 });
 
-router.get("/city/:cityName", async (req, res, next) => {
+router.get("/:cityName", async (req, res, next) => {
   try {
     const city = await City.findOne({
       where: {
