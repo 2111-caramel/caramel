@@ -69,7 +69,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Drinking Water Quality</h6>
+              Drinking Water Quality
             </p>
           </div>
           <div className="col-4">
@@ -87,7 +87,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Air Quality</h6>
+              Air Quality
             </p>
           </div>
           <div className="col-2"></div>
@@ -110,7 +110,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Cleanliness & Tidiness</h6>
+              Cleanliness & Tidiness
             </p>
           </div>
           <div className="col-4">
@@ -128,7 +128,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Quality of Green Spaces</h6>
+              Quality of Green Spaces
             </p>
           </div>
           <div className="col-2"></div>

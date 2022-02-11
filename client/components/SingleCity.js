@@ -22,6 +22,7 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
+    console.log("CITYID PARAMS FROM COMPONENT ", this.props.match.params.cityId)
   }
 
   componentDidUpdate(prevprops){
@@ -46,6 +47,8 @@ class SingleCity extends Component {
     const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
     const { isLoggedIn } = this.props;
+
+    console.log("GOT CITY ", this.props.singleCity)
 
     return (
       <div className="container-fluid text-center">
@@ -318,7 +321,7 @@ class SingleCity extends Component {
           </div>
           <div className="col-2"></div>
         </div>
-        <div class="d-grid gap-2 compare-btn">
+        <div className="d-grid gap-2 compare-btn">
           <Link className="btn" role="button" aria-current="page" to="/compare">
             <button className="btn btn-success">COMPARE CITIES</button>
           </Link>
