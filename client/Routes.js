@@ -30,6 +30,7 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
+            <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/cities/:cityId" component={SingleCity} />
           </Switch>
         ) : (
@@ -38,7 +39,6 @@ class Routes extends Component {
             <Route exact path='/' component={ Home } />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUpForm} />
-            <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/compare" component={CompareView} />
