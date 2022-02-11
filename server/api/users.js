@@ -37,9 +37,10 @@ router.get("/cityusers/:cityName", async (req, res, next) => {
 });
 
 //GET: single user && favorite city if any  api/users/:userId
-router.get("/:userId", async (req, res, next) => {
+router.get("/:userId", requireToken,  async (req, res, next) => {
   try {
     console.log("HITTING GET SINGLE USER API ROUTE");
+    
     const user = await User.findOne({
       where: {
         id: req.params.userId,

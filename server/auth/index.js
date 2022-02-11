@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const { requireToken } = require("../../server/api/gatekeepingMiddleware");
 const {
   models: { User },
 } = require("../db");
 module.exports = router;
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", requireToken, async (req, res, next) => {
   try {
     res.send({ token: await User.authenticate(req.body) });
   } catch (err) {
@@ -12,7 +13,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", requireToken, async (req, res, next) => {
   try {
     const user = await User.create(req.body);
     res.send({ token: await user.generateToken() });
