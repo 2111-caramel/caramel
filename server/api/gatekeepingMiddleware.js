@@ -1,6 +1,4 @@
-const {
-  model: { User },
-} = require("../db");
+const User = require("../db/models/User");
 
 const requireToken = async (req, res, next) => {
   try {
@@ -10,4 +8,8 @@ const requireToken = async (req, res, next) => {
   } catch (e) {
     next(e);
   }
+};
+
+module.exports = {
+  requireToken,
 };
