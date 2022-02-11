@@ -23,7 +23,13 @@ const User = db.define('user', {
   },
   favorites: {
     type: Sequelize.ARRAY(Sequelize.STRING)
-  }
+  },
+  currentCity: {
+    type: Sequelize.STRING,
+  },
+  interests: {
+    type: Sequelize.TEXT,
+  },
 })
 
 module.exports = User

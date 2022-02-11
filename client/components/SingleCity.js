@@ -9,10 +9,12 @@ import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
 import Map from "./Map.js";
+import Footer from "./Footer"
 import { favoriteCity, fetchSingleUser, updateUser } from "../store/user";
 
 class SingleCity extends Component {
-  constructor(props) {
+
+  constructor(){
     super();
     this.onClick = this.onClick.bind(this);
   }
@@ -22,16 +24,15 @@ class SingleCity extends Component {
     this.props.getCityWeather(this.props.match.params.cityId);
   }
 
-  componentDidUpdate(prevprops) {
-    if (prevprops.id != this.props.id) {
-      console.log("UPDATE", this.props.id);
-      this.props.loadUser(this.props.id);
+  componentDidUpdate(prevprops){
+    if(prevprops.id != this.props.id){
+      this.props.loadUser(this.props.id)
     }
   }
 
-  onClick() {
-    //console.log('IN ONCLICK', this.props.singleCity[0].name, this.props.id)
-    this.props.favorite(this.props.singleCity.id, this.props.id);
+  onClick(){
+    this.props.favorite(this.props.singleCity.id, this.props.id)
+
   }
 
   render() {
@@ -42,9 +43,6 @@ class SingleCity extends Component {
     const transportation = city.transportation || {};
     const pollution = city.pollution || {};
     const weather = this.props.cityWeather || {};
-
-    console.log("HEALTHCARE PROPS IN SINGLE CITY", healthcare);
-    // const {lat, lng, name } = city;
     const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
     const { isLoggedIn } = this.props;
@@ -54,7 +52,7 @@ class SingleCity extends Component {
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
-          {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
+          {isLoggedIn && <div><button className="btn btn-primary btn-sm" value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
         <div className="row justify-content-center mb-4">
@@ -85,7 +83,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly rent</b>
+                    <span className="bold-text">Avg. monthly rent</span>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -233,7 +231,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row section-title">
-              <h3>Environment</h3>
+              <h3 style={{ display: "inline" }}>Environment</h3>
             </div>
 
             <div className="row category-section mb-4 align-items-center">
@@ -282,7 +280,7 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
 
-                <div className="row align-items-center mt-3 mb-4">
+                <div className="row align-items-center mt-3">
                   <div className="col-2"></div>
                   <div className="col-3">
                     <img
@@ -296,7 +294,7 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
 
-                <div className="row align-items-center mt-3 mb-4">
+                <div className="row align-items-center mt-3">
                   <div className="col-2"></div>
                   <div className="col-3">
                     <img
@@ -325,6 +323,9 @@ class SingleCity extends Component {
             <button className="btn btn-success">COMPARE CITIES</button>
           </Link>
         </div>
+        <div className="row justify-content-center" style={{fontSize: 10}}>
+          <Footer/>
+          </div>
       </div>
     );
   }

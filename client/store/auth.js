@@ -39,6 +39,19 @@ export const authenticate = (username, password, method) => async dispatch => {
   }
 }
 
+// thunk creator for new user sign up
+export const authenticateNewUser = (username, password, currentCity, interests, method) => async dispatch => {
+  try {
+    const res = await axios.post(`/auth/${method}`, {username, password, currentCity, interests })
+    window.localStorage.setItem(TOKEN, res.data.token)
+    dispatch(me())
+    console.log("HISTORY", history)
+    history.push('/myInfo')
+  } catch (authError) {
+    return dispatch(setAuth({error: authError}))
+  }
+}
+
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)
   history.push('/')
