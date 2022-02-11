@@ -11,6 +11,7 @@ const Healthcare_Chart = (props) => {
   return (
     <div key="pie-chart" className="container">
       <div className="row align-items-center">
+        <div className="col-1"></div>
         <div className="col-3">
           <GaugeChart
             percent={skillPercent}
@@ -25,9 +26,9 @@ const Healthcare_Chart = (props) => {
             needleColor={"#BFB0BF"}
             needleBaseColor={"#BFB0BF"}
           />
-          <h5>Skill Rating</h5>
+          Skill Rating
         </div>
-        <div className="col-1"></div>
+
         <div className="col-4">
           <GaugeChart
             id="healthIndex"
@@ -40,7 +41,7 @@ const Healthcare_Chart = (props) => {
             needleBaseColor={"#BFB0BF"}
           />
           <div>
-            <h5 style={{ display: "inline" }}>Overall Healthcare Rating</h5>{" "}
+            <h6 style={{ display: "inline" }}>Overall Healthcare Rating</h6>{" "}
             <a
               data-bs-toggle="tooltip"
               data-bs-placement="top"
@@ -63,7 +64,7 @@ const Healthcare_Chart = (props) => {
             </a>
           </div>
         </div>
-        <div className="col-1"></div>
+
         <div className="col-3">
           <GaugeChart
             id="healthCost"
@@ -75,8 +76,9 @@ const Healthcare_Chart = (props) => {
             needleColor={"#BFB0BF"}
             needleBaseColor={"#BFB0BF"}
           />
-          <h6>Cost Rating</h6>
+          Cost Rating
         </div>
+        <div className="col-1"></div>
       </div>
     </div>
   );
