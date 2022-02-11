@@ -10,7 +10,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
     <nav>
       {isLoggedIn ? (
         <div>
-          {/* The navbar will show these links after you log in */}
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
               <div
@@ -54,7 +53,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     >
                       Logout
                     </Link>
-        
                   </li>
                   <li className="nav-item">
                     <Link
