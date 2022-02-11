@@ -2,7 +2,7 @@ export function getBest3(cityArray){
   let cityRankings = {};
 
   for(let i = 0; i < cityArray.length; i++){
-    for(let j = 0; j < 37; j++){
+    for(let j = 0; j < cityArray[i].length; j++){
       let city = cityArray[i][j]
       if(cityRankings[city.cityId]){
         cityRankings[city.cityId] += city.index;
