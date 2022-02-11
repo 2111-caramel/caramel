@@ -137,8 +137,8 @@ const seed = async () => {
           "Bus/Trolleybus"
         ],
         trainAndBus:
-          eachCityTransitStats.primary_means_percentage_map["Train/Metro"] +
-          eachCityTransitStats.primary_means_percentage_map["Bus/Trolleybus"],
+          parseInt(eachCityTransitStats.primary_means_percentage_map["Train/Metro"] +
+          eachCityTransitStats.primary_means_percentage_map["Bus/Trolleybus"]),
         motorbike:
           eachCityTransitStats.primary_means_percentage_map["Motorbike"],
       });

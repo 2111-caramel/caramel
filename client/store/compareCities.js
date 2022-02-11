@@ -19,7 +19,7 @@ const _getCompareCity3 = compareCity => ({type: GET_CITY3, compareCity})
 export const getCityByName1 = (cityName) => async dispatch => {
   try{
     console.log('CITYNAME IN THUNK', cityName)
-    const {data: city} = await axios.get(`/api/cities/city/${cityName}`)
+    const {data: city} = await axios.get(`/api/cities/${cityName}`)
     //console.log(city)
     return dispatch(_getCompareCity1(city))
   } catch(error){
@@ -30,7 +30,7 @@ export const getCityByName1 = (cityName) => async dispatch => {
 export const getCityByName2 = (cityName) => async dispatch => {
   try{
     console.log('CITYNAME IN THUNK', cityName)
-    const {data: city} = await axios.get(`/api/cities/city/${cityName}`)
+    const {data: city} = await axios.get(`/api/cities/${cityName}`)
     //console.log(city)
     return dispatch(_getCompareCity2(city))
   } catch(error){
