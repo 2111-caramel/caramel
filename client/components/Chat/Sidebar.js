@@ -14,7 +14,7 @@ export default class Sidebar extends Component {
           </h3>
         </div>
         <h5>Channels</h5>
-        <ChannelList />
+        {/* <ChannelList /> */}
       </section>
     );
   }

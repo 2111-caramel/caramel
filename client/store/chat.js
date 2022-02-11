@@ -26,12 +26,10 @@ export const userSet = userName => ({
 export const fetchMessages = () => async dispatch => {
     try{    
         const { data: messages } = await axios.get('/api/messages')
-        console.log("reached the messages -->>", messages)
         dispatch(gotMessagesFromServer(messages))
      }catch(e){
          console.err(e)
      }
-
 }
 
 export const postMessage = message => async (dispatch, getState) => {

@@ -16,9 +16,9 @@ class Main extends Component {
     return (
       <div>
         <Sidebar />
-        <main>
+        {/* <main>
             <MessageList channelId = {this.props.match.params.channelId}/>
-        </main>
+        </main> */}
       </div>
     );
   }
