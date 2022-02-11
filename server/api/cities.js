@@ -61,19 +61,23 @@ router.get("/preferences/:model", async (req, res, next) => {
         ? Transportation
         : req.params.model === "LivingCost"
         ? LivingCost
+        : req.params.model === "primaryStats"
+        ? PrimaryStats
         : splitWeatherWords[0] === "Weather"
         ? Weather
         : "NO MODEL ERROR";
     // let modelName = Healthcare
     let modelAttr =
       req.params.model === "Healthcare"
-        ? ["index", "cityId"]
+        ? ["cityId", "index"]
         : req.params.model === "Pollution"
-        ? ["indexPollution", "cityId"]
+        ? ["cityId", ["indexPollution", "index"]]
         : req.params.model === "Transportation"
-        ? ["train", "bus", "trainAndBus"]
+        ? ["cityId", "train", "bus", ["trainAndBus", "index"]]
         : req.params.model === "LivingCost"
-        ? ["daycare"]
+        ? ["cityId", ["daycare", "index"]]
+        : req.params.model === "primaryStats"
+        ? ["cityId", ["rent1br", "index"]]
         : splitWeatherWords[1] === "snow"
         ? ["avgMinTemp", "month"]
         : "NO ATTR ERROR";
@@ -87,6 +91,8 @@ router.get("/preferences/:model", async (req, res, next) => {
         ? [["trainAndBus", "DESC"]]
         : req.params.model === "LivingCost"
         ? [["daycare", "ASC"]]
+        : req.params.model === "primaryStats"
+        ? [["rent1br", "ASC"]]
         : splitWeatherWords[1] === "snow"
         ? [["avgMinTemp", "ASC"]]
         : "NO ORDER ERROR";
@@ -100,7 +106,6 @@ router.get("/preferences/:model", async (req, res, next) => {
       where: modelWhere,
       attributes: modelAttr,
       order: modelOrder,
-      limit: 3,
       include: [{ model: City }],
       //   include: [
       //     { model: PrimaryStats },
@@ -117,7 +122,7 @@ router.get("/preferences/:model", async (req, res, next) => {
   }
 });
 
-router.get("/city/:cityName", async (req, res, next) => {
+router.get("/:cityName", async (req, res, next) => {
   try {
     const city = await City.findOne({
       where: {

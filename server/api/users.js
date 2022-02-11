@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   models: { User, City },
 } = require("../db");
+
 const { requireToken } = require("./gatekeepingMiddleware");
 module.exports = router;
 
@@ -20,9 +21,25 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// find users by city name
+router.get("/cityusers/:cityName", async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      where: {
+        currentCity: req.params.cityName,
+      },
+    });
+    console.log("USERS FROM API:", users);
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
 //GET: single user && favorite city if any  api/users/:userId
 router.get("/:userId", async (req, res, next) => {
   try {
+    console.log("HITTING GET SINGLE USER API ROUTE");
     const user = await User.findOne({
       where: {
         id: req.params.userId,
@@ -31,11 +48,28 @@ router.get("/:userId", async (req, res, next) => {
         model: City,
       },
     });
+
     if (!user) {
       res.status(404).send("Sorry this user does not exist!");
     } else {
+      console.log("DATA FROM USER API:", user);
       res.json(user);
     }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get public profile of selected user in find users component
+router.get("/public/:userId", async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.params.userId,
+      },
+      attributes: ["username", "interests", "currentCity"],
+    });
+    res.json(user);
   } catch (err) {
     next(err);
   }

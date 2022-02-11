@@ -4,7 +4,6 @@ import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 
 const Weather_Chart = (props) => {
-  console.log("WEATHER CHART PROPS: ", props);
 
   let minTempsObj = {};
   let maxTempsObj = {};
@@ -44,7 +43,7 @@ const Weather_Chart = (props) => {
               data={{
                 datasets: [
                   {
-                    label: "Average Low",
+                    label: "Average Low (°F)",
                     data: [
                       minTempsObj.January,
                       minTempsObj.February,
@@ -62,7 +61,7 @@ const Weather_Chart = (props) => {
                     backgroundColor: ["blue"],
                   },
                   {
-                    label: "Average High",
+                    label: "Average High (°F)",
                     data: [
                       maxTempsObj.January,
                       maxTempsObj.February,
@@ -138,7 +137,7 @@ const Weather_Chart = (props) => {
           </div>
         </div>
       </div>
-    
+
   );
 };
 

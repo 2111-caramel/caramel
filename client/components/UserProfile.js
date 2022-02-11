@@ -15,9 +15,12 @@ class UserProfile extends Component {
     const user = this.props.user;
     const cities = user.cities || [];
     return (
-      <div className="user">
-        <p>User Profile Page</p>
+      <div className="container user">
+        <div className="row mt-3">
+        <p>{user.username}'s Profile Page</p>
         <p>Username: {user.username}</p>
+        <p>Current City: {user.currentCity}</p>
+        <p>Interests: {user.interests}</p>
         <p>Favorite Cities:</p>
         {cities.map((city, index) => {
           return (
@@ -26,6 +29,7 @@ class UserProfile extends Component {
             </div>
           );
         })}
+        </div>
       </div>
     );
   }

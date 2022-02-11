@@ -79,5 +79,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm); //COMPONENT called in Routes
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm); //COMPONENT called in Routes
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);

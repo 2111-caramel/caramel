@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
+import { Login } from "./components/AuthForm";
 import Home from "./components/Home";
 import AllCities from "./components/AllCities";
 import SingleCity from "./components/SingleCity";
@@ -9,6 +9,8 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
+import FindUsers from "./components/FindUsers"
+import SignUpForm from "./components/SignUpForm"
 
 /**
  * COMPONENT
@@ -28,13 +30,14 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/myInfo" component={UserProfile} />
+            <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/cities/:cityId" component={SingleCity} />
           </Switch>
         ) : (
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/compare" component={CompareView} />
