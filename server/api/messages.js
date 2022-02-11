@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Message = require('../db/models/Message');
+const User = require('../db/models/User');
 //const Channel = require('../db/models/Channel');
 
 module.exports = router;
@@ -20,9 +21,10 @@ router.post('/', async (req, res, next) => {
   // Instead, we'll findOrCreate an author by name, for simplicity.
   // Of course, you wouldn't want to do this in a real chat app!
   try {
+    console.log("post route body", req.body);
     const [user] = await User.findOrCreate({
       where: {
-        name: req.body.name || 'Cody'
+        username: req.body.username || 'Cody'
       }
     })
     const message = Message.build(req.body);

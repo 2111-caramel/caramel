@@ -8,7 +8,8 @@ class DummyComponent extends React.Component {
     this.state = {
            content: '',
            channelId: 1,
-           //userId: 1
+           userId: 1,
+           username: "Tommy"
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,9 +22,11 @@ handleChange(evt) {
 }
 
 handleSubmit(evt){
-  event.preventDefault();
+  evt.preventDefault();
   this.props.postMessage({...this.state})
+  this.props.content = '';
 }
+
 
   componentDidMount() {
     this.props.loadMessages();
