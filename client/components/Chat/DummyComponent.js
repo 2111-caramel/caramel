@@ -35,13 +35,13 @@ handleSubmit(evt){
   render() {
     const { handleSubmit, handleChange } = this;
     const { content } = this.state
-    console.log("dummy props", this.props);
+    // console.log("dummy props", this.props);
     //console.log(this.props.messages)
     return (
       <div>
         {this.props.messages.messages.map((message) => {
           return (
-            <div id={message.id}>
+            <div key={message.id}>
               <p>Message: {message.content}</p>
               {/* <p>Name: {message.user.username}</p> */}
             </div>

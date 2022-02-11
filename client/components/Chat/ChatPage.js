@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Sidebar from './Sidebar';
-import Navbar from './Navbar';
 import MessageList from './MessageList';
 import { fetchMessages } from '../../store/chat'
 
@@ -13,12 +12,12 @@ class Main extends Component {
   }
 
   render () {
+    //console.log("chat page props", this.props)
     return (
       <div>
         <Sidebar />
-        <Navbar />
         <main>
-            <MessageList />
+            <MessageList channelId = {this.props.match.params.channelId}/>
         </main>
       </div>
     );
