@@ -145,13 +145,11 @@ router.get("/:cityName", async (req, res, next) => {
 
 router.get("/:cityId/weather", async (req, res, next) => {
   try {
-    console.log("SENDING WEATHER FROM API: ");
     const city = await Weather.findAll({
       where: {
         cityId: req.params.cityId,
       },
     });
-    console.log("SENDING WEATHER FROM API: ", city);
     res.send(city);
   } catch (err) {
     next(err);

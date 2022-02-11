@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCity } from "../store/singleCity";
 import { getCityWeather } from "../store/weather";
@@ -7,19 +8,19 @@ import Healthcare_Chart from "./Charts/Healthcare_Chart";
 import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
-import Map from './Map.js'
-import { favoriteCity, fetchSingleUser, updateUser } from '../store/user'
-
+import Map from "./Map.js";
+import { favoriteCity, fetchSingleUser, updateUser } from "../store/user";
 
 class SingleCity extends Component {
-  constructor(){
+
+  constructor(){{
     super();
-    this.onClick = this.onClick.bind(this)
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
-    this.props.getCityWeather(this.props.match.params.cityId)
+    this.props.getCityWeather(this.props.match.params.cityId);
   }
 
   componentDidUpdate(prevprops){
@@ -30,6 +31,7 @@ class SingleCity extends Component {
 
   onClick(){
     this.props.favorite(this.props.singleCity.id, this.props.id)
+
   }
 
   render() {
@@ -39,23 +41,24 @@ class SingleCity extends Component {
     const primaryStat = city.primaryStat || {};
     const transportation = city.transportation || {};
     const pollution = city.pollution || {};
-    const weather = this.props.cityWeather || {}
-
-    const location = {lat: city.lat, lng: city.lng, name: city.name}
+    const weather = this.props.cityWeather || {};
+    const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
-    const {isLoggedIn} = this.props;
+    const { isLoggedIn } = this.props;
 
     return (
       <div className="container-fluid text-center">
-        {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
+          {isLoggedIn && <div><button value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
         <div className="row justify-content-center mb-4">
           <div className="col-2"></div>
-          <div className="col-4"><Map location={location} zoomLevel={12} /></div>
+          <div className="col-4">
+            <Map location={location} zoomLevel={12} />
+          </div>
           <div className="col-4">{city.info}</div>
 
           <div className="col-2"></div>
@@ -104,12 +107,10 @@ class SingleCity extends Component {
                   </div>
                   <div className="col-1"></div>
                 </div>
-
-
               </div>
 
               <div className="col-6">
-              <div className="row align-items-center mb-3">
+                <div className="row align-items-center mb-3">
                   <div className="col-1"></div>
                   <div className="col-4">
                     <img
@@ -221,11 +222,9 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3">
-
-                    <Weather_Chart weather={weather}/>
-
+                  <Weather_Chart weather={weather} />
                 </div>
               </div>
             </div>
@@ -235,7 +234,7 @@ class SingleCity extends Component {
             </div>
 
             <div className="row category-section mb-4 align-items-center">
-              <div class="col">
+              <div className="col">
                 <div className="row mt-3 mb-3 align-items-center">
                   <Pollution_Chart pollution={pollution} />
                 </div>
@@ -244,7 +243,6 @@ class SingleCity extends Component {
 
             <div className="row section-title">
               <h3>Healthcare</h3>
-
             </div>
 
             <div className="row category-section mb-4">
@@ -309,8 +307,8 @@ class SingleCity extends Component {
                   <div className="col-2"></div>
                 </div>
               </div>
-              <div class="col-1"></div>
-              <div class="col-5">
+              <div className="col-1"></div>
+              <div className="col-5">
                 <b>Primary Means of Transportation:</b>
                 <Transportation_Chart transportation={transportation} />
               </div>
@@ -318,6 +316,11 @@ class SingleCity extends Component {
             </div>
           </div>
           <div className="col-2"></div>
+        </div>
+        <div class="d-grid gap-2 compare-btn">
+          <Link className="btn" role="button" aria-current="page" to="/compare">
+            <button className="btn btn-success">COMPARE CITIES</button>
+          </Link>
         </div>
       </div>
     );
@@ -330,7 +333,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     id: state.auth.id,
     user: state.user,
-    cityWeather: state.weather
+    cityWeather: state.weather,
   };
 };
 
