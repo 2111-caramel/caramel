@@ -145,7 +145,6 @@ router.get("/:cityName", async (req, res, next) => {
 
 router.get("/cityById/:cityId", async (req, res, next) => {
   try {
-    console.log('HITTING /CITYID API ROUTE!!! with ID: ', req.params.cityId)
     const city = await City.findOne({
       where: {
         id: req.params.cityId,

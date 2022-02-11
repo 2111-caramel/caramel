@@ -22,7 +22,6 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
-    console.log("CITYID PARAMS FROM COMPONENT ", this.props.match.params.cityId)
   }
 
   componentDidUpdate(prevprops){
@@ -52,9 +51,11 @@ class SingleCity extends Component {
 
     return (
       <div className="container-fluid text-center">
-        <div className="row justify-content-center mb-3">
+        <div className="row justify-content-center mb-2">
           <img className="city-image" src={city.imageUrlWeb}></img>
-          <h2>{city.name}</h2>
+          </div>
+          <div className="row justify-content-center mb-2">
+          <h1>{city.name}</h1>
           {isLoggedIn && <div><button className="btn btn-primary btn-sm" value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
@@ -63,7 +64,7 @@ class SingleCity extends Component {
           <div className="col-4">
             <Map location={location} zoomLevel={12} />
           </div>
-          <div className="col-4">{city.info}</div>
+          <div className="col-4" align="left">{city.info}</div>
 
           <div className="col-2"></div>
         </div>
@@ -86,7 +87,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <span className="bold-text">Avg. monthly rent</span>
+                    <b>Avg. monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -251,12 +252,6 @@ class SingleCity extends Component {
 
             <div className="row category-section mb-4">
               <div className="col">
-                {/* this doesn't work come back to this*/}
-                {/* {Object.keys(healthcare).map(category => {
-              return(
-              <p>{category} : {category}</p>
-              )
-            })} */}
                 <div className="row mt-3 mb-3">
                   <Healthcare_Chart healthcare={healthcare} />
                 </div>
@@ -326,9 +321,6 @@ class SingleCity extends Component {
             <button className="btn btn-success">COMPARE CITIES</button>
           </Link>
         </div>
-        <div className="row justify-content-center" style={{fontSize: 10}}>
-          <Footer/>
-          </div>
       </div>
     );
   }
