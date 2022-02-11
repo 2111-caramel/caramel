@@ -14,7 +14,7 @@ import { favoriteCity, fetchSingleUser, updateUser } from "../store/user";
 
 class SingleCity extends Component {
 
-  constructor(){{
+  constructor(){
     super();
     this.onClick = this.onClick.bind(this);
   }
