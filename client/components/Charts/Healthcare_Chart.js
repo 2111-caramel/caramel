@@ -7,7 +7,6 @@ const Healthcare_Chart = (props) => {
   const skillPercent = skill / 100;
   const costPercent = cost / 100;
   const indexPercent = index / 100;
-  console.log("SKILLPERCENT", skillPercent);
 
   return (
     <div key="pie-chart" className="container">
@@ -25,7 +24,7 @@ const Healthcare_Chart = (props) => {
             animateDuration={5000}
             needleColor={"#BFB0BF"}
             needleBaseColor={"#BFB0BF"}
-          /> 
+          />
           <h5>Skill Rating</h5>
         </div>
         <div className="col-1"></div>

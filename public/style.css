@@ -121,3 +121,9 @@ form div {
     font-size: 10vw;
   }
 }
+
+.btn:target {
+  color: #ffffff;
+  background-color: #8a458f;
+  border-color: #8a458f;
+}
