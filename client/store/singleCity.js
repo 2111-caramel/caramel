@@ -13,7 +13,9 @@ const _getCity = (city) => ({ type: GET_CITY, city });
  */
 export const getCity = (cityId) => async (dispatch) => {
   try {
-    const { data: city } = await axios.get(`/api/cities/${cityId}`);
+    console.log('HITTING GETCITY THUNK!!!', cityId)
+    const { data: city } = await axios.get(`/api/cities/cityById/${cityId}`);
+    console.log("DATA RETURNED FROM /CITYID API: ", city)
     return dispatch(_getCity(city));
   } catch (error) {
     console.log("get single city thunk error");
