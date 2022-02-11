@@ -20,7 +20,6 @@ const {
 } = require("../server/db");
 const { newCitiesObj } = require("./cityObjs");
 
-<<<<<<< HEAD
 const messages = [
   { userId: 1, content: 'I like React!', channelId: 1 },
   { userId: 2, content: 'I like Redux!', channelId: 1 },
@@ -42,10 +41,8 @@ const channels = [
   { name: 'dogs_of_fullstack' },
   { name: 'lunch_planning' }
 ];
-=======
 // process.env does not work when plugged into axios request?
 // console.log("PROCESS.ENV FROM SEEDALL:", process.env)
->>>>>>> main
 
 const seed = async () => {
   try {
