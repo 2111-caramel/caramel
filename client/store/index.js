@@ -9,6 +9,7 @@ import compareCityReducer from "./compareCities";
 import threeCitiesReducer from "./threeCities";
 import userReducer from "./user";
 import weather from "./weather";
+import users from "./users"
 
 const reducer = combineReducers({
   auth,
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   compareCity: compareCityReducer,
   user: userReducer,
   weather,
+  users
 });
 
 const middleware = composeWithDevTools(
