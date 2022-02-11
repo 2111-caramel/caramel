@@ -6,7 +6,7 @@ import AllCities from "./AllCities";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1 style={{fontFamily: "Leckerli One"}}>Toto</h1>
+    <center><h1 style={{fontFamily: "Leckerli One"}}>Toto</h1></center>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -17,7 +17,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                 className="collapse navbar-collapse"
                 id="navbarSupportedContent"
               >
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
                   <li className="nav-item">
                     <Link
                       className="nav-link-active"
@@ -54,14 +54,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     >
                       Logout
                     </Link>
-                    {/* <a
-                      className="nav-link-active"
-                      aria-current="page"
-                      href="#"
-                      onClick={handleClick}
-                    >
-                      Logout
-                    </a> */}
+        
                   </li>
                   <li className="nav-item">
                     <Link
@@ -71,6 +64,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     >
                       My Info
                     </Link>
+                  </li>
+                  <li className="nav-item">
+                    <AllCities />
                   </li>
                 </ul>
               </div>

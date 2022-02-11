@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCity } from "../store/singleCity";
 import { getCityWeather } from "../store/weather";
@@ -51,17 +52,10 @@ class SingleCity extends Component {
 
     return (
       <div className="container-fluid text-center">
-        {isLoggedIn && (
-          <div>
-            <button value={id} onClick={() => this.onClick(id)}>
-              {" "}
-              Favorite City
-            </button>
-          </div>
-        )}
         <div className="row justify-content-center mb-3">
           <img className="city-image" src={city.imageUrlWeb}></img>
           <h2>{city.name}</h2>
+          {isLoggedIn && <div><button className="btn btn-primary btn-sm" value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
         </div>
 
         <div className="row justify-content-center mb-4">
@@ -92,7 +86,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <span className="bold-text">Avg. monthly rent</span>
+                    <b>Avg. monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -327,9 +321,14 @@ class SingleCity extends Component {
           </div>
           <div className="col-2"></div>
         </div>
+        <div class="d-grid gap-2 compare-btn">
+          <Link className="btn" role="button" aria-current="page" to="/compare">
+            <button className="btn btn-success">COMPARE CITIES</button>
+          </Link>
+        </div>
         <div className="row justify-content-center" style={{fontSize: 10}}>
           <Footer/>
-        </div>
+          </div>
       </div>
     );
   }

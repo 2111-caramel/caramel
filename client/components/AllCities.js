@@ -28,7 +28,7 @@ export class AllCities extends React.Component {
               return (
                 <div key={index}>
                   <li>
-                    <a className="dropdown-item" href={`cities/${city.id}`}>
+                    <a className="dropdown-item" href={`/cities/${city.id}`}>
                       {city.name}, {city.state}
                     </a>
                   </li>

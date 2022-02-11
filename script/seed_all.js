@@ -18,6 +18,9 @@ const {
 } = require("../server/db");
 const { newCitiesObj } = require("./cityObjs");
 
+// process.env does not work when plugged into axios request?
+// console.log("PROCESS.ENV FROM SEEDALL:", process.env)
+
 const seed = async () => {
   try {
     await db.sync({ force: true });
@@ -60,7 +63,7 @@ const seed = async () => {
         cityId: counterPrice + 1,
         rent1br: eachCityStats.prices[21].average_price,
         rent3br: eachCityStats.prices[23].average_price,
-        housePrice: eachCityStats.prices[35].average_price,
+        housePrice: eachCityStats.prices[37].average_price,
         salary: eachCityStats.prices[40].average_price,
       });
 
