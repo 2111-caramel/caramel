@@ -9,6 +9,7 @@ import compareCityReducer from "./compareCities";
 import threeCitiesReducer from "./threeCities";
 import userReducer from "./user";
 import weather from "./weather";
+import chatReducer from "./chat"
 import users from "./users"
 
 const reducer = combineReducers({
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   compareCity: compareCityReducer,
   user: userReducer,
   weather,
+  messages: chatReducer,
   users
 });
 
