@@ -44,7 +44,7 @@ const Weather_Chart = (props) => {
               data={{
                 datasets: [
                   {
-                    label: "Average Low",
+                    label: "Average Low (°F)",
                     data: [
                       minTempsObj.January,
                       minTempsObj.February,
@@ -62,7 +62,7 @@ const Weather_Chart = (props) => {
                     backgroundColor: ["blue"],
                   },
                   {
-                    label: "Average High",
+                    label: "Average High (°F)",
                     data: [
                       maxTempsObj.January,
                       maxTempsObj.February,
