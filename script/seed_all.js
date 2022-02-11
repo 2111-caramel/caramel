@@ -13,11 +13,34 @@ const {
     Transportation,
     Pollution,
     Weather,
+    Message,
+    Channel,
     // City_Weather,
   },
 } = require("../server/db");
 const { newCitiesObj } = require("./cityObjs");
 
+const messages = [
+  { userId: 1, content: 'I like React!', channelId: 1 },
+  { userId: 2, content: 'I like Redux!', channelId: 1 },
+  { userId: 3, content: 'I like React-Redux!', channelId: 1 },
+  { userId: 4, content: 'I like writing web apps!', channelId: 2 },
+  { userId: 1, content: 'You should learn JavaScript!', channelId: 2 },
+  { userId: 2, content: 'JavaScript is pretty great!', channelId: 2 },
+  { userId: 3, content: 'Dogs are great!', channelId: 3 },
+  { userId: 4, content: 'Cats are also great!', channelId: 3 },
+  { userId: 1, content: 'Why must we fight so?', channelId: 3 },
+  { userId: 4, content: 'I want to get tacos!', channelId: 4 },
+  { userId: 2, content: 'I want to get salad!', channelId: 4 },
+  { userId: 3, content: 'I want a taco salad!', channelId: 4 }
+];
+
+const channels = [
+  { name: 'really_random' },
+  { name: 'generally_speaking' },
+  { name: 'dogs_of_fullstack' },
+  { name: 'lunch_planning' }
+];
 // process.env does not work when plugged into axios request?
 // console.log("PROCESS.ENV FROM SEEDALL:", process.env)
 
@@ -25,12 +48,35 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
 
+   // Creating Users
+    await Promise.all([
+      User.create({ username: "cody", password: "123" }),
+      User.create({ username: "murphy", password: "123" }),
+      User.create({username: "timmy", password: "123"}),
+      User.create({ username: "carlo", password: '123'}),
+    ]);
+
+    await Promise.all(
+      channels.map(channel => {
+        Channel.create(channel)
+      })
+    )
+
+    await Promise.all(
+      messages.map(message => 
+         Message.create(message)
+        )
+    )
+
     await Promise.all(
       cityNameFormats.newCitiesObj.map((city) => {
         return City.create(city);
       })
     );
 
+<<<<<<< HEAD
+ 
+=======
     // Creating Users
     await Promise.all([
       User.create({ username: "cody", password: "123", currentCity: "Los Angeles", interests: "Hiking, surfing, working out" }),
@@ -44,6 +90,7 @@ const seed = async () => {
       User.create({ username: "donatello", password: "123", currentCity: "Nashville", interests: "Reading, martial arts" }),
       User.create({ username: "michelangelo", password: "123", currentCity: "Austin", interests: "Eating pizza, martial arts" }),
     ]);
+>>>>>>> main
     ///--------------------------------COST OF LIVING------------------------------------///
     //Helper function for replacing city names in url slugs for city prices
     const urlsPrice = async (partialCitySlug) => {
@@ -52,6 +99,7 @@ const seed = async () => {
       );
       return cityName;
     };
+
 
     //Adding data for average price for each city
     let counterPrice = 0;

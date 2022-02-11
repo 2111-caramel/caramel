@@ -10,8 +10,12 @@ const LivingCost = require("./models/LivingCost");
 const Healthcare = require("./models/Healthcare");
 const Transportation = require("./models/Transportation");
 const Pollution = require("./models/Pollution");
+const Channel = require('./models/Channel')
+const Message = require("./models/Message")
+const { useReducer } = require("react");
+//const { default: Message } = require("../../client/components/Chat/Message");
 
-//associations could go here!
+//City data associations
 City.hasOne(PrimaryStats);
 PrimaryStats.belongsTo(City);
 City.hasOne(LivingCost);
@@ -27,6 +31,16 @@ Weather.belongsTo(City);
 //City.belongsToMany(Weather, { through: City_Weather });
 //Weather.belongsToMany(City, { through: City_Weather });
 
+//chat associations
+Channel.hasMany(Message, {
+  onDelete: 'cascade',
+  hooks:true
+})
+User.hasMany(Message)
+Message.belongsTo(Channel)
+Message.belongsTo(User)
+
+//Favorite associations 
 User.belongsToMany(City, { through: "Favourites" });
 City.belongsToMany(User, { through: "Favourites" });
 
@@ -41,6 +55,8 @@ module.exports = {
     Healthcare,
     Transportation,
     Pollution,
+    Channel,
+    Message,
     // City_Weather,
   },
 };

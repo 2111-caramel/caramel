@@ -9,9 +9,15 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
+<<<<<<< HEAD
+//import Main from './components/Chat/ChatPage'
+//import MessageList from './components/Chat/MessageList'
+import DummyComponent from './components/Chat/DummyComponent'
+=======
 import FindUsers from "./components/FindUsers"
 import SignUpForm from "./components/SignUpForm"
 
+>>>>>>> main
 /**
  * COMPONENT
  */
@@ -32,6 +38,7 @@ class Routes extends Component {
             <Route exact path="/myInfo" component={UserProfile} />
             <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/cities/:cityId" component={SingleCity} />
+            {/* <Route exact path = "/channels/:channelId" component = {MessageList} /> */}
           </Switch>
         ) : (
           <Switch>
@@ -43,6 +50,7 @@ class Routes extends Component {
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/cities/:cityId" component={SingleCity} />
+            <Route exact path = "/channels/:channelId" component = {DummyComponent} />
           </Switch>
         )}
       </div>
@@ -63,6 +71,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    loadMessages: () => dispatch(fetchMessages()),
     loadInitialData() {
       dispatch(me());
     },

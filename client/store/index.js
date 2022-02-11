@@ -9,7 +9,11 @@ import compareCityReducer from "./compareCities";
 import threeCitiesReducer from "./threeCities";
 import userReducer from "./user";
 import weather from "./weather";
+<<<<<<< HEAD
+import chatReducer from "./chat"
+=======
 import users from "./users"
+>>>>>>> main
 
 const reducer = combineReducers({
   auth,
@@ -19,7 +23,11 @@ const reducer = combineReducers({
   compareCity: compareCityReducer,
   user: userReducer,
   weather,
+<<<<<<< HEAD
+  messages: chatReducer,
+=======
   users
+>>>>>>> main
 });
 
 const middleware = composeWithDevTools(
