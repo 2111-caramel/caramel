@@ -9,15 +9,12 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
-<<<<<<< HEAD
 //import Main from './components/Chat/ChatPage'
 //import MessageList from './components/Chat/MessageList'
 import DummyComponent from './components/Chat/DummyComponent'
-=======
 import FindUsers from "./components/FindUsers"
 import SignUpForm from "./components/SignUpForm"
 
->>>>>>> main
 /**
  * COMPONENT
  */

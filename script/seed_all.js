@@ -48,12 +48,18 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
 
-   // Creating Users
+  //  // Creating Users
     await Promise.all([
-      User.create({ username: "cody", password: "123" }),
-      User.create({ username: "murphy", password: "123" }),
-      User.create({username: "timmy", password: "123"}),
-      User.create({ username: "carlo", password: '123'}),
+      User.create({ username: "cody", password: "123", currentCity: "Los Angeles", interests: "Hiking, surfing, working out" }),
+      User.create({ username: "murphy", password: "123", currentCity: "Boston", interests: "Reading, skiing" }),
+      User.create({ username: "john", password: "123", currentCity: "New York", interests: "Music, museums" }),
+      User.create({ username: "paul", password: "123", currentCity: "Chicago", interests: "Making snowmen, wine" }),
+      User.create({ username: "ringo", password: "123", currentCity: "Miami", interests: "Going to the beach, cooking" }),
+      User.create({ username: "george", password: "123", currentCity: "Atlanta", interests: "Swimming, watching TV" }),
+      User.create({ username: "leonardo", password: "123", currentCity: "Honolulu", interests: "Hiking, eating spam musubi" }),
+      User.create({ username: "raphael", password: "123", currentCity: "New York", interests: "Concerts, martial arts" }),
+      User.create({ username: "donatello", password: "123", currentCity: "Nashville", interests: "Reading, martial arts" }),
+      User.create({ username: "michelangelo", password: "123", currentCity: "Austin", interests: "Eating pizza, martial arts" }),
     ]);
 
     await Promise.all(
@@ -74,23 +80,7 @@ const seed = async () => {
       })
     );
 
-<<<<<<< HEAD
- 
-=======
-    // Creating Users
-    await Promise.all([
-      User.create({ username: "cody", password: "123", currentCity: "Los Angeles", interests: "Hiking, surfing, working out" }),
-      User.create({ username: "murphy", password: "123", currentCity: "Boston", interests: "Reading, skiing" }),
-      User.create({ username: "john", password: "123", currentCity: "New York", interests: "Music, museums" }),
-      User.create({ username: "paul", password: "123", currentCity: "Chicago", interests: "Making snowmen, wine" }),
-      User.create({ username: "ringo", password: "123", currentCity: "Miami", interests: "Going to the beach, cooking" }),
-      User.create({ username: "george", password: "123", currentCity: "Atlanta", interests: "Swimming, watching TV" }),
-      User.create({ username: "leonardo", password: "123", currentCity: "Honolulu", interests: "Hiking, eating spam musubi" }),
-      User.create({ username: "raphael", password: "123", currentCity: "New York", interests: "Concerts, martial arts" }),
-      User.create({ username: "donatello", password: "123", currentCity: "Nashville", interests: "Reading, martial arts" }),
-      User.create({ username: "michelangelo", password: "123", currentCity: "Austin", interests: "Eating pizza, martial arts" }),
-    ]);
->>>>>>> main
+
     ///--------------------------------COST OF LIVING------------------------------------///
     //Helper function for replacing city names in url slugs for city prices
     const urlsPrice = async (partialCitySlug) => {
