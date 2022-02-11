@@ -130,3 +130,7 @@ form div {
     font-size: 10vw;
   }
 }
+
+.bold-text {
+  font-weight: bold;
+}

@@ -83,7 +83,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly rent</b>
+                    <span className="bold-text">Avg. monthly rent</span>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
