@@ -1,5 +1,5 @@
 body {
-  font-family: "Manrope", 'Courier New', Courier, monospace
+  font-family: "Manrope", "Courier New", Courier, monospace;
 }
 
 a {
@@ -12,7 +12,10 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+}
+
+.row.mb-5 p {
+  text-align: left;
 }
 
 form div {
@@ -24,7 +27,15 @@ form div {
   height: 60px;
 }
 
+.dropdown-menu.show {
+  max-height: 100px !important;
+  overflow-y: auto !important;
+}
+
 .homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url(https://i.redd.it/tidtadk0m0p41.jpg);
   background-size: cover;
   height: 80vh;
@@ -32,7 +43,7 @@ form div {
 }
 
 .section-title {
-  font-family: 'Shizuru';
+  font-family: "Shizuru";
   background: #e3dde3;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -128,6 +139,12 @@ form div {
 
   .pin-icon {
     font-size: 10vw;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .row.mb-5 p {
+    margin: 2rem 0rem;
   }
 }
 
