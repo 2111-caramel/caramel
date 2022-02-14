@@ -17,18 +17,29 @@ class UserProfile extends Component {
     return (
       <div className="container user">
         <div className="row mt-3">
-        <p>{user.username}'s Profile Page</p>
-        <p>Username: {user.username}</p>
-        <p>Current City: {user.currentCity}</p>
-        <p>Interests: {user.interests}</p>
-        <p>Favorite Cities:</p>
-        {cities.map((city, index) => {
-          return (
-            <div key={index}>
-              <a href={`/cities/${city.id}`}>{city.name}</a>
-            </div>
-          );
-        })}
+          <h2>
+            {user.username}
+            's Profile Page
+          </h2>
+          <p>
+            <b>Username:</b> {user.username}
+          </p>
+          <p>
+            <b>Current City:</b> {user.currentCity}
+          </p>
+          <p>
+            <b>Interests:</b> {user.interests}
+          </p>
+          <p>
+            <b>Favorite Cities:</b>
+          </p>
+          {cities.map((city, index) => {
+            return (
+              <div key={index}>
+                <a href={`/cities/${city.id}`}>{city.name}</a>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
