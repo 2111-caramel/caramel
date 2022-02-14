@@ -28,6 +28,12 @@ form div {
   height: 60px;
 }
 
+.navbar-collapse.collapse.show {
+  padding: 0 20px;
+  background-color: purple;
+  z-index: 1000;
+}
+
 .dropdown-menu.show {
   max-height: 200px !important;
   overflow-y: auto !important;
@@ -146,6 +152,16 @@ form div {
 @media screen and (max-width: 799px) {
   .row.mb-5 p {
     margin: 2rem 0rem;
+  }
+
+  .navbar-collapse.collapse.show li a {
+    color: white;
+    z-index: 1000;
+    margin: 10px 0;
+  }
+
+  .navbar-collapse.collapse.show .dropdown-menu.show li a {
+    color: black;
   }
 }
 
