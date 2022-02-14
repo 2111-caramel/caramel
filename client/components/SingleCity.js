@@ -328,6 +328,22 @@ class SingleCity extends Component {
           </div>
           <div className="col-2"></div>
         </div>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="facebook"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Facebook
+        </button>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="twitter"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Twitter
+        </button>
         <div className="d-grid gap-2 compare-btn">
           <Link className="btn" role="button" aria-current="page" to="/compare">
             <button className="btn btn-success">COMPARE CITIES</button>
