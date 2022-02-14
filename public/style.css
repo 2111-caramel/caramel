@@ -29,7 +29,7 @@ form div {
 }
 
 .dropdown-menu.show {
-  max-height: 100px !important;
+  max-height: 200px !important;
   overflow-y: auto !important;
 }
 
