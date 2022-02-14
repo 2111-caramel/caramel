@@ -16,7 +16,9 @@ const AuthForm = (props) => {
       <form onSubmit={handleSubmit} name={name}>
         {console.log("INSIDE FORM-----", name)}
         <div className = "row" className ="col-xs-1 center-block" align="center">
+          <center>
           <h2>Login</h2>
+          </center>
           <label htmlFor="username" >
             <small>Username</small>
           </label>
