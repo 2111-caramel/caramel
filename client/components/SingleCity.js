@@ -9,12 +9,11 @@ import Pollution_Chart from "./Charts/Pollution_Chart";
 import Weather_Chart from "./Charts/Weather_Chart";
 import SingleMap from "./Map.js";
 import Map from "./Map.js";
-import Footer from "./Footer"
+import Footer from "./Footer";
 import { favoriteCity, fetchSingleUser, updateUser } from "../store/user";
 
 class SingleCity extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.onClick = this.onClick.bind(this);
   }
@@ -22,17 +21,20 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
+    console.log(
+      "CITYID PARAMS FROM COMPONENT ",
+      this.props.match.params.cityId
+    );
   }
 
-  componentDidUpdate(prevprops){
-    if(prevprops.id != this.props.id){
-      this.props.loadUser(this.props.id)
+  componentDidUpdate(prevprops) {
+    if (prevprops.id != this.props.id) {
+      this.props.loadUser(this.props.id);
     }
   }
 
-  onClick(){
-    this.props.favorite(this.props.singleCity.id, this.props.id)
-
+  onClick() {
+    this.props.favorite(this.props.singleCity.id, this.props.id);
   }
 
   render() {
@@ -47,26 +49,36 @@ class SingleCity extends Component {
     const id = this.props.id;
     const { isLoggedIn } = this.props;
 
-    console.log("GOT CITY ", this.props.singleCity)
+    console.log("GOT CITY ", this.props.singleCity);
 
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center mb-2">
           <img className="city-image" src={city.imageUrlWeb}></img>
-          </div>
-          <div className="row justify-content-center mb-2">
+        </div>
+        <div className="row justify-content-center mb-2">
           <h1>{city.name}</h1>
-          {isLoggedIn && <div><button className="btn btn-primary btn-sm" value={id} onClick={() => this.onClick(id)}> Favorite City</button></div> }
+          {isLoggedIn && (
+            <div>
+              <button
+                className="btn btn-primary btn-sm"
+                value={id}
+                onClick={() => this.onClick(id)}
+              >
+                {" "}
+                Favorite City
+              </button>
+            </div>
+          )}
         </div>
 
-        <div className="row justify-content-center mb-4">
-          <div className="col-2"></div>
-          <div className="col-4">
+        <div className="row mb-5">
+          <div className="col-sm-12 col-md-4 offset-md-2">
             <Map location={location} zoomLevel={12} />
           </div>
-          <div className="col-4" align="left">{city.info}</div>
-
-          <div className="col-2"></div>
+          <div className="col-sm-11 offset-sm-1 col-md-4 offset-md-0">
+            <p>{city.info}</p>
+          </div>
         </div>
 
         <div className="row">
