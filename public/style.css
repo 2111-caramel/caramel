@@ -155,13 +155,13 @@ form div {
   }
 
   .navbar-collapse.collapse.show li a {
-    color: white !important;
+    color: white;
     z-index: 1000;
     margin: 10px 0;
   }
 
   .navbar-collapse.collapse.show .dropdown-menu.show li a {
-    color: black !important;
+    color: black;
   }
 }
 
