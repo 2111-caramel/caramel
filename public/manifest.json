@@ -1,22 +1,22 @@
 {
-  "short_name": "Urban Analysis",
-  "name": "Urban Analysis: What is the best city to live in?",
+  "short_name": "Toto",
+  "name": "Toto: What is the best city to live in?",
   "icons": [
     {
-      "src": "download.png",
+      "src": "logoPWA1.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "download2.png",
+      "src": "logoPWA22.png",
       "type": "image/png",
       "sizes": "192x192"
     }
   ],
   "start_url": "/",
   "scope": "/",
-  "background_color": "#3367D6",
+  "background_color": "#9932CC",
   "display": "standalone",
-  "theme_color": "#3367D6",
-  "description": "Urban Analysis"
+  "theme_color": "#9932CC",
+  "description": "An application that helps you choose or learn about your future new home city"
 }
