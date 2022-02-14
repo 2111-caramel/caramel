@@ -12,10 +12,8 @@ import { Link } from "react-router-dom";
  */
 class CompareCity extends Component {
   render() {
-    console.log(this.props);
     const city = this.props.city || {};
     const transportation = city.transportation || {};
-
     return (
       <div className="container text-center">
         <div className="row justify-content-center compare-city-name mb-2">
@@ -89,9 +87,6 @@ class CompareCity extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     singleCity: state.singleCity,

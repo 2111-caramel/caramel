@@ -12,19 +12,13 @@ const LocationPin = ({ text }) => (
 
  function Map ({ location, zoomLevel }) {
     return (
-
      <div className="container map google-map" style={{height: '36vh', width: '100%'}}>
-        
+
             <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.SECRET_GOOGLEMAPS_KEY }}
             center={location}
             defaultZoom={zoomLevel}
             >
-            {/* <LocationPin
-                lat={location.lat}
-                lng={location.lng}
-                text={location.name}
-            /> */}
             </GoogleMapReact>
         </div>
         )

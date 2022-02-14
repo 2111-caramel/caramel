@@ -23,7 +23,6 @@ export const getCity = (cityId) => async (dispatch) => {
 export const getCityByName = (cityName) => async (dispatch) => {
   try {
     const { data: city } = await axios.get(`/api/cities/city/${cityName}`);
-    //console.log(city)
     return dispatch(_getCity(city));
   } catch (error) {
     console.log("get single city by Name thunk error");

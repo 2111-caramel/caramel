@@ -13,6 +13,7 @@ label {
 
 nav a {
   display: inline-block;
+  color: black;
 }
 
 .row.mb-5 p {
@@ -55,6 +56,15 @@ form div {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   min-width: fit-content;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .category-section {

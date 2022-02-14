@@ -39,8 +39,6 @@ router.get("/cityusers/:cityName", async (req, res, next) => {
 //GET: single user && favorite city if any  api/users/:userId
 router.get("/:userId", requireToken, async (req, res, next) => {
   try {
-    console.log("HITTING GET SINGLE USER API ROUTE");
-
     const user = await User.findOne({
       where: {
         id: req.params.userId,
@@ -53,7 +51,6 @@ router.get("/:userId", requireToken, async (req, res, next) => {
     if (!user) {
       res.status(404).send("Sorry this user does not exist!");
     } else {
-      console.log("DATA FROM USER API:", user);
       res.json(user);
     }
   } catch (err) {
@@ -91,7 +88,6 @@ router.put("/:userId", requireToken, async (req, res, next) => {
 //Add a new favorite city to a user to api/users/
 router.post("/:userId", requireToken, async (req, res, next) => {
   try {
-    console.log(req.body);
     const { cityId } = req.body;
     const user = await User.findByPk(req.params.userId);
     const city = await City.findByPk(cityId);
