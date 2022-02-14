@@ -203,6 +203,6 @@ h6 {
   font-family: "Manrope", sans-serif;
 }
 
-Link {
-  text-decoration: none;
+.link {
+  color: black;
 }

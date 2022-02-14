@@ -47,15 +47,17 @@ const LivingCost = db.define("livingCost", {
     allowNull: false,
   },
   gym: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
 });
 
 // HOOKS
 
-LivingCost.addHook("beforeCreate", (city) => {
-  city.daycare = Math.round(city.daycare);
+LivingCost.addHook('beforeCreate', (city) => {
+  city.daycare = Math.round(city.daycare)
+  city.gym = Math.round(city.gym)
+
 });
 
 module.exports = LivingCost;
