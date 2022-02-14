@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
  * COMPONENT
  */
 export const Home = (props) => {
-  const { username } = props;
-
   return (
     <div className="container-fluid homepage" align="center">
       <div className="row justify-content-center mb-5">

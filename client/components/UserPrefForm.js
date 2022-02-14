@@ -11,17 +11,6 @@ class UserPrefForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // componentDidMount() {}
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.value !== this.state.value) {
-  //     this.props.match.params.model = this.state.value;
-  //     this.props.history.push(`/preferences/${this.state.value}`);
-  //     console.log("PARAMS HERE---->", this.props.match.params);
-  //     this.props.gettingThreeCities(this.state.value);
-  //     this.props.loadCities;
-  //     // console.log("Params ID---->>>", this.props.match.params);
-  //   }
-  // }
 
   handleClick(e) {
     if(!this.state.values.includes(e.target.value)){
@@ -94,31 +83,6 @@ class UserPrefForm extends React.Component {
                       ></img>
                       <p>{city.city.info}</p>
                     </div>
-                    {/* <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
-                <img></img>
-                <div className="col"> */}
-                    {/* <GaugeChart
-                    id="healthIndex"
-                    arcsLength={[0.33, 0.33, 0.33]}
-                    colors={["red", "yellow", "green"]}
-                    percent={
-                      this.state.value === "Healthcare"
-                        ? city.index / 100
-                        : this.state.value === "Pollution"
-                        ? city.indexPollution / 100
-                        : this.state.value === "Transportation"
-                        ? city.trainAndBus / 100
-                        : this.state.value === "LivingCost"
-                        ? city.daycare / 100
-                        : ""
-                    }
-                    arcPadding={0.02}
-                    textColor="#000000"
-                    needleColor={"#BFB0BF"}
-                    needleBaseColor={"#BFB0BF"}
-                    style={{ width: "200px" }}
-                  />
-                  <h6>Overall {this.state.value} Rating</h6> */}
                   </div>
                 </div>
               );

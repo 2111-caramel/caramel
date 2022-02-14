@@ -21,10 +21,6 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
-    console.log(
-      "CITYID PARAMS FROM COMPONENT ",
-      this.props.match.params.cityId
-    );
   }
 
   componentDidUpdate(prevprops) {
@@ -48,9 +44,6 @@ class SingleCity extends Component {
     const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
     const { isLoggedIn } = this.props;
-
-    console.log("GOT CITY ", this.props.singleCity);
-
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center mb-2">
