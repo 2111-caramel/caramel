@@ -63,6 +63,7 @@ class Pollution_Chart extends React.Component {
                 arcWidth = {0.3}
                 arcPadding={0.02}
                 textColor="#000000"
+                colors={["red", "yellow", "green"]}
                 animate={true}
                 animDelay={500}
                 animateDuration={5000}
@@ -78,6 +79,7 @@ class Pollution_Chart extends React.Component {
                 percent={airQuality / 100}
                 id="pollutionAir"
                 textColor="#000000"
+                colors={["red", "yellow", "green"]}
                 animate={true}
                 nrOfLevels={30} 
                 arcWidth = {0.3}
@@ -107,6 +109,7 @@ class Pollution_Chart extends React.Component {
                 arcWidth = {0.3}
                 arcPadding={0.02}
                 animDelay={500}
+                colors={["red", "yellow", "green"]}
                 animateDuration={5000}
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
@@ -124,6 +127,7 @@ class Pollution_Chart extends React.Component {
                 animate={true}
                 nrOfLevels={30} 
                 arcWidth = {0.3}
+                colors={["red", "yellow", "green"]}
                 animDelay={500}
                 animateDuration={5000}
                 needleColor={"#BFB0BF"}

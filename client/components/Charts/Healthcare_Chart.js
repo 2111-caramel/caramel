@@ -2,6 +2,9 @@ import React from "react";
 import GaugeChart from "react-gauge-chart";
 import "chart.js/auto";
 
+//All of these should be flipped color wise 
+//except for overall color
+
 const Healthcare_Chart = (props) => {
   const { skill, cost, index } = props.healthcare;
   const skillPercent = skill / 100;
@@ -17,6 +20,7 @@ const Healthcare_Chart = (props) => {
             percent={skillPercent}
             id="healthSkill"
             //arcsLength={[0.33, 0.33, 0.33]}
+            colors={["red", "yellow", "green"]}
             nrOfLevels={30} 
             arcWidth = {0.3}
             arcPadding={0.02}
@@ -38,6 +42,7 @@ const Healthcare_Chart = (props) => {
             nrOfLevels={30} 
             arcWidth = {0.3}
             arcPadding={0.02}
+            colors={["red", "yellow", "green"]}
             percent={indexPercent}
             animDelay={500}
             animateDuration={5000}
@@ -75,7 +80,7 @@ const Healthcare_Chart = (props) => {
           <GaugeChart
             id="healthCost"
             // arcsLength={[0.33, 0.33, 0.33]}
-            // colors={["red", "yellow", "green"]}
+            colors={["red", "yellow", "green"]}
             nrOfLevels={30} 
             arcWidth = {0.3}
             arcPadding={0.02}
