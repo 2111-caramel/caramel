@@ -7,7 +7,7 @@ import AllCities from "./AllCities";
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <center>
-      <h1 style={{ fontFamily: "Leckerli One" }}>Toto</h1>
+      <h1 style={{ fontFamily: "Leckerli One", fontSize: 50 }}>Toto</h1>
     </center>
     <nav>
       {isLoggedIn ? (
@@ -38,11 +38,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                     </Link>
                   </li>
                   <li className="nav-item me-5">
-                    TEST
                     <Link
                       className="nav-link-active"
                       aria-current="page"
-                      to="/myInfo"
+                      to="/compare"
                     >
                       Compare Cities
                     </Link>

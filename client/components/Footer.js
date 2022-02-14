@@ -8,7 +8,7 @@ import Team from "./Team"
  */
 export default function Footer() {
   return (
-    <div className="container mt-3" align="center">
+    <div className="container justify-content-end mt-3" align="center">
       <div className="row justify-content-center mb-3" style={{ fontSize: 11 }}>
           <div>
         <a

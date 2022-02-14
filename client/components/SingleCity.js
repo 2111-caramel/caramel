@@ -53,9 +53,11 @@ class SingleCity extends Component {
 
     return (
       <div className="container-fluid text-center">
-        <div className="row justify-content-center mb-3">
+        <div className="row justify-content-center mb-2">
           <img className="city-image" src={city.imageUrlWeb}></img>
-          <h2>{city.name}</h2>
+        </div>
+        <div className="row justify-content-center mb-2">
+          <h1>{city.name}</h1>
           {isLoggedIn && (
             <div>
               <button
@@ -97,7 +99,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <span className="bold-text">Avg. monthly rent</span>
+                    <b>Avg. monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -262,12 +264,6 @@ class SingleCity extends Component {
 
             <div className="row category-section mb-4">
               <div className="col">
-                {/* this doesn't work come back to this*/}
-                {/* {Object.keys(healthcare).map(category => {
-              return(
-              <p>{category} : {category}</p>
-              )
-            })} */}
                 <div className="row mt-3 mb-3">
                   <Healthcare_Chart healthcare={healthcare} />
                 </div>
@@ -336,9 +332,6 @@ class SingleCity extends Component {
           <Link className="btn" role="button" aria-current="page" to="/compare">
             <button className="btn btn-success">COMPARE CITIES</button>
           </Link>
-        </div>
-        <div className="row justify-content-center" style={{ fontSize: 10 }}>
-          <Footer />
         </div>
       </div>
     );
