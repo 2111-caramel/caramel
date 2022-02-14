@@ -35,11 +35,7 @@ class Routes extends Component {
             <Route exact path="/myInfo" component={UserProfile} />
             <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/cities/:cityId" component={SingleCity} />
-<<<<<<< HEAD
             <Route exact path = "/channels/:channelId" component = {Main} />
-=======
-            {/* <Route exact path = "/channels/:channelId" component = {Main} /> */}
->>>>>>> main
           </Switch>
         ) : (
           <Switch>
