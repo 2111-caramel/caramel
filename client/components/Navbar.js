@@ -34,7 +34,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       aria-current="page"
                       to="/preferences"
                     >
-                      Take Survey
+                      Rankings
                     </Link>
                   </li>
                   <li className="nav-item me-5">
@@ -108,7 +108,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       aria-current="page"
                       to="/preferences"
                     >
-                      Take Survey
+                      Rankings
                     </Link>
                   </li>
                   <li className="nav-item me-5">
