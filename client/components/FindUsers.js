@@ -30,7 +30,6 @@ export class FindUsers extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.fetchUsersByCity(this.state.city);
-    console.log("VALUE SENT TO THUNK:", this.state.city);
   }
 
   clickUsername(evt) {
@@ -41,7 +40,6 @@ export class FindUsers extends React.Component {
   }
 
   render() {
-    console.log("THIS.PROPS.USERSBYCITY", this.props.usersByCity);
     return (
       <div className="container">
         <div className="row mt-2">

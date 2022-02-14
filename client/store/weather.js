@@ -6,9 +6,7 @@ const _getCityWeather = (weather) => ({ type: GET_CITY_WEATHER, weather})
 
 export const getCityWeather = (cityId) => async (dispatch) => {
     try {
-        console.log("HITTING GET WEATHER THUNK")
       const {data: weather} = await axios.get(`/api/cities/${cityId}/weather`);
-      console.log('RESPONSE FROM WEATHER API', weather)
       return dispatch(_getCityWeather(weather));
     } catch (error) {
       console.log("get city weather thunk error");

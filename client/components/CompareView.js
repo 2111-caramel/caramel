@@ -2,7 +2,6 @@ import React from "react";
 import { fetchCities } from "../store/cities";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import CitySelect from "./CitySelect";
 import CompareCity from "./CompareCity";
 import {
   getCityByName1,
@@ -73,9 +72,6 @@ export class CompareView extends React.Component {
 
     return (
       <div className="container-fluid justify-content-center">
-        {/* <CitySelect filter1={this.state.filter1}/>
-        <CitySelect filter2={this.state.filter2}/>
-        <CitySelect filter3={this.state.filter3}/> */}
         <div className="row justify-content-center mb-3">
           <div className="col">
             <label htmlFor="select">Select City #1:</label>

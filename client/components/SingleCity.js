@@ -21,10 +21,6 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
-    console.log(
-      "CITYID PARAMS FROM COMPONENT ",
-      this.props.match.params.cityId
-    );
   }
 
   componentDidUpdate(prevprops) {
@@ -48,9 +44,6 @@ class SingleCity extends Component {
     const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
     const { isLoggedIn } = this.props;
-
-    console.log("GOT CITY ", this.props.singleCity);
-
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center mb-2">
@@ -328,6 +321,22 @@ class SingleCity extends Component {
           </div>
           <div className="col-2"></div>
         </div>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="facebook"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Facebook
+        </button>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="twitter"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Twitter
+        </button>
         <div className="d-grid gap-2 compare-btn">
           <Link className="btn" role="button" aria-current="page" to="/compare">
             <button className="btn btn-success">COMPARE CITIES</button>
