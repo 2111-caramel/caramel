@@ -41,7 +41,7 @@ export const getCityByName2 = (cityName) => async dispatch => {
 export const getCityByName3 = (cityName) => async dispatch => {
   try{
     console.log('CITYNAME IN THUNK', cityName)
-    const {data: city} = await axios.get(`/api/cities/city/${cityName}`)
+    const {data: city} = await axios.get(`/api/cities/${cityName}`)
     //console.log(city)
     return dispatch(_getCompareCity3(city))
   } catch(error){

@@ -6,7 +6,9 @@ import AllCities from "./AllCities";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <center><h1 style={{fontFamily: "Leckerli One"}}>Toto</h1></center>
+    <center>
+      <h1 style={{ fontFamily: "Leckerli One", fontSize: 50 }}>Toto</h1>
+    </center>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -17,7 +19,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -26,25 +28,25 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Home
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
                       to="/preferences"
                     >
-                      Take Survey
+                      Rankings
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
-                      to="/myInfo"
+                      to="/compare"
                     >
                       Compare Cities
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -54,7 +56,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Logout
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -63,7 +65,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       My Info
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <AllCities />
                   </li>
                 </ul>
@@ -90,8 +92,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                 className="collapse navbar-collapse"
                 id="navbarSupportedContent"
               >
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
+                <ul className="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -100,16 +102,16 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Home
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
                       to="/preferences"
                     >
-                      Take Survey
+                      Rankings
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -118,7 +120,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Compare Cities
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -127,7 +129,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Login
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <Link
                       className="nav-link-active"
                       aria-current="page"
@@ -136,7 +138,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
                       Sign Up
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item me-5">
                     <AllCities />
                   </li>
                 </ul>

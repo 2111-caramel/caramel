@@ -11,13 +11,13 @@
       crossorigin="anonymous"
     />
     <title>Toto</title>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Acme|Pacifico|Leckerli+One|Montserrat|Poppins|Manrope"
-    />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Leckerli+One|Manrope:b|Manrope"
+      />
 
     <link rel="stylesheet" href="/style.css" />
     <link rel="manifest" href="manifest.json" />
@@ -36,12 +36,13 @@
     ></script>
 
     <script>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
     </script>
-
 
     <div id="app"></div>
     <script>

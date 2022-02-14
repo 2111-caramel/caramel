@@ -30,7 +30,7 @@ class Pollution_Chart extends React.Component {
               needleBaseColor={"#BFB0BF"}
             />
             <div>
-              <h5 style={{ display: "inline" }}>Overall Pollution Level</h5>{" "}
+              <h6 style={{ display: "inline" }}>Overall Pollution Level</h6>{" "}
               <a data-bs-toggle="tooltip" data-bs-placement="top" title="About Overall Pollution Level: This figure is an estimation of the overall pollution in the city, based on surveys from visitors to the website Numbeo.com, a cost of living database. The biggest weight is given to air pollution, then to water pollution/accessibility, two main pollution factors.">
               <sup>
                 <svg
@@ -69,7 +69,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Drinking Water Quality</h6>
+              Drinking Water Quality
             </p>
           </div>
           <div className="col-4">
@@ -87,7 +87,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Air Quality</h6>
+              Air Quality
             </p>
           </div>
           <div className="col-2"></div>
@@ -110,7 +110,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Cleanliness & Tidiness</h6>
+              Cleanliness & Tidiness
             </p>
           </div>
           <div className="col-4">
@@ -128,7 +128,7 @@ class Pollution_Chart extends React.Component {
                 needleColor={"#BFB0BF"}
                 needleBaseColor={"#BFB0BF"}
               />
-              <h6>Quality of Green Spaces</h6>
+              Quality of Green Spaces
             </p>
           </div>
           <div className="col-2"></div>

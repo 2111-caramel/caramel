@@ -26,13 +26,11 @@ export class AllCities extends React.Component {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
             {this.props.cities.map((city, index) => {
               return (
-                <div key={index}>
-                  <li>
-                    <a className="dropdown-item" href={`/cities/${city.id}`}>
-                      {city.name}, {city.state}
-                    </a>
-                  </li>
-                </div>
+                <li key={index}>
+                  <a className="dropdown-item" href={`/cities/${city.id}`}>
+                    {city.name}, {city.state}
+                  </a>
+                </li>
               );
             })}
           </ul>

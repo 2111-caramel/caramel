@@ -143,22 +143,7 @@ router.get("/:cityName", async (req, res, next) => {
   }
 });
 
-router.get("/:cityId/weather", async (req, res, next) => {
-  try {
-    const city = await Weather.findAll({
-      where: {
-        cityId: req.params.cityId,
-      },
-    });
-    res.send(city);
-  } catch (err) {
-    next(err);
-  }
-});
-
-//come back and add the assosiated models
-
-router.get("/:cityId", async (req, res, next) => {
+router.get("/cityById/:cityId", async (req, res, next) => {
   try {
     const city = await City.findOne({
       where: {
@@ -178,3 +163,18 @@ router.get("/:cityId", async (req, res, next) => {
     next(err);
   }
 });
+
+
+router.get("/:cityId/weather", async (req, res, next) => {
+  try {
+    const city = await Weather.findAll({
+      where: {
+        cityId: req.params.cityId,
+      },
+    });
+    res.send(city);
+  } catch (err) {
+    next(err);
+  }
+});
+
