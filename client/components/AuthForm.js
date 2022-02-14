@@ -11,21 +11,22 @@ const AuthForm = (props) => {
   console.log("IN AUTH FORM NAME--->>", name);
   console.log("IN AUTH DISPLAYNAME--->", displayName);
   return (
-    <div>
+    <center>
+    <div >
       <form onSubmit={handleSubmit} name={name}>
         {console.log("INSIDE FORM-----", name)}
-
-        <div>
-          <label htmlFor="username">
+        <div className = "row" className ="col-xs-1 center-block" align="center">
+          <h2>Login</h2>
+          <label htmlFor="username" >
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
+          <input name="username" type="text" className="form-control"/>
         </div>
         <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input name="password" type="password" className="form-control"/>
         </div>
         {name === "signup" ? (
           <div>
@@ -41,6 +42,7 @@ const AuthForm = (props) => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>
+    </center>
   );
 };
 

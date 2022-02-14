@@ -19,13 +19,13 @@ class Pollution_Chart extends React.Component {
             <GaugeChart
               percent={indexPollution / 100}
               id="pollutionIdx"
-              arcsLength={[0.33, 0.33, 0.33]}
-              colors={["green", "yellow", "red"]}
+              nrOfLevels={30} 
+              arcWidth = {0.3}
               arcPadding={0.02}
-              textColor="#000000"
-              animate={true}
               animDelay={500}
               animateDuration={5000}
+              textColor="#000000"
+              animate={true}
               needleColor={"#BFB0BF"}
               needleBaseColor={"#BFB0BF"}
             />
@@ -59,8 +59,8 @@ class Pollution_Chart extends React.Component {
               <GaugeChart
                 percent={drinkingWaterQuality / 100}
                 id="pollutionWater"
-                arcsLength={[0.33, 0.33, 0.33]}
-                colors={["red", "yellow", "green"]}
+                nrOfLevels={30} 
+                arcWidth = {0.3}
                 arcPadding={0.02}
                 textColor="#000000"
                 animate={true}
@@ -77,11 +77,11 @@ class Pollution_Chart extends React.Component {
               <GaugeChart
                 percent={airQuality / 100}
                 id="pollutionAir"
-                arcsLength={[0.33, 0.33, 0.33]}
-                colors={["red", "yellow", "green"]}
-                arcPadding={0.02}
                 textColor="#000000"
                 animate={true}
+                nrOfLevels={30} 
+                arcWidth = {0.3}
+                arcPadding={0.02}
                 animDelay={500}
                 animateDuration={5000}
                 needleColor={"#BFB0BF"}
@@ -100,11 +100,12 @@ class Pollution_Chart extends React.Component {
               <GaugeChart
                 percent={cleanliness / 100}
                 id="pollutionClean"
-                arcsLength={[0.33, 0.33, 0.33]}
-                colors={["red", "yellow", "green"]}
                 arcPadding={0.02}
                 textColor="#000000"
                 animate={true}
+                nrOfLevels={30} 
+                arcWidth = {0.3}
+                arcPadding={0.02}
                 animDelay={500}
                 animateDuration={5000}
                 needleColor={"#BFB0BF"}
@@ -118,11 +119,11 @@ class Pollution_Chart extends React.Component {
               <GaugeChart
                 percent={greenParksQuality / 100}
                 id="pollutionIdx"
-                arcsLength={[0.33, 0.33, 0.33]}
-                colors={["red", "yellow", "green"]}
                 arcPadding={0.02}
                 textColor="#000000"
                 animate={true}
+                nrOfLevels={30} 
+                arcWidth = {0.3}
                 animDelay={500}
                 animateDuration={5000}
                 needleColor={"#BFB0BF"}
