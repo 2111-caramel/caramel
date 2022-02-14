@@ -37,7 +37,7 @@ router.get("/cityusers/:cityName", async (req, res, next) => {
 });
 
 //GET: single user && favorite city if any  api/users/:userId
-router.get("/:userId", requireToken, async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
@@ -74,7 +74,7 @@ router.get("/public/:userId", async (req, res, next) => {
 });
 
 //Update a user to api/users/:userId
-router.put("/:userId", requireToken, async (req, res, next) => {
+router.put("/:userId", async (req, res, next) => {
   try {
     const id = req.params.userId;
     const user = await User.findByPk(id);
@@ -86,7 +86,7 @@ router.put("/:userId", requireToken, async (req, res, next) => {
 });
 
 //Add a new favorite city to a user to api/users/
-router.post("/:userId", requireToken, async (req, res, next) => {
+router.post("/:userId", async (req, res, next) => {
   try {
     const { cityId } = req.body;
     const user = await User.findByPk(req.params.userId);
