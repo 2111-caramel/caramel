@@ -9,8 +9,8 @@ import UserPrefForm from "./components/UserPrefForm";
 import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
-//import Main from './components/Chat/ChatPage'
-//import MessageList from './components/Chat/MessageList'
+import Main from './components/Chat/ChatPage'
+import MessageList from './components/Chat/MessageList'
 import DummyComponent from './components/Chat/DummyComponent'
 import FindUsers from "./components/FindUsers"
 import SignUpForm from "./components/SignUpForm"
@@ -35,18 +35,19 @@ class Routes extends Component {
             <Route exact path="/myInfo" component={UserProfile} />
             <Route exact path='/findUsers' component={ FindUsers } />
             <Route exact path="/cities/:cityId" component={SingleCity} />
-            {/* <Route exact path = "/channels/:channelId" component = {MessageList} /> */}
+            {/* <Route exact path = "/channels/:channelId" component = {Main} /> */}
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/" component={Home} />
+
+            <Route exact path='/' component={ Home } />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/preferences" component={UserPrefForm} />
             <Route path="/preferences/:model" component={UserPrefForm} />
             <Route exact path="/compare" component={CompareView} />
             <Route exact path="/cities/:cityId" component={SingleCity} />
-            <Route exact path = "/channels/:channelId" component = {DummyComponent} />
+            {/* <Route exact path = "/channels/:channelId" component = {DummyComponent} /> */}
           </Switch>
         )}
       </div>
@@ -67,7 +68,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadMessages: () => dispatch(fetchMessages()),
     loadInitialData() {
       dispatch(me());
     },
