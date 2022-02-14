@@ -82,8 +82,7 @@ class SingleCity extends Component {
         </div>
 
         <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
+          <div className="col-md-8 offset-md-2 col-sm-12">
             <div className="row section-title">
               <h3>The Essentials</h3>
             </div>
@@ -99,7 +98,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly rent</b>
+                    <b>Monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -155,6 +154,7 @@ class SingleCity extends Component {
                   <div className="col-1"></div>
                 </div>
               </div>
+              <small>* Based on average prices</small>
             </div>
 
             <div className="row section-title">
@@ -230,8 +230,18 @@ class SingleCity extends Component {
                       <b>Bread:</b> ${livingCost.bread}
                     </p>
                   </div>
+                  <div className="col-3">
+                    <img
+                      src="https://symbols.getvecta.com/stencil_163/16_flexed-biceps.ebaa7e92f1.svg"
+                      height={60}
+                    ></img>
+                    <p>
+                      <b>Gym Membership:</b> ${livingCost.gym}
+                    </p>
+                  </div>
                 </div>
               </div>
+              <small>* Based on average prices</small>
             </div>
 
             <div className="row section-title">
@@ -240,7 +250,7 @@ class SingleCity extends Component {
 
             <div className="row category-section mb-4 align-items-center">
               <div className="col">
-                <div className="row mt-3 mb-3">
+                <div>
                   <Weather_Chart weather={weather} />
                 </div>
               </div>
