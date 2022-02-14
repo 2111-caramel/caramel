@@ -9,7 +9,7 @@ import Team from "./Team"
 export default function Footer() {
   return (
     <div className="container justify-content-end mt-3" align="center">
-      <div className="row justify-content-center mb-3" style={{ fontSize: 11 }}>
+      <div className="row justify-content-center mb-3" style={{ fontSize: 13 }}>
           <div>
         <a
           data-bs-toggle="offcanvas"
@@ -17,7 +17,7 @@ export default function Footer() {
           aria-controls="offcanvasExample"
           style={{ display: "inline" }}
         >
-          Data Sources{" "}
+          Data Sources & Credits{" "}
         </a>
 
         <div
@@ -27,7 +27,7 @@ export default function Footer() {
           aria-labelledby="offcanvasRightLabel"
         >
           <div className="offcanvas-header">
-            <h5 id="offcanvasRightLabel">Data Sources</h5>
+            <h5 id="offcanvasRightLabel">Data Sources & Credits</h5>
             <button
               type="button"
               className="btn-close text-reset"

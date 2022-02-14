@@ -17,6 +17,11 @@ export default function Sources() {
         <p>Data: Weather</p>
       <p>World Weather Online is dedicated to providing global weather forecast and weather content for websites, businesses and the travel industry.</p>
     </div>
+    <div className="row mb-3">
+      <h5><a href="https://wallpaperaccess.com/" target="_blank">WallpaperAccess</a></h5>
+        <p>Image: Homepage background image</p>
+      <p>WallpaperAccess brings you thousands of high quality images to be used as wallpaper for your computer, tablet or phone.</p>
+    </div>
     </div>
   );
 }

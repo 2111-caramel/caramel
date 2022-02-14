@@ -118,6 +118,7 @@ const seed = async () => {
         trainTicket: eachCityStats.prices[16].average_price,
         meal: eachCityStats.prices[1].average_price,
         movie: eachCityStats.prices[30].average_price,
+        gym: eachCityStats.prices[28].average_price,
       });
 
       counterPrice++;
