@@ -11,43 +11,27 @@ const LUNCH_CHANNEL = '/channels/4'
 
 export class ChannelList extends Component {
     render() {
-        // console.log("ChannelList props", this.props)
+        console.log("ChannelList props", this.props)
 
-        const filterMessageChannel = id =>
-            this.props.messages.messages.filter(m => m.channelId === id)
+        // const filterMessageChannel = id =>
+        //     this.props.messages.messages.filter(m => m.channelId === id)
 
-        const randomMessages = filterMessageChannel(1)
-        const generalMessages = filterMessageChannel(2)
-        const dogsMessages = filterMessageChannel(3)
-        const lunchMessages = filterMessageChannel(4)
+        // const randomMessages = filterMessageChannel(1)
+        // const generalMessages = filterMessageChannel(2)
+        // const dogsMessages = filterMessageChannel(3)
+        // const lunchMessages = filterMessageChannel(4)
 
         return (
-            <ul>
-                <li>
-                    <NavLink to={RANDOM_CHANNEL} activeClassName="active">
-                        <span># really_random</span>
-                        <span className="badge">{ randomMessages.length }</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={GENERAL_CHANNEL} activeClassName="active">
-                        <span># generally_speaking</span>
-                        <span className="badge">{ generalMessages.length }</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={DOGS_CHANNEL} activeClassName="active">
-                        <span># dogs_of_fullstack</span>
-                        <span className="badge">{ dogsMessages.length }</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={LUNCH_CHANNEL} activeClassName="active">
-                        <span># lunch_planning</span>
-                        <span className="badge">{ lunchMessages.length }</span>
-                    </NavLink>
-                </li>
-            </ul>
+            <h5>This should list the channels</h5>
+            // <ul>
+
+            //     <li>
+            //         <NavLink to={RANDOM_CHANNEL} activeClassName="active">
+            //             <span># really_random</span>
+            //             <span className="badge">{ randomMessages.length }</span>
+            //         </NavLink>
+            //     </li>
+            // </ul>
         )
     }
 }

@@ -10,7 +10,6 @@ import { me } from "./store";
 import CompareView from "./components/CompareView";
 import UserProfile from "./components/UserProfile";
 import Main from './components/Chat/ChatPage'
-import MessageList from './components/Chat/MessageList'
 import DummyComponent from './components/Chat/DummyComponent'
 import FindUsers from "./components/FindUsers"
 import SignUpForm from "./components/SignUpForm"
