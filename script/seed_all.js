@@ -21,25 +21,25 @@ const {
 const { newCitiesObj } = require("./cityObjs");
 
 const messages = [
-  { userId: 1, content: 'I like React!', channelId: 1 },
-  { userId: 2, content: 'I like Redux!', channelId: 1 },
-  { userId: 3, content: 'I like React-Redux!', channelId: 1 },
-  { userId: 4, content: 'I like writing web apps!', channelId: 2 },
-  { userId: 1, content: 'You should learn JavaScript!', channelId: 2 },
-  { userId: 2, content: 'JavaScript is pretty great!', channelId: 2 },
-  { userId: 3, content: 'Dogs are great!', channelId: 3 },
-  { userId: 4, content: 'Cats are also great!', channelId: 3 },
-  { userId: 1, content: 'Why must we fight so?', channelId: 3 },
-  { userId: 4, content: 'I want to get tacos!', channelId: 4 },
-  { userId: 2, content: 'I want to get salad!', channelId: 4 },
-  { userId: 3, content: 'I want a taco salad!', channelId: 4 }
+  { userId: 1, content: "I like React!", channelId: 1 },
+  { userId: 2, content: "I like Redux!", channelId: 1 },
+  { userId: 3, content: "I like React-Redux!", channelId: 1 },
+  { userId: 4, content: "I like writing web apps!", channelId: 2 },
+  { userId: 1, content: "You should learn JavaScript!", channelId: 2 },
+  { userId: 2, content: "JavaScript is pretty great!", channelId: 2 },
+  { userId: 3, content: "Dogs are great!", channelId: 3 },
+  { userId: 4, content: "Cats are also great!", channelId: 3 },
+  { userId: 1, content: "Why must we fight so?", channelId: 3 },
+  { userId: 4, content: "I want to get tacos!", channelId: 4 },
+  { userId: 2, content: "I want to get salad!", channelId: 4 },
+  { userId: 3, content: "I want a taco salad!", channelId: 4 },
 ];
 
 const channels = [
-  { name: 'really_random' },
-  { name: 'generally_speaking' },
-  { name: 'dogs_of_fullstack' },
-  { name: 'lunch_planning' }
+  { name: "really_random" },
+  { name: "generally_speaking" },
+  { name: "dogs_of_fullstack" },
+  { name: "lunch_planning" },
 ];
 // process.env does not work when plugged into axios request?
 // console.log("PROCESS.ENV FROM SEEDALL:", process.env)
@@ -48,38 +48,83 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
 
-  //  // Creating Users
+    //  // Creating Users
     await Promise.all([
-      User.create({ username: "cody", password: "123", currentCity: "Los Angeles", interests: "Hiking, surfing, working out" }),
-      User.create({ username: "murphy", password: "123", currentCity: "Boston", interests: "Reading, skiing" }),
-      User.create({ username: "john", password: "123", currentCity: "New York", interests: "Music, museums" }),
-      User.create({ username: "paul", password: "123", currentCity: "Chicago", interests: "Making snowmen, wine" }),
-      User.create({ username: "ringo", password: "123", currentCity: "Miami", interests: "Going to the beach, cooking" }),
-      User.create({ username: "george", password: "123", currentCity: "Atlanta", interests: "Swimming, watching TV" }),
-      User.create({ username: "leonardo", password: "123", currentCity: "Honolulu", interests: "Hiking, eating spam musubi" }),
-      User.create({ username: "raphael", password: "123", currentCity: "New York", interests: "Concerts, martial arts" }),
-      User.create({ username: "donatello", password: "123", currentCity: "Nashville", interests: "Reading, martial arts" }),
-      User.create({ username: "michelangelo", password: "123", currentCity: "Austin", interests: "Eating pizza, martial arts" }),
+      User.create({
+        username: "cody",
+        password: "123",
+        currentCity: "Los Angeles",
+        interests: "Hiking, surfing, working out",
+      }),
+      User.create({
+        username: "murphy",
+        password: "123",
+        currentCity: "Boston",
+        interests: "Reading, skiing",
+      }),
+      User.create({
+        username: "john",
+        password: "123",
+        currentCity: "New York",
+        interests: "Music, museums",
+      }),
+      User.create({
+        username: "paul",
+        password: "123",
+        currentCity: "Chicago",
+        interests: "Making snowmen, wine",
+      }),
+      User.create({
+        username: "ringo",
+        password: "123",
+        currentCity: "Miami",
+        interests: "Going to the beach, cooking",
+      }),
+      User.create({
+        username: "george",
+        password: "123",
+        currentCity: "Atlanta",
+        interests: "Swimming, watching TV",
+      }),
+      User.create({
+        username: "leonardo",
+        password: "123",
+        currentCity: "Honolulu",
+        interests: "Hiking, eating spam musubi",
+      }),
+      User.create({
+        username: "raphael",
+        password: "123",
+        currentCity: "New York",
+        interests: "Concerts, martial arts",
+      }),
+      User.create({
+        username: "donatello",
+        password: "123",
+        currentCity: "Nashville",
+        interests: "Reading, martial arts",
+      }),
+      User.create({
+        username: "michelangelo",
+        password: "123",
+        currentCity: "Austin",
+        interests: "Eating pizza, martial arts",
+      }),
     ]);
 
     await Promise.all(
-      channels.map(channel => {
-        Channel.create(channel)
+      channels.map((channel) => {
+        Channel.create(channel);
       })
-    )
+    );
 
-    await Promise.all(
-      messages.map(message => 
-         Message.create(message)
-        )
-    )
+    await Promise.all(messages.map((message) => Message.create(message)));
 
     await Promise.all(
       cityNameFormats.newCitiesObj.map((city) => {
         return City.create(city);
       })
     );
-
 
     ///--------------------------------COST OF LIVING------------------------------------///
     //Helper function for replacing city names in url slugs for city prices
@@ -89,7 +134,6 @@ const seed = async () => {
       );
       return cityName;
     };
-
 
     //Adding data for average price for each city
     let counterPrice = 0;
@@ -175,9 +219,10 @@ const seed = async () => {
         bus: eachCityTransitStats.primary_means_percentage_map[
           "Bus/Trolleybus"
         ],
-        trainAndBus:
-          parseInt(eachCityTransitStats.primary_means_percentage_map["Train/Metro"] +
-          eachCityTransitStats.primary_means_percentage_map["Bus/Trolleybus"]),
+        trainAndBus: parseInt(
+          eachCityTransitStats.primary_means_percentage_map["Train/Metro"] +
+            eachCityTransitStats.primary_means_percentage_map["Bus/Trolleybus"]
+        ),
         motorbike:
           eachCityTransitStats.primary_means_percentage_map["Motorbike"],
       });

@@ -7,43 +7,43 @@ const LivingCost = db.define("livingCost", {
     allowNull: false,
   },
   beer: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   cappuccino: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   milk: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   bread: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   eggs: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   gas: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   trainPass: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   trainTicket: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   meal: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   movie: {
-    type: Sequelize.DECIMAL(10,2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   gym: {
@@ -52,11 +52,12 @@ const LivingCost = db.define("livingCost", {
   },
 });
 
-// HOOKS 
+// HOOKS
 
 LivingCost.addHook('beforeCreate', (city) => {
   city.daycare = Math.round(city.daycare)
   city.gym = Math.round(city.gym)
+
 });
 
 module.exports = LivingCost;
