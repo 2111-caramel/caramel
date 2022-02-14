@@ -52,6 +52,15 @@ form div {
   min-width: fit-content;
 }
 
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .category-section {
   background: #f6f4f6;
   border-bottom-left-radius: 10px;

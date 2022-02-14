@@ -36,7 +36,7 @@ class UserPrefForm extends React.Component {
             <button className="btn btn-outline-secondary"
               type="button"
               value="primaryStats"
-              onClick={this.handleClick} data-bs-toggle="button" aria-pressed="true" autoComplete="off"
+              onClick={this.handleClick} data-bs-toggle="button" aria-pressed="true"
             >
               Low Rent
             </button>
