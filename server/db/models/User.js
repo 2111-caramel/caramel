@@ -21,9 +21,6 @@ const User = db.define('user', {
   password: {
     type: Sequelize.STRING,
   },
-  favorites: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
-  },
   currentCity: {
     type: Sequelize.STRING,
   },

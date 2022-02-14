@@ -11,17 +11,6 @@ class UserPrefForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // componentDidMount() {}
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.value !== this.state.value) {
-  //     this.props.match.params.model = this.state.value;
-  //     this.props.history.push(`/preferences/${this.state.value}`);
-  //     console.log("PARAMS HERE---->", this.props.match.params);
-  //     this.props.gettingThreeCities(this.state.value);
-  //     this.props.loadCities;
-  //     // console.log("Params ID---->>>", this.props.match.params);
-  //   }
-  // }
 
   handleClick(e) {
     if(!this.state.values.includes(e.target.value)){
@@ -38,25 +27,27 @@ class UserPrefForm extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid justify-content-center">
-        <h1>What is most important to you in a city?</h1>
+      <div className="container-fluid text-center">
+        <h1 style={{margin: "20px"}}>What matters to you?</h1>
+        <p style={{margin: "0px"}}>Select the most important things</p>
+        <p>to get recommendations on where to live.</p>
         <form className="row justify-content-center mb-3">
           <div>
             <button className="btn btn-outline-secondary"
               type="button"
               value="primaryStats"
-              onClick={this.handleClick} data-toggle="button" aria-pressed="true" autoComplete="off"
+              onClick={this.handleClick} data-bs-toggle="button" aria-pressed="true"
             >
               Low Rent
             </button>
           </div>
           <div>
-            <button type="button" value="Healthcare" onClick={this.handleClick} className="btn btn-outline-secondary">
+            <button type="button" value="Healthcare" onClick={this.handleClick} className="btn btn-outline-secondary" data-bs-toggle="button">
               Quality Healthcare
             </button>
           </div>
           <div>
-            <button type="button" value="Pollution" onClick={this.handleClick} className="btn btn-outline-secondary">
+            <button type="button" value="Pollution" onClick={this.handleClick} className="btn btn-outline-secondary" data-bs-toggle="button">
               Low Pollution
             </button>
           </div>
@@ -64,18 +55,18 @@ class UserPrefForm extends React.Component {
             <button
               type="button"
               value="Transportation"
-              onClick={this.handleClick} className="btn btn-outline-secondary"
+              onClick={this.handleClick} className="btn btn-outline-secondary" data-bs-toggle="button"
             >
               Good Public Transportation
             </button>
           </div>
           <div>
-            <button type="button" value="LivingCost" onClick={this.handleClick} className="btn btn-outline-secondary">
+            <button type="button" value="LivingCost" onClick={this.handleClick} className="btn btn-outline-secondary" data-bs-toggle="button">
               Low Daycare Cost
             </button>
           </div>
           <div>
-            <button type="button" onClick={this.handleSubmit}>
+            <button type="button" onClick={this.handleSubmit} className="btn btn-primary btn-sm">
               Submit
             </button>
           </div>
@@ -94,31 +85,6 @@ class UserPrefForm extends React.Component {
                       ></img>
                       <p>{city.city.info}</p>
                     </div>
-                    {/* <h2>{`${idx + 1}) ${city.city.name}, ${city.city.state}`}</h2>
-                <img></img>
-                <div className="col"> */}
-                    {/* <GaugeChart
-                    id="healthIndex"
-                    arcsLength={[0.33, 0.33, 0.33]}
-                    colors={["red", "yellow", "green"]}
-                    percent={
-                      this.state.value === "Healthcare"
-                        ? city.index / 100
-                        : this.state.value === "Pollution"
-                        ? city.indexPollution / 100
-                        : this.state.value === "Transportation"
-                        ? city.trainAndBus / 100
-                        : this.state.value === "LivingCost"
-                        ? city.daycare / 100
-                        : ""
-                    }
-                    arcPadding={0.02}
-                    textColor="#000000"
-                    needleColor={"#BFB0BF"}
-                    needleBaseColor={"#BFB0BF"}
-                    style={{ width: "200px" }}
-                  />
-                  <h6>Overall {this.state.value} Rating</h6> */}
                   </div>
                 </div>
               );

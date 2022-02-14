@@ -6,12 +6,7 @@ import { fetchPublicUser } from "../store/user";
  * COMPONENT
  */
 class UserProfilePublic extends Component {
-  // constructor() {
-  //     super();
-  //     this.state = {
-  //       user: 0
-  //     };
-  //   }
+
   componentDidMount() {
     this.props.getPublicUser(this.props.selectedUser);
   }
@@ -23,7 +18,6 @@ class UserProfilePublic extends Component {
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="row public-profile mt-4">
@@ -44,9 +38,7 @@ class UserProfilePublic extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
+
 const mapState = (state) => {
   return {
     user: state.user,

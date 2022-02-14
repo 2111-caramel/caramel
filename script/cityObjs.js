@@ -105,8 +105,8 @@ const cityObjs = {
       imageUrlWeb:
         "https://d13k13wj6adfdf.cloudfront.net/urban_areas/columbus_web-748d46d705.jpg",
       info: "Columbus is Ohio’s state capital. The city’s Scioto Mile is a string of parks on both sides of the Scioto River, with a huge interactive fountain and trails. On the west bank, the COSI science center offers hands-on exhibits and a planetarium. Downtown, the Columbus Museum of Art includes American and European paintings and a sculpture garden. The German Village area has restored brick houses built by 1800s settlers.",
-      lat: "40.1038",
-      lng: "-83.1710",
+      lat: "39.961178",
+      lng: "-82.998795",
     },
     {
       id: 0,

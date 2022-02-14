@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
  * COMPONENT
  */
 export const Home = (props) => {
-  const { username } = props;
-
   return (
     <div className="container-fluid homepage" align="center">
-      <div className="row justify-content-center mb-5">
-        <h1>Dreaming of your next move?</h1>
+      <div className="row justify-content-start mb-5">
+        <h1>
+          <b>Dreaming of your next move?</b>
+        </h1>
       </div>
 
       <div className="row">
@@ -26,7 +26,7 @@ export const Home = (props) => {
           <br />
 
           <Link role="button" aria-current="page" to="/preferences">
-            <button className="nav-link-active btn btn-primary btn-sm">
+            <button className="nav-link-active btn btn-primary btn-sm survey">
               Take A Survey
             </button>
           </Link>

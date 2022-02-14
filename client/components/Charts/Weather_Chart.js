@@ -4,7 +4,6 @@ import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 
 const Weather_Chart = (props) => {
-
   let minTempsObj = {};
   let maxTempsObj = {};
   let rainObj = {};
@@ -37,7 +36,7 @@ const Weather_Chart = (props) => {
   return (
     <div className="container-fluid text-center">
       <div className="row justify-content-center mt-3">
-        <div className="col-6">
+        <div className="col-md-6 col-sm-12">
           <div key="bar-chart">
             <Bar
               data={{
@@ -93,51 +92,51 @@ const Weather_Chart = (props) => {
                 },
               }}
             />
-          </div></div>
+          </div>
+        </div>
 
-          <div className="col-6">
-            <div key="bar-chart">
-              <Bar
-                data={{
-                  datasets: [
-                    {
-                      label: "Average Daily Rainfall (inches)",
-                      data: [
-                        rainObj.January,
-                        rainObj.February,
-                        rainObj.March,
-                        rainObj.April,
-                        rainObj.May,
-                        rainObj.June,
-                        rainObj.July,
-                        rainObj.August,
-                        rainObj.September,
-                        rainObj.October,
-                        rainObj.November,
-                        rainObj.December,
-                      ],
-                      backgroundColor: ["blue"],
-                    },
-                  ],
-                  labels: months,
-                }}
-                options={{
-                  title: {
-                    display: true,
-                    text: "Weather Chart",
-                    fontSize: 20,
+        <div className="col-md-6 col-sm-12">
+          <div key="bar-chart">
+            <Bar
+              data={{
+                datasets: [
+                  {
+                    label: "Average Daily Rainfall (inches)",
+                    data: [
+                      rainObj.January,
+                      rainObj.February,
+                      rainObj.March,
+                      rainObj.April,
+                      rainObj.May,
+                      rainObj.June,
+                      rainObj.July,
+                      rainObj.August,
+                      rainObj.September,
+                      rainObj.October,
+                      rainObj.November,
+                      rainObj.December,
+                    ],
+                    backgroundColor: ["blue"],
                   },
-                  legend: {
-                    display: true,
-                    position: "right",
-                  },
-                }}
-              />
-            </div>
+                ],
+                labels: months,
+              }}
+              options={{
+                title: {
+                  display: true,
+                  text: "Weather Chart",
+                  fontSize: 20,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 

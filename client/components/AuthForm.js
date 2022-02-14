@@ -8,8 +8,6 @@ import { authenticate } from "../store";
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
   // displayName changes toggles login & logout
-  console.log("IN AUTH FORM NAME--->>", name);
-  console.log("IN AUTH DISPLAYNAME--->", displayName);
   return (
     <center>
     <div >
@@ -47,25 +45,10 @@ const AuthForm = (props) => {
   );
 };
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = (state) => {
   return {
     name: "login",
     displayName: "Login", //FOR SUBMIT BUTTON
-    error: state.auth.error,
-  };
-};
-
-const mapSignup = (state) => {
-  return {
-    name: "signup",
-    displayName: "Sign Up", //FOR SUBMIT BUTTON
     error: state.auth.error,
   };
 };

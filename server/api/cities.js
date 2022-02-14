@@ -20,30 +20,11 @@ router.get("/", async (req, res, next) => {
     const cities = await City.findAll({
       order: [["name", "ASC"]],
     });
-    console.log("cities", cities);
     res.send(cities);
   } catch (err) {
     next(err);
   }
 });
-
-// //come back and add the rest of the assosiated models
-// router.get("/citiesAndModels", async (req, res, next) => {
-//   try {
-//     const city = await City.findAll({
-//       include: [
-//         { model: PrimaryStats },
-//         { model: Healthcare },
-//         { model: LivingCost },
-//         { model: Transportation },
-//         // {model: Weather}
-//       ],
-//     });
-//     res.send(city);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
 
 ///THREE CITIES
 router.get("/preferences/:model", async (req, res, next) => {
@@ -107,14 +88,6 @@ router.get("/preferences/:model", async (req, res, next) => {
       attributes: modelAttr,
       order: modelOrder,
       include: [{ model: City }],
-      //   include: [
-      //     { model: PrimaryStats },
-      //     { model: Healthcare },
-      //     { model: LivingCost },
-      //     { model: Transportation },
-      //     { model: Weather },
-      //     { model: Pollution },
-      //   ],
     });
     res.send(threeCities);
   } catch (err) {
@@ -134,7 +107,6 @@ router.get("/:cityName", async (req, res, next) => {
         { model: LivingCost },
         { model: Transportation },
         { model: Pollution },
-        //{model: Weather}
       ],
     });
     res.send(city);

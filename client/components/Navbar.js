@@ -6,9 +6,9 @@ import AllCities from "./AllCities";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <center>
+    {/* <center>
       <h1 style={{ fontFamily: "Leckerli One", fontSize: 50 }}>Toto</h1>
-    </center>
+    </center> */}
     <nav>
       {isLoggedIn ? (
         <div>

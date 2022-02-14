@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import { authenticateNewUser } from "../store";
 import { fetchCities } from "../store/cities";
 
-/**
- * COMPONENT
- */
 
 let currentCityValue = ""
 
@@ -20,10 +17,8 @@ export class SignUpForm extends React.Component {
 
   handleChange(evt) {
     currentCityValue=evt.target.value
-    // this.setState({currentCity: evt.target.value})
-    // console.log('THIS.STATE: ', this.state)
   }
-  
+
   componentDidMount() {
     this.props.getCities();
   }
