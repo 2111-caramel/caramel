@@ -54,7 +54,7 @@ class SingleCity extends Component {
           {isLoggedIn && (
             <div>
               <button
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-sm" style={{background: "#617176", border: "none"}}
                 value={id}
                 onClick={() => this.onClick(id)}
               >
@@ -335,7 +335,7 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="facebook"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`} style={{background: "#617176", border: "none"}}
         >
           Share on Facebook
         </button>
@@ -343,7 +343,7 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="twitter"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}` }
         >
           Share on Twitter
         </button>

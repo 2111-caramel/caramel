@@ -66,7 +66,7 @@ class UserPrefForm extends React.Component {
             </button>
           </div>
           <div>
-            <button type="button" onClick={this.handleSubmit} className="btn btn-primary btn-sm">
+            <button type="button" onClick={this.handleSubmit} className="btn btn-primary btn-sm" style={{background: "#617176", border: "none"}}>
               Submit
             </button>
           </div>
