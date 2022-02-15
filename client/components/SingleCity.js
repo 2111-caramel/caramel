@@ -335,7 +335,7 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="facebook"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`} style={{background: "#b398bd", border: "none"}}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`} style={{background: "#b398bd", border: "none", margin: "5px"}}
         >
           Share on Facebook
         </button>
@@ -343,7 +343,7 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="twitter"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}` } style={{background: "#b398bd", border: "none"}}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}` } style={{background: "#b398bd", border: "none", margin: "5px"}}
         >
           Share on Twitter
         </button>

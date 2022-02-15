@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export const Home = (props) => {
   return (
     <div className="container-fluid homepage" align="center">
-      <div className="row justify-content-start mb-5">
+      <div className="row justify-content-start mb-5" style={{margin: "-200px"}}>
         <h1>
           <b>Dreaming of your next move?</b>
         </h1>
