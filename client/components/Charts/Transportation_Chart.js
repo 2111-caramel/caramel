@@ -6,7 +6,7 @@ import "chart.js/auto";
 const Transportation_Chart = (props) => {
   const { car, bike, train, walking, bus, motorbike, workFromHome } =
     props.transportation;
-
+  console.log("minor change")
   return (
     <div key="pie-chart">
       <Pie
