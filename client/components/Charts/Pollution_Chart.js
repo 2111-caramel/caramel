@@ -18,6 +18,7 @@ class Pollution_Chart extends React.Component {
           <div className="col-5">
             <GaugeChart
               percent={indexPollution / 100}
+              colors={["green","yellow", "red"]}
               id="pollutionIdx"
               nrOfLevels={30} 
               arcWidth = {0.3}

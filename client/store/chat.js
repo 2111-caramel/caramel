@@ -24,26 +24,17 @@ export const userSet = userName => ({
 
 // Thunk Creator
 export const fetchMessages = () => async dispatch => {
-<<<<<<< HEAD
     try{    
         const { data: messages } = await axios.get('/api/messages')
         dispatch(gotMessagesFromServer(messages))
      }catch(e){
          console.err(e)
      }
-=======
-    const { data: messages } = await axios.get('/api/messages')
-    dispatch(gotMessagesFromServer(messages))
->>>>>>> main
 }
 
 export const postMessage = message => async (dispatch, getState) => {
     message.name = getState().user
-<<<<<<< HEAD
     const { data: newMessage } = await axios.post('/api/messages', message)    
-=======
-    const { data: newMessage } = await axios.post('/api/messages', message)
->>>>>>> main
     dispatch(gotNewMessage(newMessage))
     socket.emit('new-message', newMessage)
 }
