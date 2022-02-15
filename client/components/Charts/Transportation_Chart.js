@@ -18,7 +18,7 @@ const Transportation_Chart = (props) => {
                 "#B398BD",
                 "#7dffcb",
                 "#c478ff",
-                "#787aff",
+                "#B435DE",
                 "#5917ff",
                 "#C37CE9",
                 "#B435DE",
