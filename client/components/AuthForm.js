@@ -36,7 +36,7 @@ const AuthForm = (props) => {
           ""
         )}
         <div>
-          <button className="btn btn-primary btn-sm" type="submit" style={{background: "#617176", border: "none"}}>{displayName}</button>
+          <button className="btn btn-primary btn-sm" type="submit" style={{background: "#b398bd", border: "none"}}>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
