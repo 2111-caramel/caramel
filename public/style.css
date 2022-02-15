@@ -9,18 +9,19 @@ a {
 }
 
 .dropdown.select-city-form .btn.btn-primary {
-  background-color: #6610f2;
+  background-color: #b398bd;
+  border: none;
 }
 
 .container-fluid.homepage .dropdown.select-city-form .btn.btn-primary,
 .survey {
   background-color: #e0ffff;
-  color: #6610f2;
+  color: #b398bd;
   border-color: #e0ffff;
 }
 
 .survey:hover {
-  background-color: #6610f2;
+  background-color: #b398bd;
 }
 
 label {
@@ -47,7 +48,7 @@ form div {
 
 .navbar-collapse.collapse.show {
   padding: 0 20px;
-  background-color: #6610f2;
+  background-color: #b398bd;
   z-index: 1000;
 }
 
