@@ -12,7 +12,6 @@ const getThreeCities = (threeCities) => ({
 
 // Thunks
 export const fetchThreeCities = (selection) => {
-  console.log("THUNK BEFORE---->>>", selection);
   return async (dispatch) => {
     try {
       //for loop here over the state values
@@ -44,11 +43,7 @@ export const fetchThreeCities = (selection) => {
         }
         cityArray.push(data)
       }
-      console.log('CITYARRAY', cityArray)
-      console.log('BEST CITIES', getBest3(cityArray));
-      console.log('CITYARRAY AFTER FUNC', cityArray)
       let bestCities = getBest3(cityArray).slice(0, 3);
-      console.log('RESULT',bestCities)
       let result = [];
       for(let i = 0; i < cityArray[0].length; i++){
         for(let j = 0; j < 3; j++)
@@ -56,10 +51,6 @@ export const fetchThreeCities = (selection) => {
           result.push(cityArray[0][i])
         }
       }
-      console.log('i dont think this works', result)
-
-
-
       dispatch(getThreeCities(result));
     } catch (err) {
       console.log(err);
@@ -74,7 +65,6 @@ export default function threeCitiesReducer(state = initialState, action) {
   switch (action.type) {
     case GET_THREE_CITIES:
       return action.threeCities;
-
     default:
       return state;
   }

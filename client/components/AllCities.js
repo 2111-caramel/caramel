@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchCities } from "../store/cities";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 export class AllCities extends React.Component {
   componentDidMount() {

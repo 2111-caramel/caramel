@@ -2,6 +2,9 @@ import React from "react";
 import GaugeChart from "react-gauge-chart";
 import "chart.js/auto";
 
+//All of these should be flipped color wise 
+//except for overall color
+
 const Healthcare_Chart = (props) => {
   const { skill, cost, index } = props.healthcare;
   const skillPercent = skill / 100;
@@ -16,11 +19,14 @@ const Healthcare_Chart = (props) => {
           <GaugeChart
             percent={skillPercent}
             id="healthSkill"
-            arcsLength={[0.33, 0.33, 0.33]}
+            //arcsLength={[0.33, 0.33, 0.33]}
             colors={["red", "yellow", "green"]}
+            nrOfLevels={30} 
+            arcWidth = {0.3}
             arcPadding={0.02}
+            // arcPadding={0.05}
             textColor="#000000"
-            animate={true}
+            // animate={true}
             animDelay={500}
             animateDuration={5000}
             needleColor={"#BFB0BF"}
@@ -32,10 +38,15 @@ const Healthcare_Chart = (props) => {
         <div className="col-4">
           <GaugeChart
             id="healthIndex"
-            arcsLength={[0.33, 0.33, 0.33]}
+            //arcsLength={[0.33, 0.33, 0.33]}
+            nrOfLevels={30} 
+            arcWidth = {0.3}
+            arcPadding={0.02}
             colors={["red", "yellow", "green"]}
             percent={indexPercent}
-            arcPadding={0.02}
+            animDelay={500}
+            animateDuration={5000}
+            //arcPadding={0.02}
             textColor="#000000"
             needleColor={"#BFB0BF"}
             needleBaseColor={"#BFB0BF"}
@@ -68,10 +79,16 @@ const Healthcare_Chart = (props) => {
         <div className="col-3">
           <GaugeChart
             id="healthCost"
-            arcsLength={[0.33, 0.33, 0.33]}
+            // arcsLength={[0.33, 0.33, 0.33]}
             colors={["red", "yellow", "green"]}
-            percent={costPercent}
+            nrOfLevels={30} 
+            arcWidth = {0.3}
             arcPadding={0.02}
+            percent={indexPercent}
+            animDelay={500}
+            animateDuration={5000}
+            percent={costPercent}
+            //arcPadding={0.02}
             textColor="#000000"
             needleColor={"#BFB0BF"}
             needleBaseColor={"#BFB0BF"}

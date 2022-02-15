@@ -28,9 +28,7 @@ export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
     try {
       //const token = window.localStorage.getItem('token')
-      console.log('HEEEEEEEY', userId)
       const {data: user } = await axios.get(`/api/users/${userId}`)
-      console.log("FETCHSINGLEUSER RESULT: ", user)
       dispatch(getSingleUser(user))
     } catch (error) {
       console.log('GET SINGLE USER THUNK ERROR')
@@ -43,7 +41,6 @@ export const fetchPublicUser = (userId) => {
   return async (dispatch) => {
     try {
       const {data: user } = await axios.get(`/api/users/public/${userId}`)
-      console.log("FETCH PUBLIC USER RESULT: ", user)
       dispatch(getPublicUser(user))
     } catch (error) {
       console.log('GET PUBLIC USER THUNK ERROR')
@@ -54,7 +51,6 @@ export const fetchPublicUser = (userId) => {
 export const updateUser = (city, userId) => {
   return async (dispatch) => {
     try{
-      console.log('UPDATE THUNK', city, userId)
       const user = {favorites: city}
       const {data: updatedUser} = await axios.put(`/api/users/${userId}`, user)
       dispatch(_updateUser(updatedUser))

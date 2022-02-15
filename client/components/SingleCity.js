@@ -21,10 +21,6 @@ class SingleCity extends Component {
   componentDidMount() {
     this.props.loadCity(this.props.match.params.cityId);
     this.props.getCityWeather(this.props.match.params.cityId);
-    console.log(
-      "CITYID PARAMS FROM COMPONENT ",
-      this.props.match.params.cityId
-    );
   }
 
   componentDidUpdate(prevprops) {
@@ -48,9 +44,6 @@ class SingleCity extends Component {
     const location = { lat: city.lat, lng: city.lng, name: city.name };
     const id = this.props.id;
     const { isLoggedIn } = this.props;
-
-    console.log("GOT CITY ", this.props.singleCity);
-
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center mb-2">
@@ -82,8 +75,7 @@ class SingleCity extends Component {
         </div>
 
         <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
+          <div className="col-md-8 offset-md-2 col-sm-12">
             <div className="row section-title">
               <h3>The Essentials</h3>
             </div>
@@ -99,7 +91,7 @@ class SingleCity extends Component {
                     ></img>
                   </div>
                   <div className="col-6">
-                    <b>Avg. monthly rent</b>
+                    <b>Monthly rent</b>
                     <br />
                     1-BR apartment: ${primaryStat.rent1br}
                     <br />
@@ -155,6 +147,7 @@ class SingleCity extends Component {
                   <div className="col-1"></div>
                 </div>
               </div>
+              <small>* Based on average prices</small>
             </div>
 
             <div className="row section-title">
@@ -230,8 +223,18 @@ class SingleCity extends Component {
                       <b>Bread:</b> ${livingCost.bread}
                     </p>
                   </div>
+                  <div className="col-3">
+                    <img
+                      src="https://symbols.getvecta.com/stencil_163/16_flexed-biceps.ebaa7e92f1.svg"
+                      height={60}
+                    ></img>
+                    <p>
+                      <b>Gym Membership:</b> ${livingCost.gym}
+                    </p>
+                  </div>
                 </div>
               </div>
+              <small>* Based on average prices</small>
             </div>
 
             <div className="row section-title">
@@ -240,7 +243,7 @@ class SingleCity extends Component {
 
             <div className="row category-section mb-4 align-items-center">
               <div className="col">
-                <div className="row mt-3 mb-3">
+                <div>
                   <Weather_Chart weather={weather} />
                 </div>
               </div>
@@ -328,6 +331,22 @@ class SingleCity extends Component {
           </div>
           <div className="col-2"></div>
         </div>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="facebook"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Facebook
+        </button>
+        <button
+          className="btn btn-primary btn-sm"
+          data-sharer="twitter"
+          data-hashtag="hashtag"
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+        >
+          Share on Twitter
+        </button>
         <div className="d-grid gap-2 compare-btn">
           <Link className="btn" role="button" aria-current="page" to="/compare">
             <button className="btn btn-success">COMPARE CITIES</button>

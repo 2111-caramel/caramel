@@ -24,17 +24,26 @@ export const userSet = userName => ({
 
 // Thunk Creator
 export const fetchMessages = () => async dispatch => {
+<<<<<<< HEAD
     try{    
         const { data: messages } = await axios.get('/api/messages')
         dispatch(gotMessagesFromServer(messages))
      }catch(e){
          console.err(e)
      }
+=======
+    const { data: messages } = await axios.get('/api/messages')
+    dispatch(gotMessagesFromServer(messages))
+>>>>>>> main
 }
 
 export const postMessage = message => async (dispatch, getState) => {
     message.name = getState().user
+<<<<<<< HEAD
     const { data: newMessage } = await axios.post('/api/messages', message)    
+=======
+    const { data: newMessage } = await axios.post('/api/messages', message)
+>>>>>>> main
     dispatch(gotNewMessage(newMessage))
     socket.emit('new-message', newMessage)
 }
@@ -45,13 +54,6 @@ const initialState = {
     user: 'Cody',
 }
 
-// // alternative pattern for writing reducer cases
-// const mapTypeToCallback = {
-//     [GOT_MESSAGES_FROM_SERVER]: (state, action) => ({
-//         ...state,
-//         messages: action.messages,
-//     }),
-// }
 
 // :: (State, Action) -> State
 export default function chatReducer (state = initialState, action) {
