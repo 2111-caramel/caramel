@@ -6,7 +6,7 @@ import "chart.js/auto";
 const Transportation_Chart = (props) => {
   const { car, bike, train, walking, bus, motorbike, workFromHome } =
     props.transportation;
-
+  console.log("minor change")
   return (
     <div key="pie-chart">
       <Pie
@@ -15,13 +15,13 @@ const Transportation_Chart = (props) => {
             {
               data: [car, train, bike, walking, bus, workFromHome, motorbike],
               backgroundColor: [
-                "#7de7ff",
+                "#B398BD",
                 "#7dffcb",
                 "#c478ff",
-                "#787aff",
+                "#B435DE",
                 "#5917ff",
-                "#f530ff",
-                "#e399f2",
+                "#C37CE9",
+                "#B435DE",
               ],
             },
           ],

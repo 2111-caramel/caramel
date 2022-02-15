@@ -32,7 +32,8 @@ class Pollution_Chart extends React.Component {
             />
             <div>
               <h6 style={{ display: "inline" }}>Overall Pollution Level</h6>{" "}
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="About Overall Pollution Level: This figure is an estimation of the overall pollution in the city, based on surveys from visitors to the website Numbeo.com, a cost of living database. The biggest weight is given to air pollution, then to water pollution/accessibility, two main pollution factors.">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="About Overall Pollution Level: This figure is an estimation of the overall pollution in the city, based on surveys from visitors to the website Numbeo.com, 
+              a cost of living database. The biggest weight is given to air pollution, then to water pollution/accessibility, two main pollution factors.">
               <sup>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
