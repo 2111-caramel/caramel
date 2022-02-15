@@ -62,7 +62,8 @@ class CompareCity extends Component {
             <a
               data-bs-toggle="tooltip"
               data-bs-placement="top"
-              title="About Overall Healthcare Rating: This figure is an estimation of the overall quality of the city's health care system, health care professionals, equipment, staff, doctors, cost, etc., based on surveys from visitors to the website Numbeo.com, a cost of living database."
+              title="About Overall Pollution Level: This figure is an estimation of the overall pollution in the city, based on surveys from visitors to the website Numbeo.com, 
+              a cost of living database. The biggest weight is given to air pollution, then to water pollution/accessibility, two main pollution factors."
             >
               <sup>
                 <svg
@@ -88,9 +89,9 @@ class CompareCity extends Component {
             <h5>Environment</h5>
 
             <GaugeChart
-              id="healthIndex"
+              id="pollutionIndex"
               nrOfLevels={30} 
-              colors={["green", "yellow", "red",  ]}
+              colors={["green", "yellow", "red"]}
               arcWidth = {0.3}
               percent={city.pollution.indexPollution / 100}
               arcPadding={0.02}
@@ -104,7 +105,7 @@ class CompareCity extends Component {
           <a
               data-bs-toggle="tooltip"
               data-bs-placement="top"
-              title="About Overall Healthcare Rating: This figure is an estimation of the overall quality of the city's health care system, health care professionals, equipment, staff, doctors, cost, etc., based on surveys from visitors to the website Numbeo.com, a cost of living database."
+              title="About Overall Pollution Rating: This figure is an estimation of the overall quality of the city's pollution, based on surveys from visitors to the website Numbeo.com, a cost of living database."
             >
               <sup>
                 <svg
