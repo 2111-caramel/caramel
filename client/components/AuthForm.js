@@ -13,8 +13,8 @@ const AuthForm = (props) => {
     <div >
       <h4 >Login</h4>
       <form onSubmit={handleSubmit} name={name}>
-        {console.log("INSIDE FORM-----", name)} 
-       
+        {console.log("INSIDE FORM-----", name)}
+
         <div className = "row" className ="col-xs-1 center-block" align="center">
           <label htmlFor="username" >
             <small>Username</small>
@@ -36,7 +36,7 @@ const AuthForm = (props) => {
           ""
         )}
         <div>
-          <button type="submit">{displayName}</button>
+          <button className="btn btn-primary btn-sm" type="submit" style={{background: "#b398bd", border: "none"}}>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
