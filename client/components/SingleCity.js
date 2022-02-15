@@ -54,7 +54,8 @@ class SingleCity extends Component {
           {isLoggedIn && (
             <div>
               <button
-                className="btn btn-primary btn-sm" style={{background: "#b398bd", border: "none"}}
+                className="btn btn-primary btn-sm"
+                style={{ background: "#b398bd", border: "none" }}
                 value={id}
                 onClick={() => this.onClick(id)}
               >
@@ -335,7 +336,8 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="facebook"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`} style={{background: "#b398bd", border: "none", margin: "5px"}}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+          style={{ background: "#b398bd", border: "none", margin: "5px" }}
         >
           Share on Facebook
         </button>
@@ -343,13 +345,19 @@ class SingleCity extends Component {
           className="btn btn-primary btn-sm"
           data-sharer="twitter"
           data-hashtag="hashtag"
-          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}` } style={{background: "#b398bd", border: "none", margin: "5px"}}
+          data-url={`https://urban-analysis.herokuapp.com/cities/${city.id}`}
+          style={{ background: "#b398bd", border: "none", margin: "5px" }}
         >
           Share on Twitter
         </button>
         <div className="d-grid gap-2 compare-btn">
           <Link className="btn" role="button" aria-current="page" to="/compare">
-            <button className="btn btn-success" style={{background: "#B9B7BD", border: "none"}}>COMPARE CITIES</button>
+            <button
+              className="btn btn-success"
+              style={{ background: "#6610f2", border: "none" }}
+            >
+              COMPARE CITIES
+            </button>
           </Link>
         </div>
       </div>
