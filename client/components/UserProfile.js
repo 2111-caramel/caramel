@@ -31,13 +31,15 @@ class UserProfile extends Component {
           <p>
             <b>Favorite Cities:</b>
           </p>
+          <div className="row">
           {cities.map((city, index) => {
             return (
-              <div key={index}>
-                <a href={`/cities/${city.id}`}>{city.name}</a>
+              <div className="col mb-2 me-2 thumbnail-box" key={index}>
+                <a href={`/cities/${city.id}`}><img className="city-image" src={city.imageUrlMobile} style={{height: "80px", padding: "5px"}}></img>{city.name}</a>
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     );

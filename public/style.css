@@ -5,6 +5,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #000000
 }
 
 .dropdown.select-city-form .btn.btn-primary {
@@ -87,6 +88,16 @@ form div {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   min-width: fit-content;
+}
+
+.thumbnail-box {
+  background: #f6f4f6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-width: fit-content;
+  max-width: fit-content;
 }
 
 /* .city-image {
