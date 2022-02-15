@@ -49,7 +49,7 @@ class CompareCity extends Component {
               id="healthIndex"
               nrOfLevels={30} 
               arcWidth = {0.3}
-              //colors={["red", "yellow", "green"]}
+              colors={["red", "yellow", "green"]}
               animDelay={500}
               animateDuration={5000}
               percent={city.healthcare.index / 100}
@@ -90,6 +90,7 @@ class CompareCity extends Component {
             <GaugeChart
               id="healthIndex"
               nrOfLevels={30} 
+              colors={["green", "yellow", "red",  ]}
               arcWidth = {0.3}
               percent={city.pollution.indexPollution / 100}
               arcPadding={0.02}
