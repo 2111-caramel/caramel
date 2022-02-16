@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { fetchMessages, postMessage } from "../../store/chat";
 
 class DummyComponent extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
            content: '',
-           channelId: 1,
+           channelId: this.props.channelId,
            userId: 1,
            username: "Tommy"
     }
@@ -17,7 +17,7 @@ class DummyComponent extends React.Component {
 
 handleChange(evt) {
   this.setState({
-    [evt.target.id]: evt.target.value
+    content: evt.target.value
   });
 }
 
@@ -25,6 +25,11 @@ handleSubmit(evt){
   evt.preventDefault();
   this.props.postMessage({...this.state})
   this.props.content = '';
+  this.setState({           
+    content: '',
+    channelId: this.props.channelId,
+    userId: 1,
+    username: "Tommy"})
 }
 
 
@@ -34,14 +39,21 @@ handleSubmit(evt){
 
   render() {
     const { handleSubmit, handleChange } = this;
-    const { content } = this.state
+    const { channelId } = this.props;
+    const messages = this.props.messages.messages;
+    const { content } = this.state;
     console.log("dummy props", this.props);
     //console.log(this.props.messages)
+
+    const numChannel = Number(channelId)
+        const filteredMessages = messages.filter(
+        message => message.channelId === numChannel
+    )
     return (
       <div>
-        {this.props.messages.messages.map((message) => {
+        {filteredMessages.map((message) => {
           return (
-            <div id={message.id}>
+            <div key={message.id}>
               <p>Message: {message.content}</p>
               {/* <p>Name: {message.user.username}</p> */}
             </div>
@@ -49,7 +61,7 @@ handleSubmit(evt){
         })}
         <form id = "message" onSubmit = {handleSubmit}>
           <label  htmlFor = "input-field">Input Message</label>
-          <input type = "text" id = "content" onChange = {handleChange} value = {content}></input>
+          <input type = "text" onChange = {handleChange} value = {content}></input>
           <button type = "submit">Submit</button>
         </form>
       </div>

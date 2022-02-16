@@ -32,6 +32,10 @@ Weather.belongsTo(City);
 //Weather.belongsToMany(City, { through: City_Weather });
 
 //chat associations
+//Do I need to create this many to many relationship?
+//User.hasMany(Channel)
+//Channel.hasMany(Users)
+
 Channel.hasMany(Message, {
   onDelete: 'cascade',
   hooks:true
