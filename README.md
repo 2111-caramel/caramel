@@ -17,19 +17,20 @@ Toto is a data analysis desktop and mobile progressive web app that helps user f
 - React.js
 - Redux
 - Chart.js
+- React Gauge Chart
 - Node.js
 - Postgres
 
 ## App Features
 
 - List each cities individually showing cost of living and other data metrics with charts
-- Form that allows the user to list cities based on specific metrics for low-rent, healthcare, daycare cost, and transportation
+- Form that allows the user to receive city recommendations based on specific metrics for low-rent, healthcare, daycare cost, and transportation
 - User can favorite a city and pull them up in their profile
 - Users can message each other
 
 ## Developers
 
 - Montensia Banks - [Github](https://github.com/monteecode) | [LinkedIn](https://www.linkedin.com/in/montensia/)
-- Kimberly Chua - Github | LinkedIn
+- Kimberly Chua - [Github](https://github.com/kchua123) | [LinkedIn](https://www.linkedin.com/in/chua-kimberly/)
 - Gal Gir - [Github](https://github.com/monteecode)  | [LinkedIn](https://www.linkedin.com/in/montensia/)
 - Sandra Magnúsdóttir - [Github](https://github.com/Galilior) | [LinkedIn]([LinkedIn](www.linkedin.com/in/gal-l-gir)
