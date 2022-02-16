@@ -1,7 +1,7 @@
 #Toto
 
 #####Find information about a city you want to relocate to
-![image of Toto website] (./client/public/toto_img.png)
+![image of Toto website] (https://github.com/2111-caramel/caramel/blob/main/public/toto_img.png)
 
 Toto is a data analysis desktop and mobile progressive web app that helps user find basic cost of living and quality of life information of a new city that they are considering relocating to.
 
