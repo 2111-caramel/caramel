@@ -31,5 +31,5 @@ Toto is a data analysis desktop and mobile progressive web app that helps user f
 
 - Montensia Banks - [Github](https://github.com/monteecode) | [LinkedIn](https://www.linkedin.com/in/montensia/)
 - Kimberly Chua - Github | LinkedIn
-- Gal Gir - Github | LinkedIn
-- Sandra Magnúsdóttir - [Github](https://github.com/sandrakristrun) | [LinkedIn](https://www.linkedin.com/in/sandra-magnusdottir/)
+- Gal Gir - [Github](https://github.com/monteecode)  | [LinkedIn](https://www.linkedin.com/in/montensia/)
+- Sandra Magnúsdóttir - [Github](https://github.com/Galilior) | [LinkedIn]([LinkedIn](www.linkedin.com/in/gal-l-gir)
