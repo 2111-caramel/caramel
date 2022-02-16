@@ -5,12 +5,16 @@ body {
 
 a {
   text-decoration: none;
-  color: #000000
+  color: #000000;
 }
 
 .dropdown.select-city-form .btn.btn-primary {
   background-color: #b398bd;
   border: none;
+}
+
+.homeText {
+  margin-bottom: 200px;
 }
 
 .container-fluid.homepage .dropdown.select-city-form .btn.btn-primary,
