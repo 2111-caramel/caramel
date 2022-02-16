@@ -28,7 +28,7 @@ export const Home = (props) => {
 
             <Link role="button" aria-current="page" to="/preferences">
               <button className="nav-link-active btn btn-primary btn-sm survey">
-                Take A Survey
+                Get Inspiration
               </button>
             </Link>
           </div>
