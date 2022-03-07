@@ -14,41 +14,26 @@ const getThreeCities = (threeCities) => ({
 export const fetchThreeCities = (selection) => {
   return async (dispatch) => {
     try {
-      //for loop here over the state values
       const cityArray = [];
 
       for(let i = 0; i < selection.length; i++){
         const { data } = await axios.get(`/api/cities/preferences/${selection[i]}`)
-
-        //EVEN OUT THE INDEXES
-        if(selection[i] === "Healthcare"){
-          for(let i = 0; i < data.length; i++){
-            data[i].index = -Math.abs(data[i].index) * 35
-          }
-        }
-        if(selection[i] === "Pollution"){
-          for(let i = 0; i < data.length; i++){
-            data[i].index = data[i].index * 50;
-          }
-        }
-        if(selection[i] === "Daycare"){
-          for(let i = 0; i < data.length; i++){
-            data[i].index = data[i].index * 1.3;
-          }
-        }
-        if(selection[i] === "Transportation"){
-          for(let i = 0; i < data.length; i++){
-            data[i].index = -Math.abs(data[i].index) * 35
-          }
-        }
         cityArray.push(data)
       }
-      let bestCities = getBest3(cityArray).slice(0, 3);
+
+      let bestCities = getBest3(cityArray);
+
+      //find the data on the best 3 cities from cityArray
       let result = [];
+
       for(let i = 0; i < cityArray[0].length; i++){
-        for(let j = 0; j < 3; j++)
-        if(cityArray[0][i].cityId === bestCities[j][0]){
-          result.push(cityArray[0][i])
+        for(let j = 0; j < bestCities.length; j++){
+          let cityData = cityArray[0][i];
+          let bestCityId = bestCities[j][0];
+
+          if(cityData.cityId === bestCityId){
+            result.push(cityData)
+          }
         }
       }
       dispatch(getThreeCities(result));
